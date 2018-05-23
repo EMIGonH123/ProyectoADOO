@@ -99,7 +99,7 @@
                         <div id="btnInicioEmpleado" class="modal">
                             <div class="modal-content">
                             <h3 style="color:greenyellow; text-align: center;">Sesión Empleado</h3>
-                            <form action="Controlador.do"  method="POST" class="col s12 m12 l12">
+                            <form action="ControlSesiones.do"  method="POST" class="col s12 m12 l12">
                                 <div class="input-field col s4">
                                   <i class="material-icons prefix">account_circle</i>
                                   <input id="idEmpleado" name="idEmpleado" type="text" class="validate">
@@ -127,7 +127,7 @@
                         <div id="btnInicioCliente" class="modal">
                             <div class="modal-content">
                             <h3 style="color:greenyellow; text-align: center;">Sesión Cliente</h3>
-                            <form action="Controlador.do"  method="POST" class="col s12 m12 l12">
+                            <form action="ControlSesiones.do"  method="POST" class="col s12 m12 l12">
                                 <div class="input-field col s4">
                                   <i class="material-icons prefix">account_circle</i>
                                   <input id="idCliente" name="idCliente" type="text" class="validate">

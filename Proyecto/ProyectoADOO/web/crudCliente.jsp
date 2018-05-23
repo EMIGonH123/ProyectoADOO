@@ -66,7 +66,7 @@
             <div class="modal-content">
                 <h3 style="color:#64dd17; text-align: center;">Información</h3>
                 <c:forEach items="${infoCliente}" var="ic">
-                <form action="Controlador.do"  method="POST" class="col s12 m12 l12">
+                <form action="ControlEmpleado.do"  method="POST" class="col s12 m12 l12">
                     <div class="row">
                         <div class="input-field col s4">
                           <i class="material-icons prefix">account_circle</i>
@@ -189,7 +189,7 @@
             <div class="modal-content">
                 <h3 style="color:#18ffff; text-align: center;">Nueva Renta</h3>
                 <c:forEach items="${infoCliente}" var="ic">
-                <form action="Controlador.do"  method="POST" class="col s12 m12 l12">
+                <form action="ControlEmpleado.do"  method="POST" class="col s12 m12 l12">
                     <div class="row">
                         <div class="input-field col s4">
                           <i class="material-icons prefix">account_circle</i>
@@ -258,7 +258,7 @@
             <div class="modal-content">
                 <h3 style="color:#ff0; text-align: center;">Nueva Cuenta</h3>
                 <c:forEach items="${infoCliente}" var="ic">
-                    <form action="Controlador.do"  method="POST" class="col s12 m12 l12">
+                    <form action="ControlEmpleado.do"  method="POST" class="col s12 m12 l12">
                         <div class="row">
                             <div class="input-field col s6">
                               <i class="material-icons prefix">account_circle</i>
@@ -313,7 +313,7 @@
             <div class="modal-content">
                 <h3 style="color:#ff0; text-align: center;">Nueva Prestamo</h3>
                 <c:forEach items="${infoCliente}" var="ic">
-                    <form action="Controlador.do"  method="POST" class="col s12 m12 l12">
+                    <form action="ControlEmpleado.do"  method="POST" class="col s12 m12 l12">
                         <div class="row">
                             <div class="input-field col s6">
                               <i class="material-icons prefix">credit_card</i>
@@ -367,7 +367,7 @@
                                 </a>
                             </c:forEach>
                             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                                <li><a href="Controlador.do?btnControlador=salirCRUDCliente">Salir</a></li>
+                                <li><a href="salir.jsp">Salir</a></li>
                             </ul>
                         </div>
                     </nav>

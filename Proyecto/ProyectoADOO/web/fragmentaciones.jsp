@@ -62,7 +62,7 @@
                 <div class="row">
                     <div class="col l6 m6 s12">
                         <h4 style="color:#304ffe;text-align: center;">Tablas</h4><br>
-                        <form class="col s12 m12 l12">    
+                        <%--<form class="col s12 m12 l12">    
                             <div class="row">
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">dashboard</i>
@@ -73,8 +73,11 @@
                                     </select>
                                 </div>
                             </div>
-                        </form><br><br>
-                        <input id="verAtributos" type="button" value="Ver Atributos" />
+                        </form><br><br>--%>
+                        <form>
+                            Nombre:<input type="text" id="nombreTabla">
+                        </form>
+                        <input type="button" id="verAtributos" value="Ver Atributos" />
                     </div>
                     <div class="col l6 m6 s12">
                         <h4 style="color:#304ffe;text-align: center;">Atributos</h4><br>

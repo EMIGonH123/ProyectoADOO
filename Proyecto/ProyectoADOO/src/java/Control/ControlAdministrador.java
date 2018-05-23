@@ -1,0 +1,166 @@
+
+package Control;
+
+import EntidadesADOO.Empleadorenta;
+import Modelos.ServiciosLocal;
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.ejb.EJB;
+import javax.ejb.EJBException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet(name = "ControlAdministrador", urlPatterns = {"/ControlAdministrador.do"})
+public class ControlAdministrador extends HttpServlet {
+    @EJB
+    private ServiciosLocal servicio;
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException , EJBException{
+        String val = request.getParameter("btnControlador");
+        switch(val){
+            case "verEmpleadoPorAdministrador":
+                verEmpleadoPorAdministrador(request, response);
+            break;
+            case "borrarAdministradorPorAdministrador":
+                borrarAdministradorPorAdministrador(request, response);
+            break;           
+        }        
+    }
+    
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException , EJBException{
+        
+        try {
+            String val = request.getParameter("btnControlador");
+            switch(val){
+                
+                case "editarAdministradorPorAdministrador":
+                    editarAdministradorPorAdministrador(request, response);
+                    break;
+                case "crearEmpleadoPorAdministrador":
+                    crearEmpleadoPorAdministrador(request, response);
+                    break;
+                    
+                case "crearAdquisicionPorAdministrador":
+                    crearAdquisicionPorAdministrador(request,response);
+                    break;
+                    
+            }
+        } catch (ParseException ex) {
+            Logger.getLogger(ControlAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    protected void borrarAdministradorPorAdministrador(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException, EJBException{
+        int idEmpleado = Integer.parseInt(request.getParameter("idAdministrador"));
+        List<Object> clientesAsociados = servicio.getIDSDeClientesAsociadosAlEmpleado(idEmpleado);
+        servicio.borrarEmpleadoPorEmpleado(idEmpleado, clientesAsociados);
+        response.sendRedirect("index.jsp");
+    }
+    
+    protected void crearAdquisicionPorAdministrador(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException, EJBException, ParseException{
+        int idProveedor = Integer.parseInt(request.getParameter("idProveedor"));
+        String fecha = request.getParameter("fecha");
+        String nombre = request.getParameter("nombreAuto");
+        double precioUnitario =0.0;
+        switch(nombre){
+            case "Jetta":
+                precioUnitario = 159230.65;
+            break;
+            case "Golf":
+                precioUnitario = 259230.65;
+            break;
+            case "Passat":
+                precioUnitario = 369230.71;
+            break;
+            case "Bora":
+                precioUnitario = 219230.65;
+            break;
+            case "Bocho":
+                precioUnitario = 72230.21;
+            break;
+        }
+        int modelo = Integer.parseInt(request.getParameter("modeloAuto"));
+        int unidades = Integer.parseInt(request.getParameter("unidadesAuto"));
+        double  precioTotal = unidades * precioUnitario;
+        int idEmpleado = Integer.parseInt(request.getParameter("idAdministrador"));
+        int kilometraje  = Integer.parseInt(request.getParameter("kilometraje"));
+        String colorAuto = request.getParameter("colorAuto");
+        int idMarca  = Integer.parseInt(request.getParameter("idMarca"));
+        int idSucursal  = Integer.parseInt(request.getParameter("idSucursal"));
+        int idTipo  = Integer.parseInt(request.getParameter("idTipo"));
+        String matricula = request.getParameter("matricula");
+        int capacidad  = Integer.parseInt(request.getParameter("capacidad"));
+        
+        int idEstado = 2;
+        response.sendRedirect("administrador.jsp");        
+    }
+
+    protected void crearEmpleadoPorAdministrador(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException, EJBException{
+        String nombre = request.getParameter("nombre");
+        String apPaterno = request.getParameter("apPaterno");
+        String apMaterno = request.getParameter("apMaterno");
+        String entidad = request.getParameter("estado");
+        String municipio = request.getParameter("municipio");
+        String colonia = request.getParameter("colonia");
+        String calle = request.getParameter("calle");
+        int cp = Integer.parseInt(request.getParameter("cp"));
+        String tel = request.getParameter("tel");
+        String email = request.getParameter("email");
+        String pass = request.getParameter("pass");
+        int noExterior = Integer.parseInt(request.getParameter("numExterior"));
+        int noInterior = Integer.parseInt(request.getParameter("numInterior"));
+        int tipo = Integer.parseInt(request.getParameter("tipo"));
+        int idSucursal = Integer.parseInt(request.getParameter("idSucursal"));
+        String genero = request.getParameter("genero");
+        servicio.crearEmpleadoPorAdministrador(nombre, apPaterno, apMaterno, entidad, municipio, colonia, calle,
+                                        tipo, noExterior, noInterior, cp, tel, email, pass, idSucursal, genero);
+        response.sendRedirect("administrador.jsp");
+        
+    }   
+
+    protected void editarAdministradorPorAdministrador(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException, EJBException{
+        int idEmpleado = Integer.parseInt(request.getParameter("idEmpleado"));
+        String nombre = request.getParameter("nombreEmpleado");
+        String apPaterno = request.getParameter("apPaterno");
+        String apMaterno = request.getParameter("apMaterno");
+        String entidad = request.getParameter("estado");
+        String municipio = request.getParameter("municipio");
+        String colonia = request.getParameter("colonia");
+        String calle = request.getParameter("calle");
+        int cp = Integer.parseInt(request.getParameter("cp"));
+        String tel = request.getParameter("tel");
+        String email = request.getParameter("email");
+        String pass = request.getParameter("pass");
+        int noExterior = Integer.parseInt(request.getParameter("numExterior"));
+        int noInterior = Integer.parseInt(request.getParameter("numInterior"));
+        String genero = request.getParameter("genero");
+        servicio.editarEmpleadoPorEmpleado(idEmpleado, nombre, apPaterno, apMaterno, entidad, municipio,
+                colonia, calle, noExterior, noInterior, cp, tel, email, pass, genero);
+        response.sendRedirect("administrador.jsp");
+        
+    }
+    
+    protected void verEmpleadoPorAdministrador(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException, EJBException{
+        int idEmpleado = Integer.parseInt(request.getParameter("idEmpleado"));
+        Empleadorenta empleado = servicio.buscarEmpleado(idEmpleado);
+        if(empleado != null){
+            request.getSession().setAttribute("empleado",empleado);
+            response.sendRedirect("empleado.jsp");
+        }else{
+            request.setAttribute("msgRespuesta","No existe el usuario");
+            request.getRequestDispatcher("administrador.jsp").forward(request, response);
+        }
+    }
+}

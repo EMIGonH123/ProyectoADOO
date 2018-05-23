@@ -39,9 +39,7 @@
                         <div class="nav-wrapper" style="background-color: #ff5722; color:white;">
                             <a class="brand-logo" style="margin-left: 20px;"><b>Cliente ${cliente.nombreCliente}</b></a>
                             <ul class="right hide-on-med-and-down">
-                                <li><a href="#"></a></li>
-                                <li><a class="dropdown-button" href="#" data-activates="marcasAutos">Marcas<i class="material-icons right">arrow_drop_down</i></a></li>
-                                <li><a href="salir.jsp">Salir</a></li>
+                               <li><a href="salir.jsp">Salir</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -175,16 +173,17 @@
         <div id="modalEdita" class="modal">
             <div class="modal-content">
                 <h4 style="color: greenyellow; text-align: center;">Información</h4>
-                <form action="control.do"  method="POST" class="col s12 m12 l12">
+                <c:forEach items="${infoCliente}" var="ic">
+                <form action="ControlCliente.do"  method="POST" class="col s12 m12 l12">
                     <div class="row">
                         <div class="input-field col s6">
                           <i class="material-icons prefix">my_location</i>
-                          <input value="${cliente.entidadCliente}" id="estado" name="estado" type="text" class="validate">
+                          <input value="${ic[6]}" id="estado" name="estado" type="text" class="validate">
                           <label for="estado">Estado</label>
                         </div>
                         <div class="input-field col s6">
                           <i class="material-icons prefix">nature</i>
-                          <input value="${cliente.municipioCliente}" id="municipio" name="municipio" type="text" class="validate">
+                          <input value="${ic[7]}" id="municipio" name="municipio" type="text" class="validate">
                           <label for="municipio">Municipio</label>
                         </div>
                     </div>
@@ -192,25 +191,25 @@
                     <div class="row">    
                         <div class="input-field col s6">
                           <i class="material-icons prefix">nature_people</i>
-                          <input value="${cliente.coloniaCliente}" id="colonia" name="colonia" type="text" class="validate">
+                          <input value="${ic[8]}" id="colonia" name="colonia" type="text" class="validate">
                           <label for="colonia">Colonia</label>
                         </div>
                     
                         <div class="input-field col s6">
                           <i class="material-icons prefix">location_on</i>
-                          <input value="${cliente.calleCliente}" id="calle" name="calle" type="text" class="validate">
+                          <input value="${ic[9]}" id="calle" name="calle" type="text" class="validate">
                           <label for="calle">Calle</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
                             <i class="material-icons prefix">email</i>
-                            <input value="${cliente.emailCliente}" id="email" name="email" type="text" class="validate">
+                            <input value="${ic[14]}" id="email" name="email" type="text" class="validate">
                             <label for="email">Email</label>
                         </div>
                         <div class="input-field col s6">
                           <i class="material-icons prefix">lock_open</i>
-                          <input value="${cliente.passCliente}" id="pass" name="pass" type="text" class="validate">
+                          <input value="${ic[15]}" id="pass" name="pass" type="text" class="validate">
                           <label for="pass">Contraseña</label>
                         </div>
                     </div>
@@ -218,39 +217,45 @@
                     <div class="row">
                         <div class="input-field col s6">
                             <i class="material-icons prefix">call</i>
-                            <input value="${cliente.telCliente}" id="tel" name="tel" type="text" class="validate">
+                            <input value="${ic[13]}" id="tel" name="tel" type="text" class="validate">
                             <label for="tel">Telefono</label>
                         </div>
                         <div class="input-field col s6">
                           <i class="material-icons prefix">markunread_mailbox</i>
-                          <input value="${cliente.cpCliente}" id="cp" name="cp" type="text" class="validate">
+                          <input value="${ic[12]}" id="cp" name="cp" type="text" class="validate">
                           <label for="cp">Código Postal</label>
                         </div>
                     </div>    
                     <div class="row">    
                         <div class="input-field col s6">
                             <i class="material-icons prefix">center_focus_weak</i>
-                            <input value="${cliente.noExterior}" id="numExterior" name="numExterior" type="text" class="validate">
+                            <input value="${ic[10]}" id="numExterior" name="numExterior" type="text" class="validate">
                             <label for="numExterior">#Exterior</label>
                         </div>
                         <div class="input-field col s6">
                             <i class="material-icons prefix">center_focus_strong</i>
-                            <input value="${cliente.noInterior}" id="numInterior" name="numInterior" type="text" class="validate">
+                            <input value="${ic[11]}" id="numInterior" name="numInterior" type="text" class="validate">
                             <label for="numInterior">#Interior</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s4" >
                             <i class="material-icons prefix">center_focus_strong</i>
-                            <input readonly="readonly" value="${cliente.idCliente}" id="idCliente" name="idCliente" type="text" class="validate">
+                            <input readonly="readonly" value="${ic[0]}" id="idCliente" name="idCliente" type="text" class="validate">
                             <label for="idCliente">Identificador</label>                       
                         </div>
                     </div>
-                   
-                    <button type="submit" name="btnControlador" value="editarClientePorCliente" class="btn center">
-                    Actualizar
-                    </button>
+                    <div class="row">
+                        <div class="col s4"></div>
+                        <div class="col s4">
+                            <button style="background-color:#1976D2; " type="submit" name="btnControlador" value="editarClientePorCliente" class="btn center">
+                            Actualizar
+                            </button>
+                        </div>
+                        <div class="col s4"></div>
+                    </div>
                 </form>
+                </c:forEach>
             </div>
         </div>                
                         

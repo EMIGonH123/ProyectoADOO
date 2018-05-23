@@ -48,7 +48,7 @@
             <div id="modalAgrega" class="modal modal-fixed-footer">
                 <div class="modal-content">
                     <h3 style="color:greenyellow; text-align: center;">Nuevo Cliente</h3>
-                    <form action="Controlador.do"  method="POST" class="col s12 m12 l12">
+                    <form action="ControlEmpleado.do"  method="POST" class="col s12 m12 l12">
                         <div class="row">
                             <div class="input-field col s4">
                               <i class="material-icons prefix">account_circle</i>
@@ -165,7 +165,7 @@
                 <div class="modal-content">
                     <h4 style="color: greenyellow; text-align: center;">Información</h4>
                     <c:forEach items="${infoEmpleado}" var="ia">
-                    <form action="Controlador.do"  method="POST" class="col s12 m12 l12"> 
+                    <form action="ControlEmpleado.do"  method="POST" class="col s12 m12 l12"> 
                         <div class="row">    
                             <div class="input-field col s4">
                                 <i class="material-icons prefix">account_circle</i>
@@ -289,7 +289,7 @@
                   </li>
                   <c:forEach items="${infoEmpleado}" var="ia">
                   <li>
-                    <a class="btn-floating red btn" href="Controlador.do?btnControlador=borrarEmpleadoPorEmpleado&idEmpleado=${ia[0]}">
+                    <a class="btn-floating red btn" href="ControlEmpleado.do?btnControlador=borrarEmpleadoPorEmpleado&idEmpleado=${ia[0]}">
                           <i class="material-icons">delete</i>
                     </a>
                   </li>
@@ -442,7 +442,7 @@
                                 <c:forEach items="${clientes}" var="cliente">
                                     <tr>
                                         <td>
-                                            <a href="Controlador.do?btnControlador=verClientePorEmpleado&idCliente=${cliente[0]}">${cliente[2]}</a>
+                                            <a href="ControlEmpleado.do?btnControlador=verClientePorEmpleado&idCliente=${cliente[0]}">${cliente[2]}</a>
                                             <i class="material-icons">create</i>
                                             <i class="material-icons">delete</i>                                            
                                             <i class="material-icons">perm_identity</i>

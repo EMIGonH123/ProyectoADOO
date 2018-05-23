@@ -73,7 +73,7 @@
                 <div class="modal-content">
                     <h4 style="color: greenyellow; text-align: center;">Información</h4>
                     <c:forEach items="${infoAdmin}" var="ia">
-                    <form action="Controlador.do"  method="POST" class="col s12 m12 l12">
+                    <form action="ControlAdministrador.do"  method="POST" class="col s12 m12 l12">
                         
  
                         <div class="row">    
@@ -193,7 +193,7 @@
                 <div class="modal-content">
                     <h4 style="color: greenyellow; text-align: center;">Nuevo Empleado</h4>
                     
-                    <form action="Controlador.do"  method="POST" class="col s12 m12 l12">
+                    <form action="ControlAdministrador.do"  method="POST" class="col s12 m12 l12">
                         <div class="row">
                             <div class="input-field col s4">
                               <i class="material-icons prefix">account_circle</i>
@@ -319,7 +319,7 @@
                 <div class="modal-content">
                     <h4 style="color: greenyellow; text-align: center;">Adquisición</h4>
                     
-                    <form action="control.do"  method="POST" class="col s12 m12 l12">
+                    <form action="ControlAdministrador.do"  method="POST" class="col s12 m12 l12">
                         <div class="row">
                             <div class="input-field col s12 m12 l12">
                                 <i class="material-icons prefix">folder_shared</i>
@@ -451,7 +451,7 @@
                 <ul>
                   <c:forEach items="${infoAdmin}" var="ia">
                   <li>
-                    <a class="btn-floating red btn" href="Controlador.do?btnControlador=borrarAdministradorPorAdministrador&idAdministrador=${ia[0]}">
+                    <a class="btn-floating red btn" href="ControlAdministrador.do?btnControlador=borrarAdministradorPorAdministrador&idAdministrador=${ia[0]}">
                           <i class="material-icons">delete</i>
                     </a>
                   </li>
@@ -603,7 +603,7 @@
                                 <c:forEach items="${infoEmpleados}" var="ie">
                                     <tr>
                                         <td>
-                                            <a href="Controlador.do?btnControlador=verEmpleadoPorAdministrador&idEmpleado=${ie[0]}">${ie[1]}</a>
+                                            <a href="ControlAdministrador.do?btnControlador=verEmpleadoPorAdministrador&idEmpleado=${ie[0]}">${ie[1]}</a>
                                             <i class="material-icons">create</i>
                                             <i class="material-icons">delete</i>                                            
                                             <i class="material-icons">perm_identity</i>

@@ -8,7 +8,6 @@ create table TipoEmpleado(
 	idTipoEmpleado int not null primary key AUTO_INCREMENT,
 	descEmpleado varchar(50)
 );
-
 create table EmpleadoRenta(
 	idEmpleado int not null primary key AUTO_INCREMENT,
 	nombreEmpleado varchar(50),

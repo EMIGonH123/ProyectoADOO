@@ -95,7 +95,25 @@ public class Servicios implements ServiciosLocal {
         em.refresh(cliente);
     }
     
+    public void editarClientePorCliente(int idCliente, String entidad, String municipio, String colonia, String calle,
+                                        int noExterior, int noInterior, int cp, String tel, String email, String pass){
+        Clienterenta cliente = buscarCliente(idCliente);
+        cliente.setIdCliente(idCliente);
+        cliente.setEntidadCliente(entidad);
+        cliente.setMunicipioCliente(municipio);
+        cliente.setColoniaCliente(colonia);
+        cliente.setCalleCliente(calle);
+        cliente.setNoExterior(noExterior);
+        cliente.setNoInterior(noInterior);
+        cliente.setCpCliente(cp);
+        cliente.setTelCliente(tel);
+        cliente.setEmailCliente(email);
+        cliente.setPassCliente(pass);
+        em.merge(cliente);
+        em.flush();
+        em.refresh(cliente);
     
+    }
     
     @Override
     public List<Object> getInfoSucursales(){
@@ -379,7 +397,7 @@ public class Servicios implements ServiciosLocal {
     }
     
     @Override
-    public List<Object> obtenerAtributosDeTabla(String nombre){
+    public List<String> obtenerAtributosDeTabla(String nombre){
         String sql = "DESCRIBE "+ nombre;
         return em.createNativeQuery(sql).getResultList();
     }

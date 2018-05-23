@@ -34,7 +34,8 @@ public interface ServiciosLocal {
     public void editarEmpleadoPorEmpleado(int idEmpleado, String nombre,String apPaterno, String apMaterno,
             String entidad, String municipio, String colonia, String calle,
             int noExterior, int noInterior, int cp, String tel, String email, String pass,String genero);
-    
+    public void editarClientePorCliente(int idCliente, String entidad, String municipio, String colonia, String calle,
+                                        int noExterior, int noInterior, int cp, String tel, String email, String pass);
     public void crearEmpleadoPorAdministrador(String nombre,String apPaterno, String apMaterno,
         String entidad, String municipio, String colonia, String calle,int idTipo,
         int noExterior, int noInterior, int cp, String tel, String email, String pass, int idSucursal,String genero);
@@ -61,6 +62,6 @@ public interface ServiciosLocal {
     public List<Object> getInfoCuentasDeCliente(int idCliente);
     public List<Detallecuenta> getDetalleCuentasDeCliente(int idCliente);
     public List<Object> getTablasDeLaBD();
-    public List<Object> obtenerAtributosDeTabla(String nombre);
+    public List<String> obtenerAtributosDeTabla(String nombre);
     
 }
