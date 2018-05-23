@@ -1,15 +1,15 @@
+<%@page import="Modelos.ServicioFragmentacionLocal"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.List"%>
 <%@page import="javax.naming.InitialContext"%>
-<%@page import="Modelos.ServiciosLocal"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%! ServiciosLocal servicio;%>
+<%! ServicioFragmentacionLocal servicio;%>
 <%
     InitialContext contexto = new InitialContext();
-    servicio = (ServiciosLocal)contexto.lookup("java:global/ProyectoADOO/Servicios!Modelos.ServiciosLocal");
-    List<Object> infoTablas = servicio.getTablasDeLaBD();
+    servicio = (ServicioFragmentacionLocal)contexto.lookup("java:global/ProyectoADOO/ServicioFragmentacion!Modelos.ServicioFragmentacionLocal");
+    List<String> info = servicio.obtenerAtributosDeTabla("cuenta");
 %>
-<c:set scope="page" var="infoTablas" value="<%=infoTablas%>"/>
+<c:set scope="page" var="info" value="<%=info%>"/>
 <!DOCTYPE html>
 <html>
     <head>
@@ -32,7 +32,7 @@
                     $.ajax({
                         type: 'POST',
                         data:{nombreTabla:nombreTabla},
-                        url: "Controlador.do?btnControlador=verAtributos",
+                        url: "ControlFragmentaciones.do?btnControlador=verAtributos",
                         success: function (result) {
                             $('#despliegaAtributos').html(result);
                         }
@@ -67,7 +67,7 @@
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">dashboard</i>
                                     <select>
-                                        <c:forEach items="${infoTablas}" var="it">
+                                        <c:forEach items="${info}" var="it">
                                             <option id="nombreTabla" value="${it}">${it}</option>
                                         </c:forEach>
                                     </select>

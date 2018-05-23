@@ -61,7 +61,6 @@ public interface ServiciosLocal {
 
     public List<Object> getInfoCuentasDeCliente(int idCliente);
     public List<Detallecuenta> getDetalleCuentasDeCliente(int idCliente);
-    public List<Object> getTablasDeLaBD();
-    public List<String> obtenerAtributosDeTabla(String nombre);
+
     
 }

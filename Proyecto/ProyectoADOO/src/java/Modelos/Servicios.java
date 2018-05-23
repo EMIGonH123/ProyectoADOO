@@ -389,16 +389,4 @@ public class Servicios implements ServiciosLocal {
                 + " AND c.idCliente = "+idCliente;
         return em.createNativeQuery(sql).getResultList();
     }
-    
-    @Override
-    public List<Object> getTablasDeLaBD(){
-        String sql = "SHOW Tables";
-        return em.createNativeQuery(sql).getResultList();
-    }
-    
-    @Override
-    public List<String> obtenerAtributosDeTabla(String nombre){
-        String sql = "DESCRIBE "+ nombre;
-        return em.createNativeQuery(sql).getResultList();
-    }
 }

@@ -34,7 +34,7 @@
                 <div class="navbar-fixed">
                     <nav>
                         <div class="nav-wrapper" style="background-color: #022f42; color:white;">
-                            <a class="brand-logo" style="margin-left: 20px;"><b>Opciones</b></a>
+                            <a class="brand-logo" style="margin-left: 20px;"><b>PrestAutos</b></a>
                             <ul class="right hide-on-med-and-down">
                                 <li>
                                     <a class="dropdown-button" data-activates="sucursales">

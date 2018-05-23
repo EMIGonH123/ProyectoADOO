@@ -4,12 +4,6 @@ import EntidadesADOO.Clienterenta;
 import EntidadesADOO.Empleadorenta;
 import Modelos.ServiciosLocal;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.ParseException;
-import java.util.Iterator;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.persistence.PersistenceException;
@@ -26,58 +20,17 @@ public class ControlSesiones extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException , EJBException{
-
-        try {
-            String val = request.getParameter("btnControlador");
-            switch(val){
-                case "inicioSesionEmpleado":
-                    inicioSesionEmpleado(request, response);
-                    break;
-                case "verAtributos":
-                    verAtributos(request, response);
-                    break;
-                case "inicioSesionCliente":
-                    inicioSesionCliente(request, response);
-                    break;
-                    
-            }
-        } catch (ParseException ex) {
-            Logger.getLogger(ControlSesiones.class.getName()).log(Level.SEVERE, null, ex);
+        String val = request.getParameter("btnControlador");
+        switch(val){
+            case "inicioSesionEmpleado":
+                inicioSesionEmpleado(request, response);
+            break;
+            case "inicioSesionCliente":
+                inicioSesionCliente(request, response);
+            break;      
         }
     }
-
-    protected void verAtributos(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException, EJBException, ParseException{
-        response.setContentType("text/plain");
-        PrintWriter out = response.getWriter();
-        String nombre = request.getParameter("nombreTabla");
-        out.println("<table  class='highlight responsive-table centered'>");
-        out.println("<thead>");
-        out.println("<tr>");
-        out.println("<th>Atributos</th>");
-        out.println("</tr>");
-        out.println("</thead>");
-        out.println("<tbody>");
-        
-        List<String> lista = servicio.obtenerAtributosDeTabla(nombre);
-        Iterator<String> i = lista.iterator();
-        while(i.hasNext()){
-            out.println("<tr>");
-            out.println("<td>");
-            //String aux = new String((String)i.next());
-            /*Object o = (Object)i.next();
-            if(o instanceof String){
-                out.println("String");
-            }*/
-            out.println(String.valueOf(i.next()));
-            out.println("</td>");
-            out.println("</tr>");
-        }
-        
-        out.println("</tbody>");
-        out.println("</table>");
-    }
-
+    
     /****************************/
     /* INICIO DE SESIONES INDEX */
     /****************************/
