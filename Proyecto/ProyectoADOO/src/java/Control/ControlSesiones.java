@@ -27,13 +27,30 @@ public class ControlSesiones extends HttpServlet {
             break;
             case "inicioSesionCliente":
                 inicioSesionCliente(request, response);
-            break;      
+            break;
+            case "inicioSesionAdmin":
+                inicioSesionAdmin(request, response);
+            break;
         }
     }
     
     /****************************/
     /* INICIO DE SESIONES INDEX */
     /****************************/
+    protected void inicioSesionAdmin(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException,EJBException,PersistenceException {
+        int id = (int)Integer.parseInt(request.getParameter("idAdmin"));
+        String pass = (String)request.getParameter("pass");
+        Empleadorenta empleado = servicio.iniciaSesionEmpleado(id, pass);
+        if(empleado != null){
+            request.getSession().setAttribute("empleado",empleado);
+            response.sendRedirect("fragmentaciones.jsp");
+        }else{
+            request.setAttribute("msgRespuesta","No existe el usuario");
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
+        
+    }
     protected void inicioSesionEmpleado(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException,EJBException,PersistenceException {
         int id = (int)Integer.parseInt(request.getParameter("idEmpleado"));

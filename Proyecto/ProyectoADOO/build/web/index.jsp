@@ -44,7 +44,7 @@
                                 </li>
                                 <li><a href="automoviles.jsp">Automoviles</a></li>
                                 <li><a href="bancos.jsp">Transacciones</a></li>
-                                <li><a href="fragmentaciones.jsp">Fragmentacion</a></li>
+                                <li><a class="modal-trigger" href="#btnFragmentacion">Fragmentacion</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -139,6 +139,31 @@
                                   <label for="pass">Contraseña</label>
                                 </div>
                                 <button type="submit" name="btnControlador" value="inicioSesionCliente" class="btn">
+                                Ingresar
+                                </button>
+                            </form>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    <!-- FRAGMENTACION -->
+                    <div class="col l6 s12 m6">
+                        <div id="btnFragmentacion" class="modal">
+                            <div class="modal-content">
+                            <h3 style="color:#0059bc; text-align: center;">Sesión Administrador</h3>
+                            <form action="ControlSesiones.do"  method="POST" class="col s12 m12 l12">
+                                <div class="input-field col s4">
+                                  <i class="material-icons prefix">account_circle</i>
+                                  <input id="idAdmin" name="idAdmin" type="text" class="validate">
+                                  <label for="idAdmin">Identificador</label>
+                                </div>
+                                <div class="input-field col s4">
+                                  <i class="material-icons prefix">hdr_strong</i>
+                                  <input  id="pass" name="pass" type="password" class="validate">
+                                  <label for="pass">Contraseña</label>
+                                </div>
+                                <button type="submit" name="btnControlador" value="inicioSesionAdmin" class="btn blue">
                                 Ingresar
                                 </button>
                             </form>
