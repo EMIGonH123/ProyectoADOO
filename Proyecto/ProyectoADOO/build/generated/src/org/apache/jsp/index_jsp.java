@@ -192,11 +192,9 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    \n");
       out.write("                    <!-- FRAGMENTACION -->\n");
       out.write("                    <div class=\"col l6 s12 m6\">\n");
-      out.write("                        \n");
-      out.write("                        <!-- Modal Structure -->\n");
       out.write("                        <div id=\"btnFragmentacion\" class=\"modal\">\n");
       out.write("                            <div class=\"modal-content\">\n");
-      out.write("                            <h3 style=\"color:greenyellow; text-align: center;\">Sesión Administrador</h3>\n");
+      out.write("                            <h3 style=\"color:#0059bc; text-align: center;\">Sesión Administrador</h3>\n");
       out.write("                            <form action=\"ControlSesiones.do\"  method=\"POST\" class=\"col s12 m12 l12\">\n");
       out.write("                                <div class=\"input-field col s4\">\n");
       out.write("                                  <i class=\"material-icons prefix\">account_circle</i>\n");
@@ -208,7 +206,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                  <input  id=\"pass\" name=\"pass\" type=\"password\" class=\"validate\">\n");
       out.write("                                  <label for=\"pass\">Contraseña</label>\n");
       out.write("                                </div>\n");
-      out.write("                                <button type=\"submit\" name=\"btnControlador\" value=\"inicioSesionAdmin\" class=\"btn\">\n");
+      out.write("                                <button type=\"submit\" name=\"btnControlador\" value=\"inicioSesionAdmin\" class=\"btn blue\">\n");
       out.write("                                Ingresar\n");
       out.write("                                </button>\n");
       out.write("                            </form>\n");

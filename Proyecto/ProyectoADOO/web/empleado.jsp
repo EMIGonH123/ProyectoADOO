@@ -309,7 +309,6 @@
                             <a class="brand-logo" style="margin-left: 20px;"><b>Bienvenido ${ia[1]}</b></a>
                             </c:forEach>
                             <ul class="right hide-on-med-and-down">
-                                <li><a class="dropdown-button" href="#" data-activates="marcasAutos">Marcas<i class="material-icons right">arrow_drop_down</i></a></li>
                                 <li><a href="salir.jsp">Salir</a></li>
                             </ul>
                         </div>

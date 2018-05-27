@@ -1,4 +1,4 @@
-$(document).ready(function() {
+/*$(document).ready(function() {
     $('#verAtributos').click(function(event) {
         var nombreTabla = $('#nombreTabla').val();
         $.ajax({
@@ -11,14 +11,15 @@ $(document).ready(function() {
         });
     });   
 });
-
+*/
 $(document).ready(function() {
     $('#generarPredicados').click(function(event) {
+        var atributo = $('#atributo').val();
         var operador = $('#operador').val();
         var valor = $('#valor').val();
         $.ajax({
             type: 'POST',
-            data:{operador:operador,valor:valor},
+            data:{operador:operador,valor:valor,atributo:atributo},
             url: "ControlFragmentaciones.do?btnControlador=generarPredicados",
             success:function(result){
                 $('#despliegaPredicados').html(result);
@@ -41,11 +42,13 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     $('#analizarPredicados').click(function(event) {
+        var nombreTabla = $('#nombreTabla').val();
         $.ajax({
             type: 'POST',
+            data:{nombreTabla:nombreTabla},
             url: "ControlFragmentaciones.do?btnControlador=analizarPredicados",
             success:function(result){
-                $('#despliegaAnalisis').html(result);
+                $('#despliegaPredicados').html(result);
             }
         });
     });   

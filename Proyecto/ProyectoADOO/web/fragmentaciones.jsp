@@ -1,15 +1,22 @@
+
 <%@page import="Modelos.ServicioFragmentacionLocal"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.List"%>
 <%@page import="javax.naming.InitialContext"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%! ServicioFragmentacionLocal servicio;%>
+<%! ServicioFragmentacionLocal servicio;
+%>
 <%
     InitialContext contexto = new InitialContext();
+    InitialContext contextop = new InitialContext();
     servicio = (ServicioFragmentacionLocal)contexto.lookup("java:global/ProyectoADOO/ServicioFragmentacion!Modelos.ServicioFragmentacionLocal");
     List<Object> infoTablas = servicio.getTablasDeLaBD();
+    List<String> descTabla = servicio.getAtributosDeTabla();
+    List<String> infoPredicados = servicio.getListaDePredicados();
 %>
+<c:set scope="page" var="infoPredicados" value="<%=infoPredicados%>"/>
 <c:set scope="page" var="infoTablas" value="<%=infoTablas%>"/>
+<c:set scope="page" var="descTabla" value="<%=descTabla%>"/>
 <!DOCTYPE html>
 <html>
     <head>
@@ -49,31 +56,48 @@
                     <div class="col l6 m6 s12">
                         <h4 style="color:#304ffe;text-align: center;">Tablas</h4><br>
                         
-                        <form>
+                        <form action="ControlFragmentaciones.do"  method="POST">
+                           
                             <div class="input-field col s12">
                                 <i class="material-icons prefix">hdr_strong</i>
-                                <select id="nombreTabla">
+                                <select id="nombreTabla" name="nombreTabla">
                                     <c:forEach items="${infoTablas}" var="it">
                                         <option>${it}</option>
                                     </c:forEach>                                
                                 </select>
                             </div>
+                            <button style="background-color: #304ffe;" type="submit" name="btnControlador" value="verAtributos" class="btn center">
+                                Ver Atributos
+                            </button>
                         </form>
-                        <input type="button" id="verAtributos" value="Ver Atributos" />
+
                     </div>
                     <div class="col l6 m6 s12">
                         <h4 style="color:#304ffe;text-align: center;">Predicados Simples</h4><br>
-                        </form>
+                        <form>
                             <div class="row">
+                                
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">hdr_strong</i>
+                                    <select id="atributo">
+                                        <c:forEach items="${descTabla}" var="it">
+                                            <option>${it}</option>
+                                        </c:forEach>                                
+                                    </select>
+                                    <label>Atributo</label>
+                                </div>
                                 <div class="input-field col s12">
                                   <i class="material-icons prefix">hdr_strong</i>
+                                  
                                   <select id="operador">
-                                      <option value="62">MAYOR</option>
-                                      <option value="60">MENOR</option>
-                                      <option value="61">IGUAL</option>
-                                      <option value="62">MAYOR IGUAL</option>
-                                      <option value="60">MENOR IGUAL</option>
+                                      <option value=">">MAYOR</option>
+                                      <option value="<">MENOR</option>
+                                      <option value="=">IGUAL</option>
+                                      <option value="!=">DIFERENTE</option>
+                                      <option value=">=">MAYOR IGUAL</option>
+                                      <option value="<=">MENOR IGUAL</option>
                                   </select>
+                                  <label>Operador</label>
                                 </div>
                                 <div class="input-field col s12">
                                   <i class="material-icons prefix">hdr_strong</i>
@@ -81,16 +105,31 @@
                                   <label for="valor">Valor</label>
                                 </div>
                             </div>
+                            
                         </form><br>
-                        <input type="button" id="generarPredicados" value="Generar Predicado" />
+                        <input type="button" id="generarPredicados" value="Generar Predicados" />
                     </div>
                         
                 </div>
                 <div class="row">
-                    <div class="col l6 m6 s12">
-                        <div id="despliegaAtributos"></div>
+                    <div class="col l4 m4 s12">
+                        <table class='highlight responsive-table centered'>
+                        <thead>
+                          <tr>
+                              <th>Atributos</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <c:forEach items="${descTabla}" var="it">
+                            <tr>
+                              <td>${it}</td>
+                            </tr>
+                          </c:forEach>  
+                        </tbody>
+                      </table>
                     </div>
-                    <div class="col l6 m6 s12">
+                    <div class="col l8 m8 s12">
                         <div id="despliegaPredicados"></div>
                         <input type="button" id="eliminarPredicados" value="Borrar Predicados" />
                         <input type="button" id="analizarPredicados" value="Analizar Predicados" />

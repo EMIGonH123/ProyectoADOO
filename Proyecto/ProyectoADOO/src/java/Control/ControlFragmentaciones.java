@@ -23,26 +23,22 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ControlFragmentaciones", urlPatterns = {"/ControlFragmentaciones.do"})
 public class ControlFragmentaciones extends HttpServlet {
 
+
     @EJB
     private ServicioFragmentacionLocal servicio;
+    
     public static Hashtable<String,String> o;
+    public static Hashtable<String,String> ht;
+    public static Hashtable<String,String> conector;
+    public static List<String> predicados;
     public ControlFragmentaciones(){
         o = new Hashtable<String, String>();
+        ht = new Hashtable<String, String>();
+        conector = new Hashtable<String, String>();
+        predicados = new  ArrayList<String>();
     }
-        protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException , EJBException{
-        try {
-            String val = request.getParameter("btnControlador");
-            switch(val){
-                case "eliminarPredicado":
-                    eliminarPredicado(request, response);
-                break;
-            }
-        } catch (ParseException ex) {
-            Logger.getLogger(ControlFragmentaciones.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }
+    
+   
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException , EJBException{
         try {
@@ -55,7 +51,7 @@ public class ControlFragmentaciones extends HttpServlet {
                     generarPredicados(request, response);
                 break;
                 case "eliminarPredicados":
-                    eliminarPredicado(request, response);
+                    eliminarPredicados(request, response);
                 break;
                 case "analizarPredicados":
                     analizarPredicados(request, response);
@@ -69,13 +65,31 @@ public class ControlFragmentaciones extends HttpServlet {
     
     protected void analizarPredicados(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException, EJBException, ParseException{
-        o.clear();
-        response.setContentType("text/plain");
-        PrintWriter out = response.getWriter();
-        
+        if(!o.isEmpty()){        
+            response.setContentType("text/plain");
+            PrintWriter out = response.getWriter();
+            servicio.analiarPredicados(o);
+            out.println("<table  class='highlight responsive-table centered'>");
+            out.println("<thead>");
+            out.println("<tr>");
+            out.println("<th>Predicados</th>");
+            out.println("</tr>");
+            out.println("</thead>");
+            out.println("<tbody>");
+            Enumeration<String> k = o.keys();
+            while(k.hasMoreElements()){
+                out.println("<tr>");
+                out.println("<td>");
+                out.println(k.nextElement());
+                out.println("</td>");
+                out.println("</tr>");
+            }
+            out.println("</tbody>");
+            out.println("</table>");
+        }
     }
     
-    protected void eliminarPredicado(HttpServletRequest request, HttpServletResponse response)
+    protected void eliminarPredicados(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException, EJBException, ParseException{
         o.clear();
         response.setContentType("text/plain");
@@ -95,31 +109,11 @@ public class ControlFragmentaciones extends HttpServlet {
     
     protected void verAtributosDeTabla(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException, EJBException, ParseException{
-        response.setContentType("text/plain");
-        PrintWriter out = response.getWriter();
         String nombre = request.getParameter("nombreTabla");
-        List<String> lista = servicio.getAtributosDeTabla(nombre);
-        Iterator<String> i = lista.iterator();
-        /*while(i.hasNext()){
-            out.println("<option>"+i.next()+"</option>\n");
-        }*/
+        servicio.setNombreTabla(nombre);
+        o.clear();
+        response.sendRedirect("fragmentaciones.jsp");
         
-        out.println("<table  class='highlight responsive-table centered'>");
-        out.println("<thead>");
-        out.println("<tr>");
-        out.println("<th>Atributos</th>");
-        out.println("</tr>");
-        out.println("</thead>");
-        out.println("<tbody>");
-        while(i.hasNext()){
-            out.println("<tr>");
-            out.println("<td>");
-            out.println(i.next());
-            out.println("</td>");
-            out.println("</tr>");
-        }
-        out.println("</tbody>");
-        out.println("</table>");
     }
     
     protected void generarPredicados(HttpServletRequest request, HttpServletResponse response)
@@ -128,7 +122,11 @@ public class ControlFragmentaciones extends HttpServlet {
         PrintWriter out = response.getWriter();
         String operador = request.getParameter("operador");
         String valor = request.getParameter("valor");
-        o.put(valor,operador);
+        String atributo = request.getParameter("atributo");
+        String cadena = atributo+" "+operador+" "+valor;
+        List<String> tipoDato = servicio.getTipoDatoDeAtributo(atributo);
+        String td = tipoDato.get(0);
+        o.put(cadena, td);
         out.println("<table  class='highlight responsive-table centered'>");
         out.println("<thead>");
         out.println("<tr>");
@@ -137,17 +135,15 @@ public class ControlFragmentaciones extends HttpServlet {
         out.println("</thead>");
         out.println("<tbody>");
         Enumeration<String> k = o.keys();
-        Enumeration<String> v = o.elements();
         while(k.hasMoreElements()){
             out.println("<tr>");
             out.println("<td>");
-            String clave = v.nextElement();
-            String val = k.nextElement();
-            out.println(clave+" "+val+" <i href='ControlFragmentaciones.do?btnControlador=eliminarPredicado&key='"+clave+"' class='material-icons'>delete</i>");
+            out.println(k.nextElement());
             out.println("</td>");
             out.println("</tr>");
         }
         out.println("</tbody>");
         out.println("</table>");
+        
     } 
 }
