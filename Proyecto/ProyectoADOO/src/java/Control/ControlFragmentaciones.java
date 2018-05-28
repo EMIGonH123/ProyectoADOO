@@ -56,11 +56,53 @@ public class ControlFragmentaciones extends HttpServlet {
                 case "analizarPredicados":
                     analizarPredicados(request, response);
                 break;
+                case "generarMiniterminos":
+                    generarMiniterminos(request, response);
+                break;
+                case "fragmentar":
+                    fragmentar(request, response);
+                break;
             }
         } catch (ParseException ex) {
             Logger.getLogger(ControlFragmentaciones.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+    }
+    
+    protected void fragmentar(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException, EJBException, ParseException{
+        response.setContentType("text/plain");
+        PrintWriter out = response.getWriter();
+        servicio.getDetalleDeTabla();
+        out.println("<h5 style='color:green'>");
+        out.println("Se fragmento");
+        out.println("</h5>");
+    }
+    
+    protected void generarMiniterminos(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException, EJBException, ParseException{
+        if(!o.isEmpty()){        
+            response.setContentType("text/plain");
+            PrintWriter out = response.getWriter();
+            servicio.generarPredicadosMiniterminos(o);
+            out.println("<table  class='highlight responsive-table centered'>");
+            out.println("<thead>");
+            out.println("<tr>");
+            out.println("<th>Predicados Miniterminos</th>");
+            out.println("</tr>");
+            out.println("</thead>");
+            out.println("<tbody>");
+            Enumeration<String> k = o.keys();
+            while(k.hasMoreElements()){
+                out.println("<tr>");
+                out.println("<td>");
+                out.println(k.nextElement());
+                out.println("</td>");
+                out.println("</tr>");
+            }
+            out.println("</tbody>");
+            out.println("</table>");
+        }
     }
     
     protected void analizarPredicados(HttpServletRequest request, HttpServletResponse response)

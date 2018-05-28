@@ -29,6 +29,30 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
+    $('#fragmentar').click(function(event) {
+        $.ajax({
+            type: 'POST',
+            url: "ControlFragmentaciones.do?btnControlador=fragmentar",
+            success:function(result){
+                $('#respuestaFragmentacion').html(result);
+            }
+        });
+    });   
+});
+
+$(document).ready(function() {
+    $('#generarMiniterminos').click(function(event) {
+        $.ajax({
+            type: 'POST',
+            url: "ControlFragmentaciones.do?btnControlador=generarMiniterminos",
+            success:function(result){
+                $('#despliegaMiniterminos').html(result);
+            }
+        });
+    });   
+});
+
+$(document).ready(function() {
     $('#eliminarPredicados').click(function(event) {
         $.ajax({
             type: 'POST',

@@ -20,4 +20,8 @@ public interface ServicioFragmentacionLocal {
     public List<String> getListaDePredicados();
     public List<Object> getTablasDePredicado(String atributo, int selector, String valor, String tabla);
     public void analiarPredicados(Hashtable<String,String> ht);
+    public void generarPredicadosMiniterminos(Hashtable<String,String> ht);
+    public void crearBDFragmentacionH(String nombreBD);
+    public void getDetalleDeTabla();
+    public void crearTablaEnLaBD(String nombreBD,Hashtable<String,String> detalleTabla);
 }

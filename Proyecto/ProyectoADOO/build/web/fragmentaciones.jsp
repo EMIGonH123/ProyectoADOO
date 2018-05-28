@@ -132,7 +132,17 @@
                     <div class="col l8 m8 s12">
                         <div id="despliegaPredicados"></div>
                         <input type="button" id="eliminarPredicados" value="Borrar Predicados" />
+                        <input type="button" id="generarMiniterminos" value="Predicados Miniterminos" />
                         <input type="button" id="analizarPredicados" value="Analizar Predicados" />
+                        <input type="button" id="fragmentar" value="Fragmentar" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col l4 m4 s12">
+                        <div id="respuestaFragmentacion">
+                    </div>
+                    <div class="col l8 m8 s12">
+                        <div id="despliegaMiniterminos"></div>
                     </div>
                 </div>
             </div>
