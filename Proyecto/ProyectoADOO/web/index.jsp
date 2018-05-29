@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="fontAwesome/css/font-awesome.min.css">
         <title>IndexRentaAutos</title>
     </head>
 
@@ -41,7 +42,6 @@
                                         <i class="material-icons right">arrow_drop_down</i>
                                     </a>
                                 </li>
-                                <li><a href="automoviles.jsp">Automoviles</a></li>
                                 <li><a href="bancos.jsp">Transacciones</a></li>
                                 <li><a class="modal-trigger" href="#btnFragmentacion">Fragmentacion</a></li>
                             </ul>
