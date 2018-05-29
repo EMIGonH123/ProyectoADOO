@@ -1,7 +1,7 @@
 package Control;
 
-import EntidadesADOO.Clienterenta;
-import Modelos.ServiciosLocal;
+import EntidadesADOO.*;
+import Modelos.ServicioEmpleadoLocal;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ControlEmpleado extends HttpServlet {
 
     @EJB
-    private ServiciosLocal servicio;
+    private ServicioEmpleadoLocal servicio;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException , EJBException{
@@ -126,9 +126,10 @@ public class ControlEmpleado extends HttpServlet {
         int noExterior = Integer.parseInt(request.getParameter("numExterior"));
         int noInterior = Integer.parseInt(request.getParameter("numInterior"));
         int idEmpleado = Integer.parseInt(request.getParameter("idEmpleado"));
+        int idCliente = Integer.parseInt(request.getParameter("idCliente"));
         String genero = request.getParameter("genero");
-        servicio.crearClienteRentaPorEmpleadoRenta(idEmpleado, nombre, apPaterno, apMaterno, email, municipio, colonia,
-                                                    calle, cp, rfc, tel, email, pass, noExterior, noInterior, genero);
+        servicio.editarClientePorEmpleado(idCliente, idEmpleado, nombre, apPaterno, apMaterno, rfc, entidad, municipio,
+                                                colonia, calle, noExterior, noInterior, cp, tel, email, pass, genero);
         response.sendRedirect("crudCliente.jsp");
      
     }

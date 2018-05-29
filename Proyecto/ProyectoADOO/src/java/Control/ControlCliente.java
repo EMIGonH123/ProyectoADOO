@@ -1,6 +1,6 @@
 package Control;
 
-import Modelos.ServiciosLocal;
+import Modelos.ServicioClienteLocal;
 import java.io.IOException;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ControlCliente", urlPatterns = {"/ControlCliente.do"})
 public class ControlCliente extends HttpServlet {
     @EJB
-    private ServiciosLocal servicio;
+    private ServicioClienteLocal servicio;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException , EJBException{

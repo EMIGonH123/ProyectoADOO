@@ -1,8 +1,7 @@
 package Control;
 
-import EntidadesADOO.Clienterenta;
-import EntidadesADOO.Empleadorenta;
-import Modelos.ServiciosLocal;
+import EntidadesADOO.*;
+import Modelos.ServicioSesionesLocal;
 import java.io.IOException;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
@@ -16,8 +15,18 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ControlSesiones", urlPatterns = {"/ControlSesiones.do"})
 public class ControlSesiones extends HttpServlet {
     @EJB
-    private ServiciosLocal servicio;
-
+    private ServicioSesionesLocal servicio;
+    
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException , EJBException{
+        String val = request.getParameter("btnControlador");
+        switch(val){
+            case "inicioSesionSucursal":
+                inicioSesionSucursal(request, response);
+            break;
+            
+        }
+    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException , EJBException{
         String val = request.getParameter("btnControlador");
@@ -31,6 +40,7 @@ public class ControlSesiones extends HttpServlet {
             case "inicioSesionAdmin":
                 inicioSesionAdmin(request, response);
             break;
+            
         }
     }
     
@@ -51,6 +61,22 @@ public class ControlSesiones extends HttpServlet {
         }
         
     }
+    
+    protected void inicioSesionSucursal(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException,EJBException,PersistenceException {
+        int idSucursal = (int)Integer.parseInt(request.getParameter("idSucursal"));
+        
+        Sucursal sucursal = servicio.buscarSucursal(idSucursal);
+        if(sucursal != null){
+            request.getSession().setAttribute("sucursal",sucursal);
+            response.sendRedirect("sucursales.jsp");
+        }else{
+            request.setAttribute("msgRespuesta","No existe el usuario");
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
+        
+    }
+    
     protected void inicioSesionEmpleado(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException,EJBException,PersistenceException {
         int id = (int)Integer.parseInt(request.getParameter("idEmpleado"));

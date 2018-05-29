@@ -23,12 +23,11 @@
                 <ul id="sucursales" class="dropdown-content">
                    
                     <li class="divider"></li>
-                    <li><a href="control.do?btnControlador=verSucursal&idSucursal=1">Azcapotzalco</a></li>
+                    <li><a href="ControlSesiones.do?btnControlador=inicioSesionSucursal&idSucursal=1">Azcapotzalco</a></li>
                     <li class="divider"></li>
-                    <li><a href="control.do?btnControlador=verSucursal&idSucursal=2">Centro</a></li>
+                    <li><a href="ControlSesiones.do?btnControlador=inicioSesionSucursal&idSucursal=2">Centro</a></li>
                     <li class="divider"></li>
-                    <li><a href="control.do?btnControlador=verSucursal&idSucursal=3">SantaMaria</a></li>
-
+                    <li><a href="ControlSesiones.do?btnControlador=inicioSesionSucursal&idSucursal=3">Santa Mónica</a></li>
                 </ul>
 
                 <div class="navbar-fixed">

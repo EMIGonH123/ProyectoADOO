@@ -5,14 +5,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.List"%>
 <%@page import="javax.naming.InitialContext"%>
-<%@page import="Modelos.ServiciosLocal"%>
+<%@page import="Modelos.ServicioCrudClienteLocal"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-<%! ServiciosLocal servicio;%>
+<%! ServicioCrudClienteLocal servicio;%>
 <%
     InitialContext contexto = new InitialContext();
-    servicio = (ServiciosLocal)contexto.lookup("java:global/ProyectoADOO/Servicios!Modelos.ServiciosLocal");
+    servicio = (ServicioCrudClienteLocal)contexto.lookup("java:global/ProyectoADOO/ServicioCrudCliente!Modelos.ServicioCrudClienteLocal");
     Clienterenta cliente = (Clienterenta)session.getAttribute("cliente");
     int id = cliente.getIdCliente();
     int idEmpleado = (int)cliente.getIdEmpleado();
@@ -166,7 +166,12 @@
                                 <option value="M">Masculino</option>
                                 <option value="F">Femenino</option>
                             </select>
-                        </div>  
+                        </div>
+                        <div class=" col s4">
+                            <i class="material-icons prefix">folder_shared</i>
+                            <input readonly="readonly" value="${ic[0]}" id="idCliente" name="idCliente" type="text" class="validate" >
+                          <label for="idCliente">Id Cliente</label>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col l4"></div>
@@ -404,7 +409,6 @@
                                         <b style="color:#00E676;">Calle: </b>${c[9]}<br>
                                         <b style="color:#00E676;">#Exterior: </b>${c[10]}<br>
                                         <b style="color:#00E676;">#Interior: </b>${c[11]}<br>
-                                        
                                     </span>
                                 </div>
                             </li>
@@ -413,6 +417,14 @@
                                 <div class="collapsible-body">
                                     <span>
                                         ${c[15]}
+                                    </span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header"><i class="material-icons">wc</i>Genero</div>
+                                <div class="collapsible-body">
+                                    <span>
+                                        ${c[16]}
                                     </span>
                                 </div>
                             </li>
@@ -491,7 +503,7 @@
                         </a><br><br>
                     </div>
                     <div class="col s12 m6 l3">
-                        <a class="waves-effect btn modal-trigger" style="background-color: #FF1744;" href="Controlador.do?btnControlador=borrarCRUDClientePorEmpleado&idCliente=${c[0]}">
+                        <a class="waves-effect btn modal-trigger" style="background-color: #FF1744;" href="ControlEmpleado.do?btnControlador=borrarCRUDClientePorEmpleado&idCliente=${c[0]}">
                             Borrar Cliente
                         </a><br><br>
                     </div>

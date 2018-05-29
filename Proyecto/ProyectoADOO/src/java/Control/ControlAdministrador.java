@@ -2,7 +2,7 @@
 package Control;
 
 import EntidadesADOO.Empleadorenta;
-import Modelos.ServiciosLocal;
+import Modelos.ServicioAdministradorLocal;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ControlAdministrador", urlPatterns = {"/ControlAdministrador.do"})
 public class ControlAdministrador extends HttpServlet {
     @EJB
-    private ServiciosLocal servicio;
+    private ServicioAdministradorLocal servicio;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException , EJBException{
@@ -61,7 +61,7 @@ public class ControlAdministrador extends HttpServlet {
     throws ServletException, IOException, EJBException{
         int idEmpleado = Integer.parseInt(request.getParameter("idAdministrador"));
         List<Object> clientesAsociados = servicio.getIDSDeClientesAsociadosAlEmpleado(idEmpleado);
-        servicio.borrarEmpleadoPorEmpleado(idEmpleado, clientesAsociados);
+        servicio.borrarAdministradorPorAdministrador(idEmpleado, clientesAsociados);
         response.sendRedirect("index.jsp");
     }
     
@@ -145,7 +145,7 @@ public class ControlAdministrador extends HttpServlet {
         int noExterior = Integer.parseInt(request.getParameter("numExterior"));
         int noInterior = Integer.parseInt(request.getParameter("numInterior"));
         String genero = request.getParameter("genero");
-        servicio.editarEmpleadoPorEmpleado(idEmpleado, nombre, apPaterno, apMaterno, entidad, municipio,
+        servicio.editarAdministradorPorAdministrador(idEmpleado, nombre, apPaterno, apMaterno, entidad, municipio,
                 colonia, calle, noExterior, noInterior, cp, tel, email, pass, genero);
         response.sendRedirect("administrador.jsp");
         

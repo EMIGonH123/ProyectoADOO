@@ -1,21 +1,21 @@
+<%@page import="Modelos.ServicioEmpleadoLocal"%>
 <%@page import="EntidadesADOO.Clienterenta"%>
 <%@page import="EntidadesADOO.Empleadorenta"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.List"%>
 <%@page import="javax.naming.InitialContext"%>
-<%@page import="Modelos.ServiciosLocal"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%! ServiciosLocal servicio;
+<%! ServicioEmpleadoLocal servicio;
 %>
 <%
     InitialContext contexto = new InitialContext();
-    servicio = (ServiciosLocal)contexto.lookup("java:global/ProyectoADOO/Servicios!Modelos.ServiciosLocal");
+    servicio = (ServicioEmpleadoLocal)contexto.lookup("java:global/ProyectoADOO/ServicioEmpleado!Modelos.ServicioEmpleadoLocal");
     Empleadorenta empleado = (Empleadorenta)session.getAttribute("empleado");
     int id = empleado.getIdEmpleado();
     List<Object> infoSucursal = servicio.getInfoDeSucursalPorAdministrador(id);
-    List<Empleadorenta> infoEmpleado = servicio.getInfoAdministrador(id);
-    List<Clienterenta> clientes = servicio.getClientesAsociadosAlAdministrador(id);
+    List<Empleadorenta> infoEmpleado = servicio.getInfoEmpleado(id);
+    List<Clienterenta> clientes = servicio.getClientesAsociadosAlEmpleado(id);
     List<Object> idsAdmin = servicio.getIdsDeAdministradores();
 %>
 <c:set scope="page" var="infoSucursal" value="<%=infoSucursal%>"/>
