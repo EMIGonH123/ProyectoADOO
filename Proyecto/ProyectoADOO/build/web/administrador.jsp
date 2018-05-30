@@ -24,6 +24,7 @@
 %>
 <c:set scope="page" var="infoAdmin" value="<%=infoAdmin%>"/>
 <c:set scope="page" var="infoMarcas" value="<%=infoMarcas%>"/>
+<c:set scope="page" var="infoTipoAuto" value="<%=infoTipoAuto%>"/>
 <c:set scope="page" var="infoEmpleados" value="<%=infoEmpleados%>"/>
 <c:set scope="page" var="infoProveedores" value="<%=infoProveedores%>"/>
 <c:set scope="page" var="infoSucursales" value="<%=infoSucursales%>"/>
@@ -44,22 +45,7 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
         <script type="text/javascript" src="js/ScriptsMaterialize.js"></script>
-        <script>
-            $(document).ready(function(){
-                $('#verAutosDeProveedor').click(function(){
-                    var nombreProveedor = $('#tablas').val();
-                    $.ajax({
-                        type: 'POST',
-                        data:{nombre:nombreProveedor},
-                        url: "Controlador.do?btnControlador=verAutosDeProveedor",
-                        success: function (result) {
-                            $('#despliegaAutos').html(result);
-                        }
-                    });
-                });
-            });
-            
-        </script>
+        
         
         <c:if test="${not empty empleado}">
             
@@ -324,38 +310,48 @@
                         <div class="row">
                             <div class="input-field col s12 m12 l12">
                                 <i class="material-icons prefix">folder_shared</i>
-                                <select id="verAutosDeProveedor">
+                                <select name="idProveedor">
                                     <c:forEach items="${infoProveedores}" var="idp">
                                         <option  value="${idp[0]}">${idp[1]}</option>
                                     </c:forEach>
                                 </select>
+                                <label>Proveedor</label>
                             </div>
                         </div>
                         <div class="row">    
                             <div class="input-field col s4">
                                 <i class="material-icons prefix">account_circle</i>
-                                <input id="fecha" name="fecha" type="text" class="validate">
+                                <input id="fecha" name="fecha" type="text" class="datepicker">
                                 <label for="fecha">Fecha Adquisición</label>
                             </div>
                             
                             <div class="input-field col s4">
                                 <i class="material-icons prefix">hdr_strong</i>
-                                <section name="nombreAuto">
-                                    <div id="despliegaAutos"></div>
-                                </section>
-                                
-                                <%--<select name="nombreAuto">
+                                <select name="nombreAuto">
                                     <option>Jetta</option>
                                     <option>Golf</option>
                                     <option>Passat</option>
                                     <option>Bora</option>
                                     <option>Bocho</option>
-                                </select>--%>
+                                </select>
+                                <label>Automovil</label>
                             </div>                            
                             <div class="input-field col s4">
                                 <i class="material-icons prefix">hdr_weak</i>
-                                <input id="modeloAuto" name="modeloAuto" type="text" class="validate">
-                                <label for="modeloAuto">Modelo Auto</label>
+                                <select name="modeloAuto">
+                                    <option>2007</option>
+                                    <option>2008</option>
+                                    <option>2009</option>
+                                    <option>2010</option>
+                                    <option>2011</option>
+                                    <option>2012</option>
+                                    <option>2013</option>
+                                    <option>2014</option>
+                                    <option>2015</option>
+                                    <option>2016</option>
+                                    <option>2017</option>
+                                </select>
+                                <label>Modelo Auto</label>
                             </div>
                         </div>
                         <div class="row">    
@@ -373,8 +369,13 @@
                             </div>
                             <div class="input-field col s4">
                                 <i class="material-icons prefix">hdr_weak</i>
-                                <input id="kilometraje" name="kilometraje" type="text" class="validate">
-                                <label for="kilometraje">Kilometraje</label>
+                                <select name="kilometraje">
+                                    <option value="1">Menor a 100000</option>
+                                    <option value="2">Entre 100000-200000</option>
+                                    <option value="3">Entre 200000-250000</option>
+                                    <option value="4">Mas de 250000</option>
+                                </select>
+                                <label>Kilometraje</label>
                             </div>
                         </div>
                         <div class="row">
@@ -386,9 +387,8 @@
                                     <option>Gris</option>
                                     <option>Negro</option>
                                     <option>Rojo</option>
-                                    <option>Amarillo</option>
-                                    <option>Verde</option>
                                 </select>
+                                <label>Color de Auto</label>
                             </div>
                             <div class="input-field col s4">
                                 <i class="material-icons prefix">hdr_strong</i>
@@ -397,6 +397,7 @@
                                         <option value="${im[0]}">${im[1]}</option>
                                     </c:forEach>
                                 </select>
+                                <label>Marca</label>
                             </div>
                             <div class="input-field col s4">
                                 <i class="material-icons prefix">hdr_strong</i>
@@ -405,6 +406,7 @@
                                     <option value="2">Centro</option>
                                     <option value="3">Santa Monica</option>
                                 </select>
+                                <label>Sucursal</label>
                             </div>
                         </div>
                         
@@ -416,16 +418,21 @@
                                         <option value="${ita[0]}">${ita[1]}</option>
                                     </c:forEach>
                                 </select>
+                                <label>Tipo Auto</label>
                             </div>
-                            <div class="input-field col s4">
+                            <%--<div class="input-field col s4">
                                 <i class="material-icons prefix">hdr_weak</i>
                                 <input id="matricula" name="matricula" type="text" class="validate">
                                 <label for="matricula">Matricula</label>
-                            </div>
+                            </div>--%>
                             <div class="input-field col s4">
                                 <i class="material-icons prefix">hdr_weak</i>
-                                <input id="capacidad" name="capacidad" type="text" class="validate">
-                                <label for="capacidad">Capacidad</label>
+                                <select name="capacidad">
+                                    <option value="2">Deportivo</option>
+                                    <option value="5">Normal</option>
+                                    <option value="8">Familiar</option>
+                                </select>
+                                <label for="capacidad">Capacidad Pasajeros</label>
                             </div>
                         </div>
                         <div class="row">
@@ -674,7 +681,7 @@
             <div class="row">
                 <div class="col l12 m12 s12">
                     <footer class="page-footer" style="background-color:#a0f; color:white;">
-                        <div class="container row" style="background-image:url(Images/General/pie.jpg); " >
+                        <div class="container row" >
                             <div class="col l4 m6 s12" id="contorno" >
                                 <p>	
                                     <h5><b>Enlaces</b></h5>

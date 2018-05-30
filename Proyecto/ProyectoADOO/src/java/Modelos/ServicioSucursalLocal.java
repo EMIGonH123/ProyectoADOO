@@ -1,7 +1,7 @@
 
 package Modelos;
 
-import EntidadesADOO.Sucursal;
+import EntidadesADOO.*;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -10,4 +10,5 @@ import javax.ejb.Local;
 public interface ServicioSucursalLocal {
     public Sucursal buscarSucursal(int idSucursal);
     public List<Sucursal> getInfoDeSucursal(int idSucursal);
+    public List<Proveedor> getInfoProveedor(int idProveedor);
 }

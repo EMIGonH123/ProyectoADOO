@@ -1,6 +1,7 @@
 
 package Modelos;
 
+import EntidadesADOO.Proveedor;
 import EntidadesADOO.Sucursal;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -20,6 +21,12 @@ public class ServicioSucursal implements ServicioSucursalLocal {
     @Override
     public List<Sucursal> getInfoDeSucursal(int idSucursal) {
         String sql = "SELECT  * FROM Sucursal WHERE idSucursal = "+idSucursal;
+        return em.createNativeQuery(sql).getResultList();
+    }
+
+    @Override
+    public List<Proveedor> getInfoProveedor(int idProveedor) {
+        String sql = "SELECT  * FROM Proveedor WHERE idProveedor = "+idProveedor;
         return em.createNativeQuery(sql).getResultList();
     }
 

@@ -51,8 +51,35 @@
                             <ul id="nav-mobile" class="right hide-on-med-and-down">
                                 <li><a href="#idObjetivos"><i class="icon fa fa-globe" ></i></a></li>
                             </ul>
+                            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                                <li><a class="dropdown-button" data-activates="marcas">
+                                        Marcas<i class="material-icons right">arrow_drop_down</i>
+                                    </a>
+                                </li>
+                            </ul>
+                            
                         </div>
                     </nav>
+                    <ul id="marcas" class="dropdown-content">
+                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=1">Volkswagen</a></li>
+                        <li class="divider"></li>
+                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=2">Ford</a></li>
+                        <li class="divider"></li>
+                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=5">Nissan</a></li>
+                        <li class="divider"></li>
+                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=6">Toyota</a></li>
+                        <li class="divider"></li>
+                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=7">Renault</a></li>
+                        <li class="divider"></li>
+                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=8">Hunday</a></li>
+                        <li class="divider"></li>
+                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=9">KIA</a></li>
+                        <li class="divider"></li>
+                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=10">Seat</a></li>
+                        <li class="divider"></li>
+                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=4">Volvo</a></li>
+                       
+                    </ul>
                 </div>
             </div>
         </section>

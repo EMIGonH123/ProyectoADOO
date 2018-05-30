@@ -47,6 +47,9 @@ public class ControlFragmentaciones extends HttpServlet {
                 case "verAtributos":
                     verAtributosDeTabla(request, response);
                 break;
+                case "verAtributosFV":
+                    verAtributosDeTabla(request, response);
+                break;
                 case "generarPredicados":
                     generarPredicados(request, response);
                 break;

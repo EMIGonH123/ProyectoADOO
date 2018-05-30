@@ -17,6 +17,20 @@ public class ServicioSesiones implements ServicioSesionesLocal {
     }
     
     @Override
+    public Proveedor buscarProveedor(int idProveedor){
+        return em.find(Proveedor.class,idProveedor);
+    }
+    
+    @Override
+    public Proveedor inicioSesionProveedor(int idProveedor){
+        Proveedor proveedor = this.buscarProveedor(idProveedor);
+        if(proveedor != null){
+            return proveedor;
+        }else{
+            return null;
+        }
+    }
+    @Override
     public Sucursal buscarSucursal(int idSucursal) {
         return em.find(Sucursal.class,idSucursal);
     }

@@ -11,4 +11,6 @@ public interface ServicioSesionesLocal {
     public Empleadorenta buscarEmpleado(int idEmpleado);
     public Empleadorenta iniciaSesionEmpleado(int idEmpleado, String pass);
     public Sucursal buscarSucursal(int idSucursal);
+    public Proveedor buscarProveedor(int idProveedor);
+    public Proveedor inicioSesionProveedor(int idProveedor);
 }

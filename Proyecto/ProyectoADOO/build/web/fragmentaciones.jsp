@@ -39,7 +39,7 @@
         <section id="encabezado">
             <div class="container" >
                 <div class="row">
-                    <nav>
+                    <nav class="nav-extended">
                         <div class="nav-wrapper" style="background-color: #304ffe; color:white;">
                             <a class="brand-logo" style="margin-left: 20px;"><b>Framentaciones</b></a>
                             <ul class="right hide-on-med-and-down">
@@ -47,12 +47,18 @@
                                 <li><a href="salir.jsp">Salir</a></li>
                             </ul>
                         </div>
+                        <div class="nav-content" style="background-color: #304ffe; color:white;">
+                            <ul class="tabs tabs-transparent">
+                              <li class="tab"><a href="#fHorizontal">Fragmentacion Horizontal</a></li>
+                              <li class="tab"><a href="#fVertical">Fragmentacion Vertical</a></li>
+                            </ul>
+                        </div>
                     </nav>
                 </div>
             </div>
         </section>
         <section id="contenidos">
-            <div class="container">
+            <div class="container" id="fHorizontal">
                 <div class="row">
                     <div class="col l6 m6 s12">
                         <h4 style="color:#304ffe;text-align: center;">Tablas</h4><br>
@@ -140,13 +146,75 @@
                 </div>
                 <div class="row">
                     <div class="col l4 m4 s12">
-                        <div id="respuestaFragmentacion">
+                        <div id="respuestaFragmentacion"></div>
                     </div>
                     <div class="col l8 m8 s12">
                         <div id="despliegaMiniterminos"></div>
                     </div>
                 </div>
             </div>
+            
+            
+            <div class="container" id="fVertical">
+                <div class="row">
+                    <div class="col l6 m6 s12">
+                        <h4 style="color:#304ffe;text-align: center;">Tablas</h4><br>
+                        
+                        <form action="ControlFragmentaciones.do"  method="POST">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">hdr_strong</i>
+                                <select id="nombreTabla" name="nombreTabla">
+                                    <c:forEach items="${infoTablas}" var="it">
+                                        <option>${it}</option>
+                                    </c:forEach>                                
+                                </select>
+                            </div>
+                            <button style="background-color: #304ffe;" type="submit" name="btnControlador" value="verAtributosFV" class="btn center">
+                                Ver Atributos
+                            </button>
+                        </form>
+
+                    </div>
+                    <div class="col l6 m6 s12">
+                        <h4 style="color:#304ffe;text-align: center;">Seleccion de Atributos</h4><br>
+                        <form>
+                            <%! int i =0; String aux;%>
+                            <c:forEach items="${descTabla}" var="it">
+                                <p>
+                                    <%aux ="atributo"+i;%>
+                                    <input type="checkbox" id="<%=aux%>"/>
+                                    <label for="<%=aux%>">${it}</label>
+                                </p>
+                                <%i++;%>
+                            </c:forEach>
+                            <%i=0;%>    
+                        </form><br>
+                        <input type="button" id="generarExpresiones" value="Generar Expresiones" />
+                    </div>
+                        
+                </div>
+                <div class="row">
+                    
+                    <div class="col l12 m12 s12">
+                        <div id="despliegaPredicados"></div>
+                        <input type="button" id="eliminarPredicados" value="Borrar Predicados" />
+                        <input type="button" id="generarMiniterminos" value="Predicados Miniterminos" />
+                        <input type="button" id="analizarPredicados" value="Analizar Predicados" />
+                        <input type="button" id="fragmentar" value="Fragmentar" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col l4 m4 s12">
+                        <div id="respuestaFragmentacion"></div>
+                    </div>
+                    <div class="col l8 m8 s12">
+                        <div id="despliegaMiniterminos"></div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
         </section>
     </body>
 </html>

@@ -24,7 +24,10 @@ public class ControlSesiones extends HttpServlet {
             case "inicioSesionSucursal":
                 inicioSesionSucursal(request, response);
             break;
-            
+            case "inicioSesionProveedorAuto":
+                inicioSesionProveedorAuto(request, response);
+            break;
+            //
         }
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -37,6 +40,7 @@ public class ControlSesiones extends HttpServlet {
             case "inicioSesionCliente":
                 inicioSesionCliente(request, response);
             break;
+            
             case "inicioSesionAdmin":
                 inicioSesionAdmin(request, response);
             break;
@@ -47,6 +51,52 @@ public class ControlSesiones extends HttpServlet {
     /****************************/
     /* INICIO DE SESIONES INDEX */
     /****************************/
+    protected void inicioSesionProveedorAuto(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException,EJBException,PersistenceException {
+        int idProveedor = (int)Integer.parseInt(request.getParameter("idProveedor"));
+        Proveedor proveedor = servicio.inicioSesionProveedor(idProveedor);
+        System.out.println("IDE: "+idProveedor);
+                
+        if(proveedor != null){
+            request.getSession().setAttribute("proveedor",proveedor);
+            switch(idProveedor){
+                case 1:
+                    response.sendRedirect("autosVolkswagen.jsp");
+                    break;
+                case 2:
+                    response.sendRedirect("autosFord.jsp");
+                    break;
+                case 4:
+                    response.sendRedirect("autosVolvo.jsp");
+                    break;
+                case 5:
+                    response.sendRedirect("autosNissan.jsp");
+                    break;
+                case 6:
+                    response.sendRedirect("autosToyota.jsp");
+                    break;
+                case 7:
+                    response.sendRedirect("autosRenault.jsp");
+                    break;
+                case 8:
+                    response.sendRedirect("autosHyundai.jsp");
+                    break;
+                case 9:
+                    response.sendRedirect("autosKIA.jsp");
+                    break;
+                case 10:
+                    response.sendRedirect("autosSeat.jsp");
+                    break;
+        
+            }
+            
+        }else{
+            request.setAttribute("msgRespuesta","No existe el usuario");
+            request.getRequestDispatcher("sucursales.jsp").forward(request, response);
+        }
+        
+    }
+    
     protected void inicioSesionAdmin(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException,EJBException,PersistenceException {
         int id = (int)Integer.parseInt(request.getParameter("idAdmin"));

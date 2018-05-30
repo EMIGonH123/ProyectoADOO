@@ -462,7 +462,7 @@
             <div class="row">
                 <div class="col l12 m12 s12">
                     <footer class="page-footer" style="background-color: #022f42; color:white;">
-                        <div class="container row" style="background-image:url(Images/General/pie.jpg); " >
+                        <div class="container row" >
                             <div class="col l4 m6 s12" id="contorno" >
                                 <p>	
                                     <h5><b>Enlaces</b></h5>
