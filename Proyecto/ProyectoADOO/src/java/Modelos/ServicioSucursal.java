@@ -1,8 +1,7 @@
 
 package Modelos;
 
-import EntidadesADOO.Proveedor;
-import EntidadesADOO.Sucursal;
+import EntidadesADOO.*;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -27,6 +26,13 @@ public class ServicioSucursal implements ServicioSucursalLocal {
     @Override
     public List<Proveedor> getInfoProveedor(int idProveedor) {
         String sql = "SELECT  * FROM Proveedor WHERE idProveedor = "+idProveedor;
+        return em.createNativeQuery(sql).getResultList();
+    }
+
+    @Override
+    public List<Automovil> getAutosAsociadosASucursal(int idSucursal, String marca) {
+        String sql = "SELECT * FROM Automovil WHERE idSucursal = "+idSucursal+
+                " AND idMarca = (SELECT idMarca FROM Automovilmarca WHERE nomMarca = '"+marca+"')";
         return em.createNativeQuery(sql).getResultList();
     }
 

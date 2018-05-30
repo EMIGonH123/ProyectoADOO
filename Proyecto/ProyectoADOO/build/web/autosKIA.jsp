@@ -1,5 +1,7 @@
 
 
+<%@page import="EntidadesADOO.Automovil"%>
+<%@page import="EntidadesADOO.Sucursal"%>
 <%@page import="EntidadesADOO.Proveedor"%>
 <%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -12,12 +14,21 @@
     InitialContext contexto = new InitialContext();
     servicio = (ServicioSucursalLocal)contexto.lookup("java:global/ProyectoADOO/ServicioSucursal!Modelos.ServicioSucursalLocal");
     Proveedor proveedor = (Proveedor)session.getAttribute("proveedor");
+    Sucursal sucursal = (Sucursal)session.getAttribute("sucursal");
+    String nombre = sucursal.getNombreSucursal();
     int idProveedor = proveedor.getIdProveedor();
+    int idSucursal = sucursal.getIdSucursal();
+    List<Sucursal> infoSucursal = servicio.getInfoDeSucursal(idSucursal);
     List<Proveedor> infoProveedor = servicio.getInfoProveedor(idProveedor);
+    List<Automovil> infoAutos = servicio.getAutosAsociadosASucursal(idSucursal,"KIA");
     
 %>
 <c:set scope="page" var="infoProveedor" value="<%=infoProveedor%>"/>
 <c:set scope="page" var="idProveedor" value="<%=idProveedor%>"/>
+<c:set scope="page" var="infoSucursal" value="<%=infoSucursal%>"/>
+<c:set scope="page" var="infoAutos" value="<%=infoAutos%>"/>
+<c:set scope="page" var="nombre" value="<%=nombre%>"/>
+
 <html>
     <head>
         <!--Let browser know website is optimized for mobile-->
@@ -36,26 +47,33 @@
         <section id="encabezado">    
             <div class="container row">
                 <div class="col s12 m12 l12">
-                    <c:forEach items="${infoProveedor}" var="ip">
+                   
                     <nav class="nav-extended">
+                         <c:forEach items="${infoProveedor}" var="ip">
                         <div class="nav-wrapper" style="background-color:#5c6bc0; color:white;">
-                            <a class="brand-logo" style="margin-left: 20px;"><b>${ip[1]}</b></a>
+                            <a class="brand-logo" style="margin-left: 10px;">
+                                
+                                <h5><b><%=nombre%>:</b> ${ip[1]}</h5>
+                                
+                            </a>
                             <ul id="nav-mobile" class="right hide-on-med-and-down">
                                 <li><a href="salir.jsp">Salir</a></li>
                             </ul>
                         </div>
+                        </c:forEach>
+                        
+                        
                         <div class="nav-content" style="background-color:#5c6bc0; color:white;">
                             <ul class="tabs tabs-transparent">
-                                <li class="tab"><a class="active" href="#Niro">Niro</a></li>
-                                <li class="tab"><a class="active" href="#Proceed">Proceed</a></li>
-                                <li class="tab"><a class="active" href="#Rio">Rio</a></li>
-                                <li class="tab"><a class="active" href="#Sorento">Sorento</a></li>
+                                <c:forEach items="${infoAutos}" var="ia">
+                                <li class="tab"><a class="active" href="#${ia[1]}">${ia[1]}</a></li>
+                                </c:forEach>
                             </ul>
                         </div>
                         
                        
                     </nav>
-                    </c:forEach>
+                    
                 </div>
             </div>
         </section>
@@ -63,173 +81,30 @@
         <%--CONTENIDO DE LA PAGINA--%>
         <section id="contenidos">    
             <div class="container">
-                <%----------------------------%>
-                <%-- IMAGENES DE AUTO Elandra --%>
-                <%----------------------------%>
-                <div class="row" id="Niro">
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/KIA/Niro/niro1.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">NIRO<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Iformación</span>
-                            <p>El nuevo Kia Niro 2017 es un crossover híbrido de exterior compacto y interior espacioso de 4,36 metros de longitud. 
-                                Por su tamaño, características, altura libre al suelo de 16 cm y longitud de 4355 mm, clasificamos el Kia Niro en la categoría de SUV compactos.
-                                Compara el Kia Niro con otros híbridos de tamaño similar. El modelo híbrido enchufable recibe el nombre de Niro PHEV.</p>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card " >
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/KIA/Niro/niro2.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/KIA/Niro/niro3.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>Espacio interior de 5 plazas.</p>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-               
-                <%----------------------------%>
-                <%-- IMAGENES DE AUTO Sorento --%>
-                <%----------------------------%>
-               <div class="row" id="Sorento">
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/KIA/Sorento/sorento1.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">SORENTO<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>El espacioso interior permite que hasta 7 personas viajen en el Kia Sorento 2015 con comodidad.
-                                Por su tamaño, características, altura libre al suelo de 18 cm y longitud de 4780 mm, clasificamos el Kia Sorento en la categoría de SUV grandes y todoterrenos.</p>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card " >
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/KIA/Sorento/sorento2.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/KIA/Sorento/sorento3.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>Espacio interior de 5 plazas.</p>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-               
-               
-                <%--------------------------%>
-                <%-- IMAGENES DE AUTO RIO --%>
-                <%--------------------------%>
-                <div class="row" id="Rio">
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/KIA/Rio/rio1.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">RIO<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>Espacioso, práctico y polivalente, el Kia Rio 2017 ofrece una capacidad de maletero de 325 litros respecto a los 288 litros del modelo de 2015.
-                                Por su tamaño exterior y longitud de 4065 mm, clasificamos el Kia Rio en la categoría de coches utilitarios.</p>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card " >
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/KIA/Rio/rio2.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/KIA/Rio/rio3.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>Espacio interior de 5 plazas.</p>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-                
-                
                 <%------------------------------%>
                 <%-- IMAGENES DE AUTO PROCEED --%>
                 <%------------------------------%>
-                <div class="row" id="Proceed">
+                <c:forEach items="${infoAutos}" var="ia">
+                <div class="row" id="${ia[1]}">
                     <div class="col l14 m4 s12">
                         <div class="card ">
                           <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/KIA/Proceed/proceed1.png">
+                            <img class="activator" src="${ia[9]}">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Pro_cee'd<i class="material-icons right">more_vert</i></span>
+                            <span class="card-title activator grey-text text-darken-4">${ia[1]}<i class="material-icons right">more_vert</i></span>
                             
                           </div>
                           <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>Con silueta dinámico, el Kia pro_cee'd 2016 es la versión 3 puertas y 4 centímetros más bajo que el cee'd de 5 puertas.</p>
+                            <p>${ia[7]}</p>
                           </div>
                         </div>
                     </div>
                     <div class="col l14 m4 s12">
                         <div class="card " >
                           <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/KIA/Proceed/proceed2.png">
+                            <img class="activator" src="${ia[10]}">
                           </div>
                           <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
@@ -239,7 +114,7 @@
                     <div class="col l14 m4 s12">
                         <div class="card ">
                           <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/KIA/Proceed/proceed3.png">
+                            <img class="activator" src="${ia[11]}">
                           </div>
                           <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
@@ -247,11 +122,12 @@
                           </div>
                           <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>Espacio interior de 5 plazas.</p>
+                            <p>${ia[8]}</p>
                           </div>
                         </div>
                     </div>
                 </div>
+                </c:forEach>
                 
                 <div class="row">
                     <c:forEach items="${infoProveedor}" var="ip">

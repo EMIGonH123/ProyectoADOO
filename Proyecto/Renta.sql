@@ -75,6 +75,7 @@ create table EstadoAuto(
 	estadoAuto varchar(20)
 );
 
+
 create table Automovil(
 	matriculaAuto varchar(10) not null primary key,
 	nombreAuto varchar(50),
@@ -83,6 +84,11 @@ create table Automovil(
 	capacidadAuto int,
 	kilometrajeAuto int,
 	precioAuto double,
+	descripcion varchar(300),
+	descripcionCantidad varchar(100),
+	rutaAuto varchar(200),
+	rutaSalpicaderas varchar(200),
+	rutaInteriores varchar(200),
 	idSucursal int not null,
 	idMarca int not null,
 	idTipo int not null,
@@ -93,8 +99,10 @@ create table Automovil(
 	foreign key(idTipo) references TipoAuto(idTipo) on delete cascade on update cascade
 );
 
+
+
 create table TipoPago(
-	idTipoPago int not null primary key ,
+	idTipoPago int not null primary key,
 	tipoPago varchar(50)
 );
 
@@ -189,13 +197,13 @@ insert into Sucursal values(1,"Presta Autos Azcapotzalco","Ciudad de Mexico","Cl
 
 insert into AutomovilMarca values(1,"Volkswagen"),
 (2,"Ford"),
-(3,"General Motors"), 
-(5,"Nissan"),
-(6,"Toyota"),
-(7,"Renault"),
-(8,"Hunday"),
-(9,"KIA"),
-(10,"Seat");
+(3,"Volvo"), 
+(4,"Nissan"),
+(5,"Toyota"),
+(6,"Renault"),
+(7,"Hunday"),
+(8,"KIA"),
+(9,"Seat");
 
 insert into TipoAuto values(1,"Hatchback"),
 (2,"CUV"),
@@ -204,20 +212,19 @@ insert into TipoAuto values(1,"Hatchback"),
 (5,"Station Wagon"),
 (6,"Pick Up"),
 (7,"Coupe"),
-(8,"Minivan"),
-(9,"Convertible"),
-(10,"Van"),
-(11,"Super Deportivo");
+(8,"Convertible"),
+(9,"Van"),
+(10,"Super Deportivo");
 
 insert into Proveedor values(1,"Volkswagen de Mexico S.A. DE C.V.","manuelLS007@gmail.com", "222-30359"),
 (2,"Ford Motor Company S.A DE C.V.","MariaRoszAriO1@hotmail.com.mx","0180071984"),
-(3,"General Motors de Mexico S.DE R.L DE C.V.","deathAzul15@live.com","018005080"),
-(5,"Nissan Motor Company S.A DE C.V.","maquinacementera1001@hotmail.com","55533399"),
-(6,"Toyota Motor Sales Mexico S. R.L. C.V.","laChiquiz@hotmail.com","80033143"),
-(7,"Renault Mexico S.A DE C.V.","ismaRojHerMex@gmail.com","55513360"),
-(8,"Hunday Motor Sales Mexico S.A. DE C.V.","gloryInParis77@yahoo.com","55412220"),
-(9,"KIA Motors Mexico S.A. DE C.V.","criiizRoldanF98@outlook.com","015547800"),
-(10,"Seat S.A.","josraMartiVale5@hotmail.com","018008357"); 
+(3,"Volvo S.DE R.L DE C.V.","deathAzul15@live.com","018005080"),
+(4,"Nissan Motor Company S.A DE C.V.","maquinacementera1001@hotmail.com","55533399"),
+(5,"Toyota Motor Sales Mexico S. R.L. C.V.","laChiquiz@hotmail.com","80033143"),
+(6,"Renault Mexico S.A DE C.V.","ismaRojHerMex@gmail.com","55513360"),
+(7,"Hunday Motor Sales Mexico S.A. DE C.V.","gloryInParis77@yahoo.com","55412220"),
+(8,"KIA Motors Mexico S.A. DE C.V.","criiizRoldanF98@outlook.com","015547800"),
+(9,"Seat S.A.","josraMartiVale5@hotmail.com","018008357"); 
 
 insert into ProveedorSucursal values(1,1),(2,1),(5,1),(6,2),(7,2),(8,2),(9,3),(10,3);
 
@@ -227,3 +234,7 @@ insert into EstadoAuto values(1,"OCUPADO"),(2,"DISPONIBLE");
 
 insert into EmpleadoRenta values(1,"Jose Rafael","Martinez","Valenzuela","Ciudad de Mexico","Cuauhtemoc","Centro","Av. 20 de noviembre",56,12,68300,"55513360","josraMartiVale5@hotmail.com","mmm",1,"M");
 
+insert into Automovil values("asdf2563","RIO","Rojo",2017,5,120000,125236.50,"Este auto es muy versatil","Espacio interior de 5 plazas.","Images/Sucursal/Marcas/KIA/Rio/rio1.png","Images/Sucursal/Marcas/KIA/Rio/rio2.png","Images/Sucursal/Marcas/KIA/Rio/rio3.png",1,8,1,2),
+("asdf8563","Niro","Azul",2017,5,120000,125236.50,"Este auto es muy versatil","Espacio interior de 5 plazas.","Images/Sucursal/Marcas/KIA/Niro/niro1.png","Images/Sucursal/Marcas/KIA/Niro/niro2.png","Images/Sucursal/Marcas/KIA/Niro/niro3.png",1,8,1,2
+
+);

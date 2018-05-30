@@ -54,11 +54,14 @@ public class ControlSesiones extends HttpServlet {
     protected void inicioSesionProveedorAuto(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException,EJBException,PersistenceException {
         int idProveedor = (int)Integer.parseInt(request.getParameter("idProveedor"));
+        int idSucursal = (int)Integer.parseInt(request.getParameter("idSucursal"));
+        Sucursal sucursal = servicio.buscarSucursal(idSucursal);
         Proveedor proveedor = servicio.inicioSesionProveedor(idProveedor);
-        System.out.println("IDE: "+idProveedor);
-                
-        if(proveedor != null){
+      
+        if(proveedor != null && sucursal != null){
             request.getSession().setAttribute("proveedor",proveedor);
+            request.getSession().setAttribute("sucursal", sucursal);
+            
             switch(idProveedor){
                 case 1:
                     response.sendRedirect("autosVolkswagen.jsp");
@@ -66,25 +69,25 @@ public class ControlSesiones extends HttpServlet {
                 case 2:
                     response.sendRedirect("autosFord.jsp");
                     break;
-                case 4:
+                case 3:
                     response.sendRedirect("autosVolvo.jsp");
                     break;
-                case 5:
+                case 4:
                     response.sendRedirect("autosNissan.jsp");
                     break;
-                case 6:
+                case 5:
                     response.sendRedirect("autosToyota.jsp");
                     break;
-                case 7:
+                case 6:
                     response.sendRedirect("autosRenault.jsp");
                     break;
-                case 8:
+                case 7:
                     response.sendRedirect("autosHyundai.jsp");
                     break;
-                case 9:
+                case 8:
                     response.sendRedirect("autosKIA.jsp");
                     break;
-                case 10:
+                case 9:
                     response.sendRedirect("autosSeat.jsp");
                     break;
         

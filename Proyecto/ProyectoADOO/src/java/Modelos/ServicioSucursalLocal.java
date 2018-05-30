@@ -11,4 +11,6 @@ public interface ServicioSucursalLocal {
     public Sucursal buscarSucursal(int idSucursal);
     public List<Sucursal> getInfoDeSucursal(int idSucursal);
     public List<Proveedor> getInfoProveedor(int idProveedor);
+    public List<Automovil> getAutosAsociadosASucursal(int idSucursal, String marca);
+    
 }

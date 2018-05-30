@@ -60,26 +60,29 @@
                             
                         </div>
                     </nav>
+                    <c:forEach items="${infoSucursal}" var="is">
                     <ul id="marcas" class="dropdown-content">
-                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=1">Volkswagen</a></li>
+                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=1&idSucursal=${is[0]}">Volkswagen</a></li>
                         <li class="divider"></li>
-                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=2">Ford</a></li>
+                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=2&idSucursal=${is[0]}">Ford</a></li>
                         <li class="divider"></li>
-                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=5">Nissan</a></li>
+                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=4&idSucursal=${is[0]}">Nissan</a></li>
                         <li class="divider"></li>
-                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=6">Toyota</a></li>
+                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=5&idSucursal=${is[0]}">Toyota</a></li>
                         <li class="divider"></li>
-                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=7">Renault</a></li>
+                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=6&idSucursal=${is[0]}">Renault</a></li>
                         <li class="divider"></li>
-                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=8">Hunday</a></li>
+                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=7&idSucursal=${is[0]}">Hunday</a></li>
                         <li class="divider"></li>
-                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=9">KIA</a></li>
+                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=8&idSucursal=${is[0]}">KIA</a></li>
                         <li class="divider"></li>
-                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=10">Seat</a></li>
+                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=9&idSucursal=${is[0]}">Seat</a></li>
                         <li class="divider"></li>
-                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=4">Volvo</a></li>
+                        <li><a href="ControlSesiones.do?btnControlador=inicioSesionProveedorAuto&idProveedor=3&idSucursal=${is[0]}">Volvo</a></li>
                        
                     </ul>
+                    </c:forEach>
+                    
                 </div>
             </div>
         </section>
