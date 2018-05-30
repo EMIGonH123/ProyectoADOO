@@ -72,12 +72,13 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Hyundai/Elantra/elantra1.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">ELANTRA<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>La sexta generación del Hyundai Elantra se presenta en 2016 con un diseño contemporáneo y orientado al conductor.
+                                Por su tamaño exterior y longitud de 4570 mm, clasificamos el Hyundai Elantra en la categoría de berlinas medianas.</p>
                           </div>
                         </div>
                     </div>
@@ -87,12 +88,7 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Hyundai/Elantra/elantra2.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
                           </div>
                         </div>
                     </div>
@@ -102,12 +98,12 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Hyundai/Elantra/elantra3.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Espacio interior de 5 plazas.</p>
                           </div>
                         </div>
                     </div>
@@ -123,12 +119,13 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Hyundai/Kona/kona1.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">KONA<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Hyundai entra en el segmento B-SUV con el nuevo Hyundai Kona 2018 de diseño audaz y vanguardista para los conductores urbanos modernos.
+                                Por su tamaño, características, altura libre al suelo de 17 cm y longitud de 4165 mm, clasificamos el Hyundai Kona en la categoría de crossover pequeños.</p>
                           </div>
                         </div>
                     </div>
@@ -138,12 +135,7 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Hyundai/Kona/kona2.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
                           </div>
                         </div>
                     </div>
@@ -153,12 +145,12 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Hyundai/Kona/kona3.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Espacio interior de 5 plazas.</p>
                           </div>
                         </div>
                     </div>
@@ -175,12 +167,12 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Hyundai/i30N/i30n1.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">I30-N<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Con una imagen potente y deportiva, el Hyundai i30 N 2018 es el primer vehículo de altas prestaciones de Hyundai bajo la línea N.</p>
                           </div>
                         </div>
                     </div>
@@ -190,12 +182,7 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Hyundai/i30N/i30n2.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
                           </div>
                         </div>
                     </div>
@@ -205,12 +192,12 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Hyundai/i30N/i30n3.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Espacio interior de 5 plazas.</p>
                           </div>
                         </div>
                     </div>
@@ -227,12 +214,13 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Hyundai/i30fastback/i30fastback1.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">I30-Fastback<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>El nuevo Hyundai i30 Fastback 2018 es la última incorporación a la gama i30 con un diseño elegante de coupé 5 puertas y una experiencia de conducción más dinámica.
+                                Por su tamaño exterior y longitud de 4455 mm, clasificamos el Hyundai i30 Fastback en la categoría de berlinas medianas.</p>
                           </div>
                         </div>
                     </div>
@@ -242,12 +230,7 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Hyundai/i30fastback/i30fastback2.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
                           </div>
                         </div>
                     </div>
@@ -257,12 +240,12 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Hyundai/i30fastback/i30fastback3.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Espacio interior de 5 plazas.</p>
                           </div>
                         </div>
                     </div>
@@ -271,20 +254,20 @@
                 <%--------------------------%>
                 <%-- IMAGENES DE AUTO I40 --%>
                 <%--------------------------%>
-                <div class="row" id="I40
-                     ">
+                <div class="row" id="I40">
                     <div class="col l14 m4 s12">
                         <div class="card ">
                           <div class="card-image waves-effect waves-block waves-light">
                             <img class="activator" src="Images/Sucursal/Marcas/Hyundai/i40/i401.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">I40<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Renovado y totalmente estilizado, el Hyundai i40 2015 tiene una longitud de 4,75 metros. 
+                                Por su tamaño exterior y longitud de 4745 mm, clasificamos el Hyundai i40 en la categoría de berlinas grandes.</p>
                           </div>
                         </div>
                     </div>
@@ -294,12 +277,7 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Hyundai/i40/i402.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
                           </div>
                         </div>
                     </div>
@@ -309,43 +287,38 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Hyundai/i40/i403.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Espacio interior de 5 plazas.</p>
                           </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="row">
+                    <c:forEach items="${infoProveedor}" var="ip">
                     <div id="idObjetivos" class="col l6 m6 s12">
                         <div style="background-color: #5c6bc0; color:white; text-align:center;">
-                           <i class="icon fa fa-medapps"></i> Misión
+                           <i class="material-icons">call</i> Teléfono
+                           
                         </div>
-                        <div>
-                            La misión del negocio es tener los mejores servicion en cuanto a la renta de automoviles, asi como brindar 
-                            un buen servicion a nuestros usuarios de tal manerea que sean
+                        <div style=" color:#5c6bc0; text-align:center;">
+                           ${ip[3]}
                         </div>
                     </div>
                     <div class="col l6 m6 s12">
                         <div style="background-color: #5c6bc0; color:white; text-align:center;">
-                           <i class="icon fa fa-eye"></i> Visión
+                           <i class="material-icons">email</i> Email
                         </div>
-                        <div>
-                            Nuestra visión es ser lideres en cuanto a la renta de automoviles a nivel nacional.<br>
-                            Brindar nuestros servicios de forma eficaz e inovar dia con dia para que nuestro cliente este satisfecho.
+                        <div style=" color:#5c6bc0; text-align:center;">
+                            ${ip[2]}
                         </div>
                     </div>
+                    </c:forEach>
                 </div>
-                <div class="row">
-                    <div class="col l12 m12 s12" id="automoviles" style="background-color: #5c6bc0; color:white; text-align: center;">Automoviles</div>
-                </div>
-                
-                    
-                 
             </div>
         </section>
         

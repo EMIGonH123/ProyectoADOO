@@ -73,12 +73,13 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Seat/Ateca/ateca1.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">ATECA<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>El SEAT Ateca 2016 se sitúa como un competidor en el segmento de los SUV para ofrecer a los conductores lo que necesitan tanto en ciudad como fuera de ella.
+                                Por su tamaño, características, altura libre al suelo de 18 cm y longitud de 4363 mm, clasificamos el Seat Ateca en la categoría de SUV compactos.</p>
                           </div>
                         </div>
                     </div>
@@ -88,12 +89,7 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Seat/Ateca/ateca2.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
                           </div>
                         </div>
                     </div>
@@ -103,12 +99,12 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Seat/Ateca/ateca3.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Espacio interior de 5 plazas.</p>
                           </div>
                         </div>
                     </div>
@@ -124,12 +120,12 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Seat/Leon/leon1.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">LEON<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Con diseño compacto y aerodinámico, el 3 puertas SEAT León SC 2017 mantiene las medidas exteriores.</p>
                           </div>
                         </div>
                     </div>
@@ -139,12 +135,7 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Seat/Leon/leon2.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
                           </div>
                         </div>
                     </div>
@@ -154,12 +145,12 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Seat/Leon/leon3.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Espacio interior de 5 plazas.</p>
                           </div>
                         </div>
                     </div>
@@ -175,12 +166,13 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Seat/Toledo/toledo1.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">TOLEDO<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Vuelve el Seat Toledo en 2012 en bella sinergia con el actual ADN de diseño Seat con una longitud de 4,48 metros.
+                                Por su tamaño exterior y longitud de 4482 mm, clasificamos el Seat Toledo en la categoría de berlinas medianas.</p>
                           </div>
                         </div>
                     </div>
@@ -190,12 +182,7 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Seat/Toledo/toledo2.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
                           </div>
                         </div>
                     </div>
@@ -205,43 +192,38 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Seat/Toledo/toledo3.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Espacio interior de 5 plazas.</p>
                           </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="row">
+                    <c:forEach items="${infoProveedor}" var="ip">
                     <div id="idObjetivos" class="col l6 m6 s12">
                         <div style="background-color: #5c6bc0; color:white; text-align:center;">
-                           <i class="icon fa fa-medapps"></i> Misión
+                           <i class="material-icons">call</i> Teléfono
+                           
                         </div>
-                        <div>
-                            La misión del negocio es tener los mejores servicion en cuanto a la renta de automoviles, asi como brindar 
-                            un buen servicion a nuestros usuarios de tal manerea que sean
+                        <div style=" color:#5c6bc0; text-align:center;">
+                           ${ip[3]}
                         </div>
                     </div>
                     <div class="col l6 m6 s12">
                         <div style="background-color: #5c6bc0; color:white; text-align:center;">
-                           <i class="icon fa fa-eye"></i> Visión
+                           <i class="material-icons">email</i> Email
                         </div>
-                        <div>
-                            Nuestra visión es ser lideres en cuanto a la renta de automoviles a nivel nacional.<br>
-                            Brindar nuestros servicios de forma eficaz e inovar dia con dia para que nuestro cliente este satisfecho.
+                        <div style=" color:#5c6bc0; text-align:center;">
+                            ${ip[2]}
                         </div>
                     </div>
+                    </c:forEach>
                 </div>
-                <div class="row">
-                    <div class="col l12 m12 s12" id="automoviles" style="background-color: #5c6bc0; color:white; text-align: center;">Automoviles</div>
-                </div>
-                
-                    
-                 
             </div>
         </section>
         

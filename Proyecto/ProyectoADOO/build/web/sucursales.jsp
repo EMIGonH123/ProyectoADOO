@@ -46,10 +46,10 @@
                                 <li><a href="#redesSociales"><i class="icon fa fa-laptop" ></i></a></li>
                             </ul>
                             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                                <li><a href="#automoviles"><i class="icon fa fa-car" ></i></a></li>
+                                <li><a href="#idObjetivos"><i class="icon fa fa-globe" ></i></a></li>
                             </ul>
                             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                                <li><a href="#idObjetivos"><i class="icon fa fa-globe" ></i></a></li>
+                                <li><a href="#idUbicacion"><i class="icon fa fa-map-marker" ></i></a></li>
                             </ul>
                             <ul id="nav-mobile" class="right hide-on-med-and-down">
                                 <li><a class="dropdown-button" data-activates="marcas">
@@ -126,10 +126,9 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col l12 m12 s12" id="automoviles" style="background-color: #5c6bc0; color:white; text-align: center;">Automoviles</div>
-                </div>
-                <div class="row">
-                    <div class="col l12 m12 s12" id="redesSociales" style="background-color: #5c6bc0; color:white; text-align: center;">Redes Sociales</div>
+                    <div class="col l12 m12 s12" id="redesSociales" style="background-color: #5c6bc0; color:white; text-align: center;">
+                        <i class="icon fa fa-laptop"></i>Redes Sociales
+                    </div>
                     <div class="col l4 m4 s12">
                         <div class="card">
                           <div class="card-image waves-effect waves-block waves-light">
@@ -165,31 +164,46 @@
                         </div>
                     </div>
                 </div>
-                <ul id="informacion" class="side-nav">
-                    <li>
-                        <div class="user-view">
-                            <a><span class="name" style="color:#5c6bc0;">John Doe</span></a>
-                            <a><span class="email" style="color:#5c6bc0;">jdandturk@gmail.com</span></a>
+                <c:forEach items="${infoSucursal}" var="is">
+                    <div class="row" >
+                        <div class="col l12 m12 s12" id="idUbicacion">
+                            <div style="background-color: #5c6bc0; color:white; text-align:center;">
+                               <i class="icon fa fa-map-marker"></i> Ubicación
+                            </div>
+                            <div class="col l3 m6 s12">
+                                <div style="color:#5c6bc0; text-align:center;">
+                                    <b>Estado</b><br>
+                                    ${is[2]} 
+                                </div>
+                            </div>
+                            <div class="col l3 m6 s12">
+                                <div style="color:#5c6bc0; text-align:center;">
+                                    <b>Colonia</b><br>
+                                    ${is[3]} 
+                                </div>
+                            </div>
+                            <div class="col l3 m6 s12">
+                                <div style="color:#5c6bc0; text-align:center;">
+                                    <b>Calle</b><br>
+                                    ${is[4]} 
+                                </div>
+                            </div>
+                            <div class="col l3 m6 s12">
+                                <div style="color:#5c6bc0; text-align:center;">
+                                    <b>Código Postal</b><br>
+                                    ${is[5]}   
+                                </div>
+                            </div>
+
                         </div>
-                    </li>
-                    <li><a href="#redesSociales"><i class="material-icons waves-effect">desktop_mac</i>Redes Sociales</a></li>
-                    <li><div class="divider"></div></li>
-                </ul>
+                    </div>
+                </c:forEach>    
             </div>
         </section>
         
         <%--PIE DE LA PAGINA--%>
         <section id="pie">
-            <div class="fixed-action-btn vertical">
-                <a class="btn-floating btn-large blue pulse">
-                  <i class="large material-icons">dashboard</i>
-                </a>
-                <ul>
-                  <li>
-                    <a class="btn-floating red btn button-collapse" data-activates="informacion"><i class="material-icons">menu</i></a>
-                  </li>
-                </ul>
-            </div>
+            
             <div class="row">
                 <div class="col l12 m12 s12">
                     <footer class="page-footer" style="background-color:#5c6bc0; color:white;">

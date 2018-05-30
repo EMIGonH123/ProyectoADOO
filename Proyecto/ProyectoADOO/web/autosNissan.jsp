@@ -73,12 +73,13 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Nissan/Micra/micra1.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">MICRA<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>La quinta generación del Nissan Micra tiene un diseño expresivo y dinámicas proporciones con una longitud 17 centímetros mayor.
+                                Por su tamaño exterior y longitud de 3995 mm, clasificamos el Nissan Micra en la categoría de coches utilitarios.</p>
                           </div>
                         </div>
                     </div>
@@ -88,12 +89,7 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Nissan/Micra/micra2.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
                           </div>
                         </div>
                     </div>
@@ -103,12 +99,12 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Nissan/Micra/micra3.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Espacio interior de 5 plazas.</p>
                           </div>
                         </div>
                     </div>
@@ -124,12 +120,13 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Nissan/NP300/navara1.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">NP300 Navara<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>El robusto pick-up Nissan NP300 Navara 2016 tiene una capacidad de carga de 1 tonelada y de remolque de 3,5 toneladas y ofrece un confortable interior para 5 pasajeros en su versión doble cabina.
+                                Por su zona de carga posterior, prestaciones, altura libre al suelo de 22 cm y longitud de 5330 mm, clasificamos el Nissan NP300 Navara en la categoría de vehículos pick-up.</p>
                           </div>
                         </div>
                     </div>
@@ -139,12 +136,7 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Nissan/NP300/navara2.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
                           </div>
                         </div>
                     </div>
@@ -154,12 +146,12 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Nissan/NP300/navara3.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Espacio interior de 5 plazas.</p>
                           </div>
                         </div>
                     </div>
@@ -175,12 +167,13 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Nissan/Qashqai/qashqai1.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">Qashqai<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>El Nissan Qashqai se renueva en 2017 con un diseño exterior más contemporáneo, mayores niveles de calidad interior y más tecnología.
+                                Por su tamaño, características, altura libre al suelo de 18 cm y longitud de 4394 mm, clasificamos el Nissan Qashqai en la categoría de SUV compactos.</p>
                           </div>
                         </div>
                     </div>
@@ -190,12 +183,7 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Nissan/Qashqai/qashqai2.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
                           </div>
                         </div>
                     </div>
@@ -205,12 +193,12 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Nissan/Qashqai/qashqai3.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Espacio interior de 5 plazas.</p>
                           </div>
                         </div>
                     </div>
@@ -226,12 +214,13 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Nissan/XTrail/xtrail1.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">X-Trail<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Más grande que el Qashqai, el Nissan X-Trail 2017 ofrece una tercera fila de asientos opcional abatible al 50/50 y una segunda fila deslizante para alternar entre espacio de piernas y espacio de carga.
+                                Por su tamaño, características, altura libre al suelo de 20 cm y longitud de 4690 mm, clasificamos el Nissan X-Trail en la categoría de SUV medianos.</p>
                           </div>
                         </div>
                     </div>
@@ -241,12 +230,7 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Nissan/XTrail/xtrail2.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
                           </div>
                         </div>
                     </div>
@@ -256,43 +240,38 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Nissan/XTrail/xtrail3.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Espacio interior de 5 plazas.</p>
                           </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="row">
+                    <c:forEach items="${infoProveedor}" var="ip">
                     <div id="idObjetivos" class="col l6 m6 s12">
                         <div style="background-color: #5c6bc0; color:white; text-align:center;">
-                           <i class="icon fa fa-medapps"></i> Misión
+                           <i class="material-icons">call</i> Teléfono
+                           
                         </div>
-                        <div>
-                            La misión del negocio es tener los mejores servicion en cuanto a la renta de automoviles, asi como brindar 
-                            un buen servicion a nuestros usuarios de tal manerea que sean
+                        <div style=" color:#5c6bc0; text-align:center;">
+                           ${ip[3]}
                         </div>
                     </div>
                     <div class="col l6 m6 s12">
                         <div style="background-color: #5c6bc0; color:white; text-align:center;">
-                           <i class="icon fa fa-eye"></i> Visión
+                           <i class="material-icons">email</i> Email
                         </div>
-                        <div>
-                            Nuestra visión es ser lideres en cuanto a la renta de automoviles a nivel nacional.<br>
-                            Brindar nuestros servicios de forma eficaz e inovar dia con dia para que nuestro cliente este satisfecho.
+                        <div style=" color:#5c6bc0; text-align:center;">
+                            ${ip[2]}
                         </div>
                     </div>
+                    </c:forEach>
                 </div>
-                <div class="row">
-                    <div class="col l12 m12 s12" id="automoviles" style="background-color: #5c6bc0; color:white; text-align: center;">Automoviles</div>
-                </div>
-                
-                    
-                 
             </div>
         </section>
         

@@ -73,12 +73,14 @@
                             <img class="activator" src="Images/Sucursal/Marcas/KIA/Niro/niro1.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">NIRO<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Iformación</span>
+                            <p>El nuevo Kia Niro 2017 es un crossover híbrido de exterior compacto y interior espacioso de 4,36 metros de longitud. 
+                                Por su tamaño, características, altura libre al suelo de 16 cm y longitud de 4355 mm, clasificamos el Kia Niro en la categoría de SUV compactos.
+                                Compara el Kia Niro con otros híbridos de tamaño similar. El modelo híbrido enchufable recibe el nombre de Niro PHEV.</p>
                           </div>
                         </div>
                     </div>
@@ -88,12 +90,7 @@
                             <img class="activator" src="Images/Sucursal/Marcas/KIA/Niro/niro2.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
                           </div>
                         </div>
                     </div>
@@ -103,12 +100,12 @@
                             <img class="activator" src="Images/Sucursal/Marcas/KIA/Niro/niro3.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Espacio interior de 5 plazas.</p>
                           </div>
                         </div>
                     </div>
@@ -124,12 +121,13 @@
                             <img class="activator" src="Images/Sucursal/Marcas/KIA/Sorento/sorento1.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">SORENTO<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>El espacioso interior permite que hasta 7 personas viajen en el Kia Sorento 2015 con comodidad.
+                                Por su tamaño, características, altura libre al suelo de 18 cm y longitud de 4780 mm, clasificamos el Kia Sorento en la categoría de SUV grandes y todoterrenos.</p>
                           </div>
                         </div>
                     </div>
@@ -139,12 +137,7 @@
                             <img class="activator" src="Images/Sucursal/Marcas/KIA/Sorento/sorento2.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
                           </div>
                         </div>
                     </div>
@@ -154,12 +147,12 @@
                             <img class="activator" src="Images/Sucursal/Marcas/KIA/Sorento/sorento3.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Espacio interior de 5 plazas.</p>
                           </div>
                         </div>
                     </div>
@@ -176,12 +169,13 @@
                             <img class="activator" src="Images/Sucursal/Marcas/KIA/Rio/rio1.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">RIO<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Espacioso, práctico y polivalente, el Kia Rio 2017 ofrece una capacidad de maletero de 325 litros respecto a los 288 litros del modelo de 2015.
+                                Por su tamaño exterior y longitud de 4065 mm, clasificamos el Kia Rio en la categoría de coches utilitarios.</p>
                           </div>
                         </div>
                     </div>
@@ -191,12 +185,7 @@
                             <img class="activator" src="Images/Sucursal/Marcas/KIA/Rio/rio2.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
                           </div>
                         </div>
                     </div>
@@ -206,12 +195,12 @@
                             <img class="activator" src="Images/Sucursal/Marcas/KIA/Rio/rio3.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Espacio interior de 5 plazas.</p>
                           </div>
                         </div>
                     </div>
@@ -228,12 +217,12 @@
                             <img class="activator" src="Images/Sucursal/Marcas/KIA/Proceed/proceed1.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">Pro_cee'd<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Con silueta dinámico, el Kia pro_cee'd 2016 es la versión 3 puertas y 4 centímetros más bajo que el cee'd de 5 puertas.</p>
                           </div>
                         </div>
                     </div>
@@ -243,12 +232,7 @@
                             <img class="activator" src="Images/Sucursal/Marcas/KIA/Proceed/proceed2.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
                           </div>
                         </div>
                     </div>
@@ -258,46 +242,38 @@
                             <img class="activator" src="Images/Sucursal/Marcas/KIA/Proceed/proceed3.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Espacio interior de 5 plazas.</p>
                           </div>
                         </div>
                     </div>
                 </div>
                 
-                
-               
-                
                 <div class="row">
+                    <c:forEach items="${infoProveedor}" var="ip">
                     <div id="idObjetivos" class="col l6 m6 s12">
                         <div style="background-color: #5c6bc0; color:white; text-align:center;">
-                           <i class="icon fa fa-medapps"></i> Misión
+                           <i class="material-icons">call</i> Teléfono
+                           
                         </div>
-                        <div>
-                            La misión del negocio es tener los mejores servicion en cuanto a la renta de automoviles, asi como brindar 
-                            un buen servicion a nuestros usuarios de tal manerea que sean
+                        <div style=" color:#5c6bc0; text-align:center;">
+                           ${ip[3]}
                         </div>
                     </div>
                     <div class="col l6 m6 s12">
                         <div style="background-color: #5c6bc0; color:white; text-align:center;">
-                           <i class="icon fa fa-eye"></i> Visión
+                           <i class="material-icons">email</i> Email
                         </div>
-                        <div>
-                            Nuestra visión es ser lideres en cuanto a la renta de automoviles a nivel nacional.<br>
-                            Brindar nuestros servicios de forma eficaz e inovar dia con dia para que nuestro cliente este satisfecho.
+                        <div style=" color:#5c6bc0; text-align:center;">
+                            ${ip[2]}
                         </div>
                     </div>
+                    </c:forEach>
                 </div>
-                <div class="row">
-                    <div class="col l12 m12 s12" id="automoviles" style="background-color: #5c6bc0; color:white; text-align: center;">Automoviles</div>
-                </div>
-                
-                    
-                 
             </div>
         </section>
         

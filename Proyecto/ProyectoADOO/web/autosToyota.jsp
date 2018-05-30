@@ -75,12 +75,14 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Toyota/CHR/chr1.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">C-HR<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>De tecnología híbrida y diseño anguloso, el nuevo Toyota C-HR es un crossover de menor tamaño que el RAV4 con una longitud de 4,36 metros.
+                                Por su tamaño, características, altura libre al suelo de 15 cm y longitud de 4360 mm, clasificamos el Toyota C-HR en la categoría de SUV compactos. 
+                                Compara el Toyota C-HR con otros híbridos de tamaño similar.</p>
                           </div>
                         </div>
                     </div>
@@ -90,12 +92,7 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Toyota/CHR/chr2.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
                           </div>
                         </div>
                     </div>
@@ -105,12 +102,12 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Toyota/CHR/chr3.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Espacio interior de 5 plazas.</p>
                           </div>
                         </div>
                     </div>
@@ -126,12 +123,14 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Toyota/Hilux/hilux1.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">Hilux<i class="material-icons right">more_vert</i></span>
+                           
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Disponible en tres carrocerías con la misma longitud total, el Toyota Hilux doble cabina 2016 ofrece 5 cómodas plazas
+                                con una tonelada de carga neta en plataforma y una distancia libre al suelo de hasta 29,3 cm. Por su zona de carga posterior,
+                                prestaciones, altura libre al suelo de 21 cm y longitud de 5330 mm, clasificamos el Toyota Hilux en la categoría de vehículos pick-up.</p>
                           </div>
                         </div>
                     </div>
@@ -141,12 +140,7 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Toyota/Hilux/hilux2.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
                           </div>
                         </div>
                     </div>
@@ -156,12 +150,12 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Toyota/Hilux/hilux3.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Espacio interior de 5 plazas.</p>
                           </div>
                         </div>
                     </div>
@@ -177,12 +171,15 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Toyota/Land/land1.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">Land Cruiser<i class="material-icons right">more_vert</i></span>
+                           
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Disponible en 3 y 5 puertas con distinta longitud, el Toyota Land Cruiser 2018 combina calidad y fiabilidad 
+                                con un elevado rendimiento todoterreno y confort en carretera.
+                                Por su tamaño, características, altura libre al suelo de 21 cm y longitud de 4840 mm, clasificamos el 
+                                Toyota Land Cruiser 5p en la categoría de SUV grandes y todoterrenos.</p>
                           </div>
                         </div>
                     </div>
@@ -192,12 +189,7 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Toyota/Land/land2.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
                           </div>
                         </div>
                     </div>
@@ -207,12 +199,12 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Toyota/Land/land3.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Espacio interior de 7 plazas.</p>
                           </div>
                         </div>
                     </div>
@@ -228,12 +220,15 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Toyota/Prius/prius1.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">PRIUS<i class="material-icons right">more_vert</i></span>
+                           
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Con un estilo deportivo y moderno, el Toyota Prius 2016 (híbrido ya en 1997) aumenta su longitud 6 centímetros y
+                                dispone de una nueva batería para su motor eléctrico que permite aumentar el tamaño de su maletero. 
+                                Por su tamaño exterior y longitud de 4540 mm, clasificamos el Toyota Prius en la categoría de berlinas medianas.
+                                Compara el Toyota Prius con otros híbridos de tamaño similar. El modelo híbrido enchufable recibe el nombre de Prius Plug-In.</p>
                           </div>
                         </div>
                     </div>
@@ -243,12 +238,7 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Toyota/Prius/prius2.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
                           </div>
                         </div>
                     </div>
@@ -258,12 +248,12 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Toyota/Prius/prius3.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Espacio interior de 5 plazas.</p>
                           </div>
                         </div>
                     </div>
@@ -278,12 +268,15 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Toyota/RAV4/rav41.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">RAV4<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Con una imagen más moderna y dinámica, el Toyota RAV4 2016 aumenta su longitud 4 centímetros hasta los 4,6 
+                                metros para este SUV con más de 20 años de historia. Por su tamaño, características, altura libre al suelo 
+                                de 18 cm y longitud de 4605 mm, clasificamos el Toyota RAV4 en la categoría de SUV medianos. 
+                                El modelo híbrido recibe el nombre de RAV4 hybrid.</p>
                           </div>
                         </div>
                     </div>
@@ -293,12 +286,7 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Toyota/RAV4/rav42.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
                           </div>
                         </div>
                     </div>
@@ -308,44 +296,38 @@
                             <img class="activator" src="Images/Sucursal/Marcas/Toyota/RAV4/rav43.png">
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
+                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
+                            
                           </div>
                           <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                            <p>Espacio interior de 5 plazas.</p>
                           </div>
                         </div>
                     </div>
                 </div>
                 
-                
                 <div class="row">
+                    <c:forEach items="${infoProveedor}" var="ip">
                     <div id="idObjetivos" class="col l6 m6 s12">
                         <div style="background-color: #5c6bc0; color:white; text-align:center;">
-                           <i class="icon fa fa-medapps"></i> Misión
+                           <i class="material-icons">call</i> Teléfono
+                           
                         </div>
-                        <div>
-                            La misión del negocio es tener los mejores servicion en cuanto a la renta de automoviles, asi como brindar 
-                            un buen servicion a nuestros usuarios de tal manerea que sean
+                        <div style=" color:#5c6bc0; text-align:center;">
+                           ${ip[3]}
                         </div>
                     </div>
                     <div class="col l6 m6 s12">
                         <div style="background-color: #5c6bc0; color:white; text-align:center;">
-                           <i class="icon fa fa-eye"></i> Visión
+                           <i class="material-icons">email</i> Email
                         </div>
-                        <div>
-                            Nuestra visión es ser lideres en cuanto a la renta de automoviles a nivel nacional.<br>
-                            Brindar nuestros servicios de forma eficaz e inovar dia con dia para que nuestro cliente este satisfecho.
+                        <div style=" color:#5c6bc0; text-align:center;">
+                            ${ip[2]}
                         </div>
                     </div>
+                    </c:forEach>
                 </div>
-                <div class="row">
-                    <div class="col l12 m12 s12" id="automoviles" style="background-color: #5c6bc0; color:white; text-align: center;">Automoviles</div>
-                </div>
-                
-                    
-                 
             </div>
         </section>
         
