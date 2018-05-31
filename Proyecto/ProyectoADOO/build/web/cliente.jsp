@@ -4,7 +4,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.List"%>
 <%@page import="javax.naming.InitialContext"%>
-<%@page import="Modelos.ServiciosLocal"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%! ServicioClienteLocal servicio;%>
 <%

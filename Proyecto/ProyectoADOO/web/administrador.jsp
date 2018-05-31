@@ -261,19 +261,21 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
-                                <i class="material-icons prefix">call</i>
+                                <i class="material-icons prefix">assignment_ind</i>
                                 <select name="tipo">
                                     <option value="1">Administrador</option>
                                     <option value="2">Agente de venta</option>
                                 </select>
+                                <label>Tipo de Empleado</label>
                             </div>
                             <div class="input-field col s6">
-                              <i class="material-icons prefix">email</i>
-                              <select name="idSucursal">
+                                <i class="material-icons prefix">add_shopping_cart</i>
+                                <select name="idSucursal">
                                     <option value="1">Azcapotzalco</option>
                                     <option value="2">Centro</option>
                                     <option value="3">Santa Monica</option>
                                 </select>
+                              <label>Sucursal Asociada</label>
                             </div>
                             
                         </div>
@@ -285,6 +287,7 @@
                                     <option value="M">Masculino</option>
                                     <option value="F">Femenino</option>
                                 </select>
+                                <label>Genero</label>
                             </div>
                         </div>
                             <div class="col l4"></div>
@@ -592,8 +595,8 @@
                             <b style="color:#a0f;">${is[1]}</b><br>
                             <b style="color:#000;">Estado: </b>${is[2]} <br>
                             <b style="color:#000;">Colonia: </b>${is[3]} <br>
-                            <b style="color:#000;">Telefono: </b>${is[6]} <br><br>                                                  
-
+                            <b style="color:#000;">Telefono: </b>${is[6]} <br>                                                  
+                            <a href="ControlSesiones.do?btnControlador=visitarSucursal&idSucursal=${is[0]}"><b style="text-align:center;">Visitar</b></a><br><br>
                         </c:forEach>
                     </div>                        
                     

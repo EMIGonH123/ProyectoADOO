@@ -10,7 +10,6 @@
     <class>EntidadesADOO.Estadoauto</class>
     <class>EntidadesADOO.Proveedor</class>
     <class>EntidadesADOO.Proveedorsucursal</class>
-    <class>EntidadesADOO.Renta</class>
     <class>EntidadesADOO.Sucursal</class>
     <class>EntidadesADOO.Sucursalpersona</class>
     <class>EntidadesADOO.Tipoauto</class>

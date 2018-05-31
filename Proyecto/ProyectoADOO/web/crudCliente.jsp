@@ -14,18 +14,20 @@
     InitialContext contexto = new InitialContext();
     servicio = (ServicioCrudClienteLocal)contexto.lookup("java:global/ProyectoADOO/ServicioCrudCliente!Modelos.ServicioCrudClienteLocal");
     Clienterenta cliente = (Clienterenta)session.getAttribute("cliente");
-    int id = cliente.getIdCliente();
+    int idCliente = cliente.getIdCliente();
     int idEmpleado = (int)cliente.getIdEmpleado();
-    List<Clienterenta> infoCliente = servicio.getInfoCliente(id);
+    List<Clienterenta> infoCliente = servicio.getInfoCliente(idCliente);
     List<Automovil> infoAutos = servicio.getInfoDeAutosParaRentarAsociadosAlEmpleado(idEmpleado);
-    List<Object> infoCuentas = servicio.getInfoCuentasDeCliente(id);
-    List<Detallecuenta> infoDetalleCuentas = servicio.getDetalleCuentasDeCliente(id);
+    List<Object> infoCuentas = servicio.getInfoCuentasDeCliente(idCliente);
+    List<Detallecuenta> infoDetalleCuentas = servicio.getDetalleCuentasDeCliente(idCliente);
+    List<Object> infoRentas = servicio.getInfoRentasCliente(idCliente);
 %>
 <c:set scope="page" var="infoCliente" value="<%=infoCliente%>" />
 <c:set scope="page" var="idEmpleado" value="<%=idEmpleado%>" />
 <c:set scope="page" var="infoAutos" value="<%=infoAutos%>" />
 <c:set scope="page" var="infoCuentas" value="<%=infoCuentas%>" />
-<c:set scope="page" var="infoDetalleCuentas" value="<%=infoDetalleCuentas%>" />
+<c:set scope="page" var="infoRentas" value="<%=infoRentas%>" />
+<c:set scope="page" var="infoDetalleCuentas" value="<%=infoDetalleCuentas%>"/>
 <html>
     <head>
         <!--Let browser know website is optimized for mobile-->
@@ -130,10 +132,11 @@
                           <input value="${ic[13]}" id="tel" name="tel" type="text" class="validate">
                           <label for="tel">Telefono</label>
                         </div>
+                        
                         <div class="input-field col s4">
-                          <i class="material-icons prefix">email</i>
-                          <input value="${ic[14]}" id="email" name="email" type="text" class="validate">
-                          <label for="email">Email</label>
+                            <i class="material-icons prefix">folder_shared</i>
+                            <input readonly="readonly" value="${idEmpleado}" id="idEmpleado" name="idEmpleado" type="text" class="validate" >
+                          <label for="idEmpleado">Id Empleado</label>
                         </div>
                     </div>
 
@@ -149,29 +152,25 @@
                           <label for="numInterior">Número Interior</label>
                         </div>
                         <div class="input-field col s4">
-                          <i class="material-icons prefix">folder_shared</i>
-                          <input readonly="readonly" value="${ic[0]}" id="idCliente" name="idCliente" type="text" class="validate">
-                          <label for="idCliente">Identificador</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class=" col s4">
-                            <i class="material-icons prefix">folder_shared</i>
-                            <input readonly="readonly" value="${idEmpleado}" id="idEmpleado" name="idEmpleado" type="text" class="validate" >
-                          <label for="idEmpleado">Id Empleado</label>
-                        </div>
-                        <div class="input-field col s4">
                             <i class="material-icons prefix">wc</i>
                             <select name="genero">
                                 <option value="M">Masculino</option>
                                 <option value="F">Femenino</option>
                             </select>
+                            <label>Genero</label>
                         </div>
-                        <div class=" col s4">
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s4">
                             <i class="material-icons prefix">folder_shared</i>
                             <input readonly="readonly" value="${ic[0]}" id="idCliente" name="idCliente" type="text" class="validate" >
                           <label for="idCliente">Id Cliente</label>
+                        </div>
+                        <div class="input-field col s8">
+                          <i class="material-icons prefix">email</i>
+                          <input value="${ic[14]}" id="email" name="email" type="text" class="validate">
+                          <label for="email">Email</label>
                         </div>
                     </div>
                     <div class="row">
@@ -204,12 +203,12 @@
                         </div>
                         <div class="input-field col s4">
                           <i class="material-icons prefix">hdr_strong</i>
-                          <input id="fechaInicio" name="fechaInicio" type="text" class="validate">
+                          <input id="fechaInicio" name="fechaInicio" type="text" class="validate datepicker">
                           <label for="fechaInicio">Fecha Inicio</label>
                         </div>
                         <div class="input-field col s4">
                           <i class="material-icons prefix">hdr_weak</i>
-                          <input id="fechaFin" name="fechaFin" type="text" class="validate">
+                          <input id="fechaFin" name="fechaFin" type="text" class="validate datepicker">
                           <label for="fechaFin">Fecha Fin</label>
                         </div>
                     </div>
@@ -251,7 +250,6 @@
                         </div>
                         <div class="col l4"></div>
                     </div>
-
                 </form>
                 </c:forEach>
             </div>  
@@ -363,12 +361,12 @@
             <div class="container" >
                 <div class="row">
                     
-                    <nav>
+                    <nav class="nav-extended">
                         <div class="nav-wrapper" style="background-color: #00E676; color:white;">
                             <c:forEach items="${infoCliente}" var="ic">    
                                 <a class="brand-logo" style="margin-left: 20px;">
                                     <b>
-                                        Cliente: ${ic[2]}
+                                        Cliente ${ic[2]}
                                     </b>
                                 </a>
                             </c:forEach>
@@ -376,8 +374,13 @@
                                 <li><a href="salir.jsp">Salir</a></li>
                             </ul>
                         </div>
+                        <div class="nav-content" style="background-color:#00E676; color:white;">
+                            <ul class="tabs tabs-transparent">
+                                <li class="tab"><a class="active" href="#cuentas">Cuentas</a></li>
+                                <li class="tab"><a class="active" href="#rentas">Rentas</a></li>
+                            </ul>
+                        </div>
                     </nav>
-                    
                 </div>
             </div>
         </section>
@@ -386,9 +389,37 @@
             <div class="container">
                 <div class="row">
                     <div class="col s12 m4 l4">
-                        <h5 style="color: #00E676; text-align:center;">
-                            Datos
-                        </h5>
+                        
+                        <c:forEach items="${infoCliente}" var="ic">
+                            <div class="card small">
+                                <c:if test="${ic[16] == 'M'}">
+                                    <div class="card-image waves-effect waves-block waves-light">
+                                        <img class="activator responsive-img" src="Images/General/usuario01.png">
+                                    </div>
+                                </c:if>
+                                <c:if test="${ic[16] == 'F'}">
+                                    <div class="card-image waves-effect waves-block waves-light">
+                                        <img class="activator responsive-img" src="Images/General/usuario02.png">
+                                    </div>
+                                </c:if>
+                                <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">
+                                        Más información
+                                        <i class="material-icons small"></i>
+                                    </span>
+                                </div>
+
+                                <div class="card-reveal">
+                                    <span class="card-title grey-text text-darken-4">
+                                        <p style="color:greenyellow;">Datos</p>
+                                        <i class="material-icons small"></i>
+                                    </span>
+                                    <p>
+                                        <%----%>
+                                    </p>
+                                </div>
+                            </div>
+                        </c:forEach>
                         
                         <ul class="collapsible" data-collapsible="accordion">
                             <c:forEach items="${infoCliente}" var="c">
@@ -449,19 +480,12 @@
                         </ul>
 
                     </div>
+                    <div id="cuentas">
+                        <div class="col s12 m8 l8">
+                            <div style="background-color: #00E676; color:white; text-align:center;">
+                               <i class="material-icons">attach_money</i> <b>Cuentas</b>
+                            </div>
 
-                    <div class="col s12 m8 l8">
-                        <h5 style="color: #00E676; text-align:center;">
-                            Rentas
-                        </h5>
-                            
-                    </div>
-                    <div class="row">
-                        <div class="col m3 l2"></div>
-                        <div class="col s12 m6 l8">
-                            <h5 style="color: #00E676; text-align:center;">
-                                Cuentas
-                            </h5>
                             <ul class="collapsible" data-collapsible="accordion">
                                 <c:forEach items="${infoCuentas}" var="ic">
                                 <li>
@@ -470,7 +494,7 @@
                                             art_track
                                         </i>
                                         ${ic[0]} 
-                                        
+
                                     </div>
                                     <div class="collapsible-body">
                                         <span>
@@ -492,9 +516,56 @@
                                 </c:forEach>
                             </ul>
                         </div>
-                        <div class="col m3 l2"></div>
                     </div>
-                    
+                    <div id="rentas">
+                        <div class="col s12 m8 l8">
+                            <div style="background-color: #00E676; color:white; text-align:center;">
+                               <i class="material-icons">attach_money</i> <b>Rentas</b>
+                            </div>
+                            <div class="carousel">
+                                <c:forEach items="${infoRentas}" var="ir">
+                                    <a class="carousel-item"><img src="${ir[21]}"></a>
+                                </c:forEach>
+                            </div>
+                            <ul class="collapsible" data-collapsible="accordion">
+                                <c:forEach items="${infoRentas}" var="ir">
+                                     
+                                    <li>
+                                        <div class="collapsible-header">
+                                            <i class="material-icons">
+                                                add_shopping_cart
+                                            </i>
+                                            ${ir[16]} 
+
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <span>
+                                                <b style="color:#ff0;">Descripción: </b>${ir[3]}<br>
+                                                <b style="color:#ff0;">Fecha Inicio: </b>${ir[4]}<br>
+                                                <b style="color:#ff0;">Fecha Fin: </b>${ir[5]}<br>
+                                                <b style="color:#ff0;">Unidades: </b>${ir[7]}<br>
+                                                <c:if test="${ir[8] eq 1}">
+                                                    <b style="color:#ff0;">Pago: </b>Efectivo<br>
+                                                </c:if>
+                                                <c:if test="${ir[8] eq 2}">
+                                                    <b style="color:#ff0;">Pago: </b>Tarjeta<br>
+                                                </c:if>
+                                                <b style="color:#ff0;">Sucursal: </b>${ir[10]}<br>
+                                                <b style="color:#ff0;">Automovil: </b>${ir[16]}<br>
+                                                <b style="color:#ff0;">Color: </b>${ir[17]}<br>
+                                                <b style="color:#ff0;">Modelo: </b>${ir[18]}<br>
+                                                <b style="color:#ff0;">Tipo: </b>${ir[22]}<br>
+                                                <b style="color:#ff0;">Marca: </b>${ir[23]}<br>
+                                                <b style="color:#ff0;">Precio: </b>${ir[20]}<br>
+                                                <b style="color:#ff0;">Kilometraje: </b>${ir[19]}<br><br>
+                                                <a href="ControlEmpleado.do?btnControlador=borraRenta&idRenta=${ir[0]}" style="color: red;">Borrar renta</a>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <c:forEach items="${infoCliente}" var="c">

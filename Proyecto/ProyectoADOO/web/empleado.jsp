@@ -113,39 +113,44 @@
                               <label for="tel">Telefono</label>
                             </div>
                             <div class="input-field col s4">
-                              <i class="material-icons prefix">email</i>
-                              <input id="email" name="email" type="text" class="validate">
-                              <label for="email">Email</label>
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="input-field col s4">
-                              <i class="material-icons prefix">call</i>
-                              <input id="numExterior" name="numExterior" type="text" class="validate">
-                              <label for="numExterior">Número Exterior</label>
-                            </div>
-                            <div class="input-field col s4">
-                              <i class="material-icons prefix">email</i>
-                              <input id="numInterior" name="numInterior" type="text" class="validate">
-                              <label for="numInterior">Número Interior</label>
-                            </div>
-                            
-                            <div class=" col s4">
-                                <select name="idEmpleado">
-                                    <c:forEach items="${idsAdmin}" var="c">
-                                        <option value="${c}">${c}</option>
-                                    </c:forEach>
-                                </select>    
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s4">
                                 <i class="material-icons prefix">wc</i>
                                 <select name="genero">
                                     <option value="M">Masculino</option>
                                     <option value="F">Femenino</option>
                                 </select>
+                                <label>Genero</label>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="row">
+                            <div class="input-field col s4">
+                              <i class="material-icons prefix">center_focus_weak</i>
+                              <input value="${ia[8]}" id="numExterior" name="numExterior" type="text" class="validate">
+                              <label for="numExterior">Número Exterior</label>
+                            </div>
+                            <div class="input-field col s4">
+                              <i class="material-icons prefix">center_focus_strong</i>
+                              <input value="${ia[9]}" id="numInterior" name="numInterior" type="text" class="validate">
+                              <label for="numInterior">Número Interior</label>
+                            </div>
+                            
+                            <div class="input-field col s4">
+                                <i class="material-icons prefix">folder_shared</i>
+                                <select name="idEmpleado">
+                                    <c:forEach items="${idsAdmin}" var="c">
+                                        <option value="${c}">${c}</option>
+                                    </c:forEach>
+                                </select>
+                                <label>Id Empleado</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            
+                            <div class="input-field col s12">
+                              <i class="material-icons prefix">email</i>
+                              <input id="email" name="email" type="text" class="validate">
+                              <label for="email">Email</label>
                             </div>
                         </div>
                         <div class="row">
@@ -258,6 +263,7 @@
                                     <option value="M">Masculino</option>
                                     <option value="F">Femenino</option>
                                 </select>
+                                <label>Genero</label>
                             </div>
                         </div>
                         <div class="row">
@@ -411,21 +417,23 @@
                     <div class="col l4 m6 s12">
                         
                         <div class="card blue-grey darken-1">
+                            <c:forEach items="${infoSucursal}" var ="is">
                             <div class="card-content white-text">
                                 <span class="card-title"><h5 style="text-align:center;"><b>Sucursal</b></h5></span>
                                 <h5>Información</h5>
-                                <c:forEach items="${infoSucursal}" var ="is">
+                                
                                     <b>Nombre:</b> ${is[1]}<br>
                                     <b>Estado:</b> ${is[2]}<br>
                                     <b>Colonia:</b> ${is[3]}<br>
                                     <b>Calle:</b> ${is[4]}<br>
                                     <b>Codigo Postal:</b> ${is[5]}<br>
                                     <b>Telefono:</b> ${is[6]}<br>
-                                </c:forEach>
+                                
                             </div>
                             <div class="card-action">
-                                <a href="#"><b style="text-align:center;">Visitar</b></a>
+                                <a href="ControlSesiones.do?btnControlador=visitarSucursal&idSucursal=${is[0]}"><b style="text-align:center;">Visitar</b></a>
                             </div>
+                            </c:forEach>
                         </div>                        
                     </div>
                     

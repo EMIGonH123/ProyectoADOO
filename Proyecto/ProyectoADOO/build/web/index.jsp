@@ -179,7 +179,7 @@
         <!--Aqui empieza el pie de la pagina principal-->
         <section id="pie">
             <footer class="page-footer" style="background-color: #022f42; color:white;">
-                <div class="container row" style="background-image:url(Images/General/pie.jpg); " >
+                <div class="container row">
                     <div class="col l4 m6 s12" id="contorno" >
                         <p>	
                             <h5><b>Enlaces</b></h5>

@@ -27,6 +27,9 @@ public class ControlSesiones extends HttpServlet {
             case "inicioSesionProveedorAuto":
                 inicioSesionProveedorAuto(request, response);
             break;
+            case "visitarSucursal":
+                inicioSesionSucursal(request, response);
+            break;
             //
         }
     }
