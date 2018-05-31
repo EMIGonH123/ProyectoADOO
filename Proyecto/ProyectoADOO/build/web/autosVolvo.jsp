@@ -1,5 +1,7 @@
 
 
+<%@page import="EntidadesADOO.Automovil"%>
+<%@page import="EntidadesADOO.Sucursal"%>
 <%@page import="EntidadesADOO.Proveedor"%>
 <%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -12,12 +14,20 @@
     InitialContext contexto = new InitialContext();
     servicio = (ServicioSucursalLocal)contexto.lookup("java:global/ProyectoADOO/ServicioSucursal!Modelos.ServicioSucursalLocal");
     Proveedor proveedor = (Proveedor)session.getAttribute("proveedor");
+    Sucursal sucursal = (Sucursal)session.getAttribute("sucursal");
+    String nombre = sucursal.getNombreSucursal();
     int idProveedor = proveedor.getIdProveedor();
+    int idSucursal = sucursal.getIdSucursal();
+    List<Sucursal> infoSucursal = servicio.getInfoDeSucursal(idSucursal);
     List<Proveedor> infoProveedor = servicio.getInfoProveedor(idProveedor);
+    List<Automovil> infoAutos = servicio.getAutosAsociadosASucursal(idSucursal,"Volvo");
     
 %>
 <c:set scope="page" var="infoProveedor" value="<%=infoProveedor%>"/>
 <c:set scope="page" var="idProveedor" value="<%=idProveedor%>"/>
+<c:set scope="page" var="infoSucursal" value="<%=infoSucursal%>"/>
+<c:set scope="page" var="infoAutos" value="<%=infoAutos%>"/>
+<c:set scope="page" var="nombre" value="<%=nombre%>"/>
 <html>
     <head>
         <!--Let browser know website is optimized for mobile-->
@@ -36,25 +46,25 @@
         <section id="encabezado">    
             <div class="container row">
                 <div class="col s12 m12 l12">
-                    <c:forEach items="${infoProveedor}" var="ip">
                     <nav class="nav-extended">
+                         <c:forEach items="${infoProveedor}" var="ip">
                         <div class="nav-wrapper" style="background-color:#5c6bc0; color:white;">
-                            
-                            <a class="brand-logo" style="margin-left: 20px;"><b>${ip[1]}</b></a>
-                            
+                            <a class="brand-logo" style="margin-left: 10px;">
+                                <h5><b><%=nombre%>:</b> ${ip[1]}</h5>
+                            </a>
                             <ul id="nav-mobile" class="right hide-on-med-and-down">
                                 <li><a href="salir.jsp">Salir</a></li>
                             </ul>
                         </div>
+                        </c:forEach>
                         <div class="nav-content" style="background-color:#5c6bc0; color:white;">
                             <ul class="tabs tabs-transparent">
-                                <li class="tab"><a class="active" href="#V40">V40</a></li>
-                                <li class="tab"><a class="active" href="#V60">V60</a></li>
-                                <li class="tab"><a class="active" href="#XC90">XC90</a></li>
+                                <c:forEach items="${infoAutos}" var="ia">
+                                <li class="tab"><a class="active" href="#${ia[1]}">${ia[1]}</a></li>
+                                </c:forEach>
                             </ul>
                         </div>
                     </nav>
-                    </c:forEach>
                 </div>
             </div>
         </section>
@@ -62,192 +72,117 @@
         <%--CONTENIDO DE LA PAGINA--%>
         <section id="contenidos">    
             <div class="container">
-                <%----------------------------%>
-                <%-- IMAGENES DE AUTO V40 --%>
-                <%----------------------------%>
-                <div class="row" id="V40">
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volvo/v40/v401.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                          </div>
+                <%--------------------------------%>
+                <%-- IMAGENES DE LISTA DE AUTOS --%>
+                <%--------------------------------%>
+                <c:forEach items="${infoAutos}" var="ia">
+                    <div id="${ia[1]}">    
+                        <div class="row">
+                            <div class="col l14 m4 s12">
+                                <div class="card ">
+                                  <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="${ia[8]}">
+                                  </div>
+                                  <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">${ia[1]}<i class="material-icons right">more_vert</i></span>
+
+                                  </div>
+                                  <div class="card-reveal">
+                                    <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                                    <p>${ia[6]}</p>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="col l14 m4 s12">
+                                <div class="card " >
+                                  <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="${ia[9]}">
+                                  </div>
+                                  <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="col l14 m4 s12">
+                                <div class="card ">
+                                  <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="${ia[10]}">
+                                  </div>
+                                  <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
+
+                                  </div>
+                                  <div class="card-reveal">
+                                    <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                                    <p>${ia[7]}</p>
+                                  </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card " >
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volvo/v40/v402.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                          </div>
+                        <div class="row">
+                            <div class="col l3 m3 s6">
+                                <div style="background-color: #5c6bc0; color:white; text-align:center;">
+                                    <c:if test="${ia[15] eq 'DISPONIBLE'}">
+                                        <i class="material-icons">event_available</i> <b>Estado Del Auto</b>
+                                    </c:if>
+                                    <c:if test="${ia[15] eq 'OCUPADO'}">
+                                        <i class="material-icons">event_busy</i> <b>Estado Del Auto</b>
+                                    </c:if>
+                                </div>
+                                <div style=" color:#5c6bc0; text-align:center;">
+                                   ${ia[15]}
+                                </div>
+                            </div>
+                            <div class="col l3 m3 s6">
+                                <div style="background-color: #5c6bc0; color:white; text-align:center;">
+                                    <i class="material-icons">filter_9_plus</i> <b>Tipo De Auto</b>
+                                </div>
+                                <div style=" color:#5c6bc0; text-align:center;">
+                                    ${ia[16]}
+                                </div>
+                            </div>
+                            <div class="col l3 m3 s6">
+                                <div style="background-color: #5c6bc0; color:white; text-align:center;">
+                                    <i class="material-icons">palette</i> <b>Color</b>
+                                </div>
+                                <div style=" color:#5c6bc0; text-align:center;">
+                                    ${ia[2]}
+                                </div>
+                            </div>
+                            <div class="col l3 m3 s6">
+                                <div style="background-color: #5c6bc0; color:white; text-align:center;">
+                                   <i class="material-icons">warning</i> <b>Kilometraje</b>
+                                </div>
+                                <div style=" color:#5c6bc0; text-align:center;">
+                                    ${ia[4]}
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volvo/v40/v403.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                          </div>
+                        <div class="row">
+                            <div class="col l6 m6 s12">
+                                <div style="background-color: #5c6bc0; color:white; text-align:center;">
+                                    <i class="material-icons">call_to_action</i> <b>Matricula</b>
+                                </div>
+                                <div style=" color:#5c6bc0; text-align:center;">
+                                   ${ia[0]}
+                                </div>
+                            </div>
+                            <div class="col l6 m6 s12">
+                                <div style="background-color: #5c6bc0; color:white; text-align:center;">
+                                   <i class="material-icons">attach_money</i> <b>Precio Renta</b>
+                                </div>
+                                <div style=" color:#5c6bc0; text-align:center;">
+                                    ${ia[5]}
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                
-                <%----------------------------%>
-                <%-- IMAGENES DE AUTO V60 --%>
-                <%----------------------------%>
-                <div class="row" id="V60">
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volvo/v60/v601.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card " >
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volvo/v60/v602.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volvo/v60/v603.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <%----------------------------%>
-                <%-- IMAGENES DE AUTO XC90 --%>
-                <%----------------------------%>
-                <div class="row" id="XC90">
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volvo/xc90/xc901.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card " >
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volvo/xc90/xc902.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volvo/xc90/xc903.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">This is a link</a></p>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                <div class="row">
-                    <div id="idObjetivos" class="col l6 m6 s12">
-                        <div style="background-color: #5c6bc0; color:white; text-align:center;">
-                           <i class="icon fa fa-medapps"></i> Misión
-                        </div>
-                        <div>
-                            La misión del negocio es tener los mejores servicion en cuanto a la renta de automoviles, asi como brindar 
-                            un buen servicion a nuestros usuarios de tal manerea que sean
-                        </div>
-                    </div>
-                    <div class="col l6 m6 s12">
-                        <div style="background-color: #5c6bc0; color:white; text-align:center;">
-                           <i class="icon fa fa-eye"></i> Visión
-                        </div>
-                        <div>
-                            Nuestra visión es ser lideres en cuanto a la renta de automoviles a nivel nacional.<br>
-                            Brindar nuestros servicios de forma eficaz e inovar dia con dia para que nuestro cliente este satisfecho.
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col l12 m12 s12" id="automoviles" style="background-color: #5c6bc0; color:white; text-align: center;">Automoviles</div>
-                </div>
-                
-                    
-                 
+                    </div>        
+                </c:forEach>
             </div>
         </section>
         
         <%--PIE DE LA PAGINA--%>
         <section id="pie">
-            
             <div class="row">
                 <div class="col l12 m12 s12">
                     <footer class="page-footer" style="background-color:#5c6bc0; color:white;">
@@ -256,7 +191,6 @@
                                 <p>	
                                     <h5><b>Experiencia</b></h5>
                                     Promociones<br>
-                                    
                                 </p>
                             </div>
 
@@ -281,8 +215,6 @@
                                 </p>
                             </div>
                         </div>
-
-
                         <div class="footer-copyright">
                             <div class="container">
                                 <p style="text-align: center;"> © 2018 Copyright <b>PRESTAUTOS</b> </p>

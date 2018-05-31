@@ -1,5 +1,7 @@
 
 
+<%@page import="EntidadesADOO.Automovil"%>
+<%@page import="EntidadesADOO.Sucursal"%>
 <%@page import="EntidadesADOO.Proveedor"%>
 <%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -12,12 +14,20 @@
     InitialContext contexto = new InitialContext();
     servicio = (ServicioSucursalLocal)contexto.lookup("java:global/ProyectoADOO/ServicioSucursal!Modelos.ServicioSucursalLocal");
     Proveedor proveedor = (Proveedor)session.getAttribute("proveedor");
+    Sucursal sucursal = (Sucursal)session.getAttribute("sucursal");
+    String nombre = sucursal.getNombreSucursal();
     int idProveedor = proveedor.getIdProveedor();
+    int idSucursal = sucursal.getIdSucursal();
+    List<Sucursal> infoSucursal = servicio.getInfoDeSucursal(idSucursal);
     List<Proveedor> infoProveedor = servicio.getInfoProveedor(idProveedor);
+    List<Automovil> infoAutos = servicio.getAutosAsociadosASucursal(idSucursal,"Toyota");
     
 %>
 <c:set scope="page" var="infoProveedor" value="<%=infoProveedor%>"/>
 <c:set scope="page" var="idProveedor" value="<%=idProveedor%>"/>
+<c:set scope="page" var="infoSucursal" value="<%=infoSucursal%>"/>
+<c:set scope="page" var="infoAutos" value="<%=infoAutos%>"/>
+<c:set scope="page" var="nombre" value="<%=nombre%>"/>
 <html>
     <head>
         <!--Let browser know website is optimized for mobile-->
@@ -36,27 +46,25 @@
         <section id="encabezado">    
             <div class="container row">
                 <div class="col s12 m12 l12">
-                    <c:forEach items="${infoProveedor}" var="ip">
                     <nav class="nav-extended">
+                         <c:forEach items="${infoProveedor}" var="ip">
                         <div class="nav-wrapper" style="background-color:#5c6bc0; color:white;">
-                            
-                            <a class="brand-logo" style="margin-left: 20px;"><b>${ip[1]}</b></a>
-                            
+                            <a class="brand-logo" style="margin-left: 10px;">
+                                <h5><b><%=nombre%>:</b> ${ip[1]}</h5>
+                            </a>
                             <ul id="nav-mobile" class="right hide-on-med-and-down">
                                 <li><a href="salir.jsp">Salir</a></li>
                             </ul>
                         </div>
+                        </c:forEach>
                         <div class="nav-content" style="background-color:#5c6bc0; color:white;">
                             <ul class="tabs tabs-transparent">
-                                <li class="tab"><a class="active" href="#CHR">CHR</a></li>
-                                <li class="tab"><a class="active" href="#Hilux">Hilux</a></li>
-                                <li class="tab"><a class="active" href="#Land">Land</a></li>
-                                <li class="tab"><a class="active" href="#Prius">Prius</a></li>
-                                <li class="tab"><a class="active" href="#Rav4">Rav4</a></li>
+                                <c:forEach items="${infoAutos}" var="ia">
+                                <li class="tab"><a class="active" href="#${ia[1]}">${ia[1]}</a></li>
+                                </c:forEach>
                             </ul>
                         </div>
                     </nav>
-                    </c:forEach>
                 </div>
             </div>
         </section>
@@ -64,270 +72,112 @@
         <%--CONTENIDO DE LA PAGINA--%>
         <section id="contenidos">    
             <div class="container">
-                
-                <%----------------------------%>
-                <%-- IMAGENES DE AUTO CHR --%>
-                <%----------------------------%>
-                <div class="row" id="CHR">
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Toyota/CHR/chr1.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">C-HR<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>De tecnología híbrida y diseño anguloso, el nuevo Toyota C-HR es un crossover de menor tamaño que el RAV4 con una longitud de 4,36 metros.
-                                Por su tamaño, características, altura libre al suelo de 15 cm y longitud de 4360 mm, clasificamos el Toyota C-HR en la categoría de SUV compactos. 
-                                Compara el Toyota C-HR con otros híbridos de tamaño similar.</p>
-                          </div>
+                <%--------------------------------%>
+                <%-- IMAGENES DE LISTA DE AUTOS --%>
+                <%--------------------------------%>
+                <c:forEach items="${infoAutos}" var="ia">
+                    <div id="${ia[1]}">    
+                        <div class="row">
+                            <div class="col l14 m4 s12">
+                                <div class="card ">
+                                  <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="${ia[8]}">
+                                  </div>
+                                  <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">${ia[1]}<i class="material-icons right">more_vert</i></span>
+
+                                  </div>
+                                  <div class="card-reveal">
+                                    <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                                    <p>${ia[6]}</p>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="col l14 m4 s12">
+                                <div class="card " >
+                                  <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="${ia[9]}">
+                                  </div>
+                                  <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="col l14 m4 s12">
+                                <div class="card ">
+                                  <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="${ia[10]}">
+                                  </div>
+                                  <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
+
+                                  </div>
+                                  <div class="card-reveal">
+                                    <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                                    <p>${ia[7]}</p>
+                                  </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card " >
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Toyota/CHR/chr2.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
-                          </div>
+                        <div class="row">
+                            <div class="col l3 m3 s6">
+                                <div style="background-color: #5c6bc0; color:white; text-align:center;">
+                                    <c:if test="${ia[15] eq 'DISPONIBLE'}">
+                                        <i class="material-icons">event_available</i> <b>Estado Del Auto</b>
+                                    </c:if>
+                                    <c:if test="${ia[15] eq 'OCUPADO'}">
+                                        <i class="material-icons">event_busy</i> <b>Estado Del Auto</b>
+                                    </c:if>
+                                </div>
+                                <div style=" color:#5c6bc0; text-align:center;">
+                                   ${ia[15]}
+                                </div>
+                            </div>
+                            <div class="col l3 m3 s6">
+                                <div style="background-color: #5c6bc0; color:white; text-align:center;">
+                                    <i class="material-icons">filter_9_plus</i> <b>Tipo De Auto</b>
+                                </div>
+                                <div style=" color:#5c6bc0; text-align:center;">
+                                    ${ia[16]}
+                                </div>
+                            </div>
+                            <div class="col l3 m3 s6">
+                                <div style="background-color: #5c6bc0; color:white; text-align:center;">
+                                    <i class="material-icons">palette</i> <b>Color</b>
+                                </div>
+                                <div style=" color:#5c6bc0; text-align:center;">
+                                    ${ia[2]}
+                                </div>
+                            </div>
+                            <div class="col l3 m3 s6">
+                                <div style="background-color: #5c6bc0; color:white; text-align:center;">
+                                   <i class="material-icons">warning</i> <b>Kilometraje</b>
+                                </div>
+                                <div style=" color:#5c6bc0; text-align:center;">
+                                    ${ia[4]}
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Toyota/CHR/chr3.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>Espacio interior de 5 plazas.</p>
-                          </div>
+                        <div class="row">
+                            <div class="col l6 m6 s12">
+                                <div style="background-color: #5c6bc0; color:white; text-align:center;">
+                                    <i class="material-icons">call_to_action</i> <b>Matricula</b>
+                                </div>
+                                <div style=" color:#5c6bc0; text-align:center;">
+                                   ${ia[0]}
+                                </div>
+                            </div>
+                            <div class="col l6 m6 s12">
+                                <div style="background-color: #5c6bc0; color:white; text-align:center;">
+                                   <i class="material-icons">attach_money</i> <b>Precio Renta</b>
+                                </div>
+                                <div style=" color:#5c6bc0; text-align:center;">
+                                    ${ia[5]}
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                
-                <%----------------------------%>
-                <%-- IMAGENES DE AUTO HILUX --%>
-                <%----------------------------%>
-                <div class="row" id="Hilux">
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Toyota/Hilux/hilux1.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Hilux<i class="material-icons right">more_vert</i></span>
-                           
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>Disponible en tres carrocerías con la misma longitud total, el Toyota Hilux doble cabina 2016 ofrece 5 cómodas plazas
-                                con una tonelada de carga neta en plataforma y una distancia libre al suelo de hasta 29,3 cm. Por su zona de carga posterior,
-                                prestaciones, altura libre al suelo de 21 cm y longitud de 5330 mm, clasificamos el Toyota Hilux en la categoría de vehículos pick-up.</p>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card " >
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Toyota/Hilux/hilux2.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Toyota/Hilux/hilux3.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>Espacio interior de 5 plazas.</p>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <%----------------------------%>
-                <%-- IMAGENES DE AUTO LAND --%>
-                <%----------------------------%>
-                <div class="row" id="Land">
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Toyota/Land/land1.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Land Cruiser<i class="material-icons right">more_vert</i></span>
-                           
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>Disponible en 3 y 5 puertas con distinta longitud, el Toyota Land Cruiser 2018 combina calidad y fiabilidad 
-                                con un elevado rendimiento todoterreno y confort en carretera.
-                                Por su tamaño, características, altura libre al suelo de 21 cm y longitud de 4840 mm, clasificamos el 
-                                Toyota Land Cruiser 5p en la categoría de SUV grandes y todoterrenos.</p>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card " >
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Toyota/Land/land2.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Toyota/Land/land3.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>Espacio interior de 7 plazas.</p>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <%----------------------------%>
-                <%-- IMAGENES DE AUTO PRIUS --%>
-                <%----------------------------%>
-                <div class="row" id="Prius">
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Toyota/Prius/prius1.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">PRIUS<i class="material-icons right">more_vert</i></span>
-                           
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>Con un estilo deportivo y moderno, el Toyota Prius 2016 (híbrido ya en 1997) aumenta su longitud 6 centímetros y
-                                dispone de una nueva batería para su motor eléctrico que permite aumentar el tamaño de su maletero. 
-                                Por su tamaño exterior y longitud de 4540 mm, clasificamos el Toyota Prius en la categoría de berlinas medianas.
-                                Compara el Toyota Prius con otros híbridos de tamaño similar. El modelo híbrido enchufable recibe el nombre de Prius Plug-In.</p>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card " >
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Toyota/Prius/prius2.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Toyota/Prius/prius3.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>Espacio interior de 5 plazas.</p>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-                <%----------------------------%>
-                <%-- IMAGENES DE AUTO RAV4 --%>
-                <%----------------------------%>
-                <div class="row" id="Rav4">
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Toyota/RAV4/rav41.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">RAV4<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>Con una imagen más moderna y dinámica, el Toyota RAV4 2016 aumenta su longitud 4 centímetros hasta los 4,6 
-                                metros para este SUV con más de 20 años de historia. Por su tamaño, características, altura libre al suelo 
-                                de 18 cm y longitud de 4605 mm, clasificamos el Toyota RAV4 en la categoría de SUV medianos. 
-                                El modelo híbrido recibe el nombre de RAV4 hybrid.</p>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card " >
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Toyota/RAV4/rav42.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Toyota/RAV4/rav43.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>Espacio interior de 5 plazas.</p>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <c:forEach items="${infoProveedor}" var="ip">
-                    <div id="idObjetivos" class="col l6 m6 s12">
-                        <div style="background-color: #5c6bc0; color:white; text-align:center;">
-                           <i class="material-icons">call</i> Teléfono
-                           
-                        </div>
-                        <div style=" color:#5c6bc0; text-align:center;">
-                           ${ip[3]}
-                        </div>
-                    </div>
-                    <div class="col l6 m6 s12">
-                        <div style="background-color: #5c6bc0; color:white; text-align:center;">
-                           <i class="material-icons">email</i> Email
-                        </div>
-                        <div style=" color:#5c6bc0; text-align:center;">
-                            ${ip[2]}
-                        </div>
-                    </div>
-                    </c:forEach>
-                </div>
+                    </div>        
+                </c:forEach>
             </div>
         </section>
         

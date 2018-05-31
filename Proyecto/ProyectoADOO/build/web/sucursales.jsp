@@ -111,7 +111,7 @@
                 <div class="row">
                     <div id="idObjetivos" class="col l6 m6 s12">
                         <div style="background-color: #5c6bc0; color:white; text-align:center;">
-                           <i class="icon fa fa-medapps"></i> Misión
+                           <i class="material-icons">trending_flat</i> <b>Misión</b>
                         </div>
                         <div>
                             La misión del negocio es tener los mejores servicion en cuanto a la renta de automoviles, asi como brindar 
@@ -120,7 +120,7 @@
                     </div>
                     <div class="col l6 m6 s12">
                         <div style="background-color: #5c6bc0; color:white; text-align:center;">
-                           <i class="icon fa fa-eye"></i> Visión
+                           <i class="material-icons">trending_up</i> <b>Visión</b>
                         </div>
                         <div>
                             Nuestra visión es ser lideres en cuanto a la renta de automoviles a nivel nacional.<br>

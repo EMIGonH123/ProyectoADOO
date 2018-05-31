@@ -28,7 +28,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Automovil.findByNombreAuto", query = "SELECT a FROM Automovil a WHERE a.nombreAuto = :nombreAuto")
     , @NamedQuery(name = "Automovil.findByColorAuto", query = "SELECT a FROM Automovil a WHERE a.colorAuto = :colorAuto")
     , @NamedQuery(name = "Automovil.findByModeloAuto", query = "SELECT a FROM Automovil a WHERE a.modeloAuto = :modeloAuto")
-    , @NamedQuery(name = "Automovil.findByCapacidadAuto", query = "SELECT a FROM Automovil a WHERE a.capacidadAuto = :capacidadAuto")
     , @NamedQuery(name = "Automovil.findByKilometrajeAuto", query = "SELECT a FROM Automovil a WHERE a.kilometrajeAuto = :kilometrajeAuto")
     , @NamedQuery(name = "Automovil.findByPrecioAuto", query = "SELECT a FROM Automovil a WHERE a.precioAuto = :precioAuto")
     , @NamedQuery(name = "Automovil.findByDescripcion", query = "SELECT a FROM Automovil a WHERE a.descripcion = :descripcion")
@@ -53,8 +52,6 @@ public class Automovil implements Serializable {
     private String colorAuto;
     @Column(name = "modeloAuto")
     private Integer modeloAuto;
-    @Column(name = "capacidadAuto")
-    private Integer capacidadAuto;
     @Column(name = "kilometrajeAuto")
     private Integer kilometrajeAuto;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -128,14 +125,6 @@ public class Automovil implements Serializable {
 
     public void setModeloAuto(Integer modeloAuto) {
         this.modeloAuto = modeloAuto;
-    }
-
-    public Integer getCapacidadAuto() {
-        return capacidadAuto;
-    }
-
-    public void setCapacidadAuto(Integer capacidadAuto) {
-        this.capacidadAuto = capacidadAuto;
     }
 
     public Integer getKilometrajeAuto() {

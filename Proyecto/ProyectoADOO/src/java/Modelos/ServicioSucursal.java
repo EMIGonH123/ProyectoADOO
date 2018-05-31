@@ -31,7 +31,9 @@ public class ServicioSucursal implements ServicioSucursalLocal {
 
     @Override
     public List<Automovil> getAutosAsociadosASucursal(int idSucursal, String marca) {
-        String sql = "SELECT * FROM Automovil WHERE idSucursal = "+idSucursal+
+        String sql = "SELECT a.*, ea.estadoAuto, ta.tipoAuto "
+                + " FROM Automovil a, Estadoauto ea, Tipoauto ta "
+                + " WHERE ea.idEstado = a.idEstado  AND a.idTipo = ta.idTipo AND idSucursal = "+idSucursal+
                 " AND idMarca = (SELECT idMarca FROM Automovilmarca WHERE nomMarca = '"+marca+"')";
         return em.createNativeQuery(sql).getResultList();
     }

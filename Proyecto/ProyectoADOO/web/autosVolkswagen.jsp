@@ -1,5 +1,5 @@
-
-
+<%@page import="EntidadesADOO.Automovil"%>
+<%@page import="EntidadesADOO.Sucursal"%>
 <%@page import="EntidadesADOO.Proveedor"%>
 <%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -12,12 +12,20 @@
     InitialContext contexto = new InitialContext();
     servicio = (ServicioSucursalLocal)contexto.lookup("java:global/ProyectoADOO/ServicioSucursal!Modelos.ServicioSucursalLocal");
     Proveedor proveedor = (Proveedor)session.getAttribute("proveedor");
+    Sucursal sucursal = (Sucursal)session.getAttribute("sucursal");
+    String nombre = sucursal.getNombreSucursal();
     int idProveedor = proveedor.getIdProveedor();
+    int idSucursal = sucursal.getIdSucursal();
+    List<Sucursal> infoSucursal = servicio.getInfoDeSucursal(idSucursal);
     List<Proveedor> infoProveedor = servicio.getInfoProveedor(idProveedor);
+    List<Automovil> infoAutos = servicio.getAutosAsociadosASucursal(idSucursal,"Volkswagen");
     
 %>
 <c:set scope="page" var="infoProveedor" value="<%=infoProveedor%>"/>
 <c:set scope="page" var="idProveedor" value="<%=idProveedor%>"/>
+<c:set scope="page" var="infoSucursal" value="<%=infoSucursal%>"/>
+<c:set scope="page" var="infoAutos" value="<%=infoAutos%>"/>
+<c:set scope="page" var="nombre" value="<%=nombre%>"/>
 <html>
     <head>
         <!--Let browser know website is optimized for mobile-->
@@ -25,7 +33,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
         <link rel="stylesheet" type="text/css" href="fontAwesome/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <title>AutomovilesSucursal</title>
+        <title>AutosVolkswagen</title>
     </head>
     <body>
         <!--JavaScript at end of body for optimized loading-->
@@ -36,29 +44,25 @@
         <section id="encabezado">    
             <div class="container row">
                 <div class="col s12 m12 l12">
-                    <c:forEach items="${infoProveedor}" var="ip">
                     <nav class="nav-extended">
+                         <c:forEach items="${infoProveedor}" var="ip">
                         <div class="nav-wrapper" style="background-color:#5c6bc0; color:white;">
-                            
-                            <a class="brand-logo" style="margin-left: 20px;"><b>${ip[1]}</b></a>
-                            
+                            <a class="brand-logo" style="margin-left: 10px;">
+                                <h5><b><%=nombre%>:</b> ${ip[1]}</h5>
+                            </a>
                             <ul id="nav-mobile" class="right hide-on-med-and-down">
                                 <li><a href="salir.jsp">Salir</a></li>
                             </ul>
                         </div>
+                        </c:forEach>
                         <div class="nav-content" style="background-color:#5c6bc0; color:white;">
                             <ul class="tabs tabs-transparent">
-                                    <li class="tab"><a class="active" href="#Jetta">Jetta</a></li>
-                                    <li class="tab"><a class="active" href="#Golf">Golf</a></li>
-                                    <li class="tab"><a class="active" href="#Passat">Passat</a></li>
-                                    <li class="tab"><a class="active" href="#Polo">Polo</a></li>
-                                    <li class="tab"><a class="active" href="#Beetle">Beetle</a></li>
-                                    <li class="tab"><a class="active" href="#Scirocco">Scirocco</a></li>
-                                    <li class="tab"><a class="active" href="#Touran">Touran</a></li>
+                                <c:forEach items="${infoAutos}" var="ia">
+                                <li class="tab"><a class="active" href="#${ia[1]}">${ia[1]}</a></li>
+                                </c:forEach>
                             </ul>
                         </div>
                     </nav>
-                    </c:forEach>
                 </div>
             </div>
         </section>
@@ -66,366 +70,112 @@
         <%--CONTENIDO DE LA PAGINA--%>
         <section id="contenidos">    
             <div class="container">
-                <div class="row" id="Jetta">
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volkswagen/Jetta/jetta1.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">JETTA<i class="material-icons right">more_vert</i></span>
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Informacion </span>
-                            <p>El Volkswagen Jetta 2015 es una berlina de proporciones equilibradas con una imagen elegante y deportiva.
-                                    Por su tamaño exterior y longitud de 4659 mm, clasificamos el Volkswagen Jetta en la categoría de berlinas 
-                            </p>
-                          </div>
+                <%--------------------------------%>
+                <%-- IMAGENES DE LISTA DE AUTOS --%>
+                <%--------------------------------%>
+                <c:forEach items="${infoAutos}" var="ia">
+                    <div id="${ia[1]}">    
+                        <div class="row">
+                            <div class="col l14 m4 s12">
+                                <div class="card ">
+                                  <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="${ia[8]}">
+                                  </div>
+                                  <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">${ia[1]}<i class="material-icons right">more_vert</i></span>
+
+                                  </div>
+                                  <div class="card-reveal">
+                                    <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                                    <p>${ia[6]}</p>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="col l14 m4 s12">
+                                <div class="card " >
+                                  <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="${ia[9]}">
+                                  </div>
+                                  <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="col l14 m4 s12">
+                                <div class="card ">
+                                  <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="${ia[10]}">
+                                  </div>
+                                  <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
+
+                                  </div>
+                                  <div class="card-reveal">
+                                    <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
+                                    <p>${ia[7]}</p>
+                                  </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card " >
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volkswagen/Jetta/jetta2.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Salpicadero.<i class="material-icons right">more_vert</i></span>
-                          </div>
+                        <div class="row">
+                            <div class="col l3 m3 s6">
+                                <div style="background-color: #5c6bc0; color:white; text-align:center;">
+                                    <c:if test="${ia[15] eq 'DISPONIBLE'}">
+                                        <i class="material-icons">event_available</i> <b>Estado Del Auto</b>
+                                    </c:if>
+                                    <c:if test="${ia[15] eq 'OCUPADO'}">
+                                        <i class="material-icons">event_busy</i> <b>Estado Del Auto</b>
+                                    </c:if>
+                                </div>
+                                <div style=" color:#5c6bc0; text-align:center;">
+                                   ${ia[15]}
+                                </div>
+                            </div>
+                            <div class="col l3 m3 s6">
+                                <div style="background-color: #5c6bc0; color:white; text-align:center;">
+                                    <i class="material-icons">filter_9_plus</i> <b>Tipo De Auto</b>
+                                </div>
+                                <div style=" color:#5c6bc0; text-align:center;">
+                                    ${ia[16]}
+                                </div>
+                            </div>
+                            <div class="col l3 m3 s6">
+                                <div style="background-color: #5c6bc0; color:white; text-align:center;">
+                                    <i class="material-icons">palette</i> <b>Color</b>
+                                </div>
+                                <div style=" color:#5c6bc0; text-align:center;">
+                                    ${ia[2]}
+                                </div>
+                            </div>
+                            <div class="col l3 m3 s6">
+                                <div style="background-color: #5c6bc0; color:white; text-align:center;">
+                                   <i class="material-icons">warning</i> <b>Kilometraje</b>
+                                </div>
+                                <div style=" color:#5c6bc0; text-align:center;">
+                                    ${ia[4]}
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volkswagen/Jetta/jetta3.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Informacion </span>
-                            <p> Espacio interior de 5 plazas
-                            </p>
-                          </div>
+                        <div class="row">
+                            <div class="col l6 m6 s12">
+                                <div style="background-color: #5c6bc0; color:white; text-align:center;">
+                                    <i class="material-icons">call_to_action</i> <b>Matricula</b>
+                                </div>
+                                <div style=" color:#5c6bc0; text-align:center;">
+                                   ${ia[0]}
+                                </div>
+                            </div>
+                            <div class="col l6 m6 s12">
+                                <div style="background-color: #5c6bc0; color:white; text-align:center;">
+                                   <i class="material-icons">attach_money</i> <b>Precio Renta</b>
+                                </div>
+                                <div style=" color:#5c6bc0; text-align:center;">
+                                    ${ia[5]}
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                
-                <%-------------------------%>
-                <%--IMAGENES DE AUTO GOLF--%>
-                <%-------------------------%>
-                <div class="row" id="Golf">
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volkswagen/Golf/golf1.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">GOLF<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>Con tecnología de última generación, el Volkswagen Golf se renueva en 2017 manteniendo sus medidas exteriores.
-                                Por su tamaño exterior y longitud de 4258 mm, clasificamos el Volkswagen Golf en la categoría de coches compactos.
-                                El modelo híbrido enchufable recibe el nombre de Golf GTE. El modelo eléctrico recibe el nombre de e-Golf.</p>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volkswagen/Golf/golf2.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volkswagen/Golf/golf3.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>Espacio interior de 5 plazas.</p>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <%-----------------------------%>
-                <%--IMAGENES DE AUTO BEEATLE --%>
-                <%-----------------------------%>
-                <div class="row" id="Beetle">
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volkswagen/Beeatle/beetle1.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">BEETLE<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>Volkswagen renueva el Beetle en 2016 con similares medidas exteriores y un nuevo frontal.
-                                Por su tamaño exterior y longitud de 4288 mm, clasificamos el Volkswagen Beetle en la categoría de coches compactos.</p>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volkswagen/Beeatle/beetle2.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volkswagen/Beeatle/beetle3.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>Espacio interior de 4 plazas.</p>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                <%----------------------------%>
-                <%--IMAGENES DE AUTO PASSAT --%>
-                <%----------------------------%>
-                <div class="row" id="Passat">
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volkswagen/Passat/passat1.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">PASSAT<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>De aspecto impresionante y silueta larga con líneas limpias y elegantes, el Volkswagen Passat 2015 tiene una longitud de 4,77 metros.
-                                Por su tamaño exterior y longitud de 4767 mm, clasificamos el Volkswagen Passat en la categoría de berlinas grandes. 
-                                El modelo híbrido enchufable recibe el nombre de Passat GTE.</p>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volkswagen/Passat/passat2.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volkswagen/Passat/passat3.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>Espacio interior de 5 plazas.</p>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                <%--------------------------%>
-                <%--IMAGENES DE AUTO POLO --%>
-                <%--------------------------%>
-                <div class="row" id="Polo">
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volkswagen/Polo/polo1.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">POLO<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>La sexta generación del Volkswagen Polo es 8 centímetros más larga, 7 centímetros más ancha y tiene un maletero de mayor capacidad.
-                                Por su tamaño exterior y longitud de 4053 mm, clasificamos el Volkswagen Polo en la categoría de coches utilitarios.</p>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volkswagen/Polo/polo2.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volkswagen/Polo/polo3.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>Espacio interior de 5 plazas.</p>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                <%------------------------------%>
-                <%--IMAGENES DE AUTO Scirocco --%>
-                <%------------------------------%>
-                <div class="row" id="Scirocco">
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volkswagen/Sciroco/scirocco1.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">SCIROCCO<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>La silueta dinámica con ambiciones deportivas del Volkswagen Scirocco 2014 es 1 cm más bajo y 1 cm más ancho.
-                                Por su mecánica de altas prestaciones y altura de 1398 mm, clasificamos el Volkswagen Scirocco en la categoría de coches deportivos.</p>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volkswagen/Sciroco/scirocco2.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volkswagen/Sciroco/scirocco3.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>Espacio interior de 4 plazas.</p>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                <%----------------------------%>
-                <%--IMAGENES DE AUTO Touran --%>
-                <%----------------------------%>
-                <div class="row" id="Touran">
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volkswagen/Touran/touran1.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">TOURAN<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>El Volkswagen Touran 2016 combina las dimensiones compactas que requiere la conducción urbana con un habitáculo confortable y modulable para hasta 7 plazas.
-                                Por su flexibilidad interior, optimización del espacio y altura de 1659 mm, clasificamos el Volkswagen Touran en la categoría de monovolúmenes.</p>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card ">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volkswagen/Touran/touran2.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Salpicadera<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col l14 m4 s12">
-                        <div class="card">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Images/Sucursal/Marcas/Volkswagen/Touran/touran3.png">
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Espacio interior<i class="material-icons right">more_vert</i></span>
-                            
-                          </div>
-                          <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Información</span>
-                            <p>Espacio interior de hasta 7 plazas.</p>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <c:forEach items="${infoProveedor}" var="ip">
-                    <div id="idObjetivos" class="col l6 m6 s12">
-                        <div style="background-color: #5c6bc0; color:white; text-align:center;">
-                           <i class="material-icons">call</i> Teléfono
-                           
-                        </div>
-                        <div style=" color:#5c6bc0; text-align:center;">
-                           ${ip[3]}
-                        </div>
-                    </div>
-                    <div class="col l6 m6 s12">
-                        <div style="background-color: #5c6bc0; color:white; text-align:center;">
-                           <i class="material-icons">email</i> Email
-                        </div>
-                        <div style=" color:#5c6bc0; text-align:center;">
-                            ${ip[2]}
-                        </div>
-                    </div>
-                    </c:forEach>
-                </div>
+                    </div>        
+                </c:forEach>
             </div>
         </section>
         
