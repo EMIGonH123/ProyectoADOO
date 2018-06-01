@@ -1,4 +1,5 @@
 
+<%@page import="EntidadesADOO.Empleadorenta"%>
 <%@page import="Modelos.ServicioClienteLocal"%>
 <%@page import="EntidadesADOO.Clienterenta"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -12,8 +13,12 @@
     Clienterenta cliente = (Clienterenta)session.getAttribute("cliente");
     int idCliente = cliente.getIdCliente();
     List<Clienterenta> infoCliente = servicio.getInfoCliente(idCliente);
+    List<Object> infoRentas = servicio.getInfoRentasCliente(idCliente);
+    List<Empleadorenta> infoEmpleado = servicio.getInfoEmpleado(cliente.getIdEmpleado());
 %>
 <c:set scope="page" var="infoCliente" value="<%=infoCliente%>" />
+<c:set scope="page" var="infoRentas" value="<%=infoRentas%>" />
+<c:set scope="page" var="infoEmpleado" value="<%=infoEmpleado%>" />
 <!DOCTYPE html>
 <html>
     <head>
@@ -35,11 +40,19 @@
         <section id="encabezado">
             <div class="container" >
                 <div class="row">
-                    <nav>
+                    <nav class="nav-extended">
                         <div class="nav-wrapper" style="background-color: #ff5722; color:white;">
-                            <a class="brand-logo" style="margin-left: 20px;"><b>Cliente ${cliente.nombreCliente}</b></a>
-                            <ul class="right hide-on-med-and-down">
-                               <li><a href="salir.jsp">Salir</a></li>
+                            <c:forEach items="${infoCliente}" var="ic">
+                                <a class="brand-logo" style="margin-left: 20px;"><b>Cliente ${ic[2]}</b></a>
+                                <ul class="right hide-on-med-and-down">
+                                   <li><a href="salir.jsp">Salir</a></li>
+                                </ul>
+                            </c:forEach>
+                        </div>
+                        <div class="nav-content" style="background-color:#ff5722; color:white;">
+                            <ul class="tabs tabs-transparent">
+                                <li class="tab"><a class="active" href="#rentas">Rentas</a></li>
+                                <li class="tab"><a href="#transacciones">Transacciones</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -51,12 +64,68 @@
         <section id="contenidos">
             <div class="container" >
                 <div class="row">
-                    <div class="col s12 m4 l4">
-                        <h5 style="text-align:center; color:greenyellow;"><b>Rentas</b></h5>
-                        
+                    <div id="rentas">
+                        <div class="col s12 m8 l8">
+                            <div style="background-color: #ff5722; color:white; text-align:center;">
+                                   <i class="material-icons">drive_eta</i> <b>Autos Rentados</b>
+                            </div>
+
+                            <div class="slider">
+                                <ul class="slides">
+                                    <c:forEach items="${infoRentas}" var="ir">                                
+                                        <li>
+                                            <img class="responsive-img" src="${ir[21]}">
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+                            </div>
+                            <ul class="collapsible" data-collapsible="accordion">
+                                <c:forEach items="${infoRentas}" var="ir">
+                                     
+                                    <li>
+                                        <div class="collapsible-header">
+                                            <i class="material-icons">
+                                                add_shopping_cart
+                                            </i>
+                                            ${ir[16]} 
+
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <span>
+                                                <b style="color:#ff5722;">Descripción: </b>${ir[3]}<br>
+                                                <b style="color:#ff5722;">Fecha Inicio: </b>${ir[4]}<br>
+                                                <b style="color:#ff5722;">Fecha Fin: </b>${ir[5]}<br>
+                                                <b style="color:#ff5722;">Unidades: </b>${ir[7]}<br>
+                                                <c:if test="${ir[8] eq 1}">
+                                                    <b style="color:#ff5722;">Pago: </b>Efectivo<br>
+                                                </c:if>
+                                                <c:if test="${ir[8] eq 2}">
+                                                    <b style="color:#ff5722;">Pago: </b>Tarjeta<br>
+                                                </c:if>
+                                                <b style="color:#ff5722;">Sucursal: </b>${ir[10]}<br>
+                                                <b style="color:#ff5722;">Automovil: </b>${ir[16]}<br>
+                                                <b style="color:#ff5722;">Color: </b>${ir[17]}<br>
+                                                <b style="color:#ff5722;">Modelo: </b>${ir[18]}<br>
+                                                <b style="color:#ff5722;">Tipo: </b>${ir[22]}<br>
+                                                <b style="color:#ff5722;">Marca: </b>${ir[23]}<br>
+                                                <b style="color:#ff5722;">Precio: </b>${ir[20]}<br>
+                                                <b style="color:#ff5722;">Kilometraje: </b>${ir[19]}<br><br>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="transacciones">
+                        <div class="col s12 m8 l8">
+                            <div style="background-color: #ff5722; color:white; text-align:center;">
+                                   <i class="material-icons">featured_play_list</i> <b>Transacciones</b>
+                            </div>
+                        </div>
                     </div>
                     <div class="col s12 m4 l4">
-                        <h5 style="text-align:center; color:greenyellow;"><b>Información</b></h5>
+                        <h5 style="text-align:center; color:#ff5722;"><b>Información</b></h5>
                         <c:forEach items="${infoCliente}" var="ic">
                             <div class="card small">
                                 <c:if test="${ic[16] == 'M'}">
@@ -69,24 +138,7 @@
                                         <img class="activator responsive-img" src="Images/General/usuario02.png">
                                     </div>
                                 </c:if>
-                                <div class="card-content">
-                                    <span class="card-title activator grey-text text-darken-4">
-                                        Mas Información
-                                        <i class="material-icons small"></i>
-                                    </span>
-                                    <p><a href="#" style="color:greenyellow"><b>Perfil Propio</b></a></p>
-                                </div>
 
-                                <div class="card-reveal">
-                                    <span class="card-title grey-text text-darken-4">
-                                        <p style="color:greenyellow;">Datos</p>
-                                        <i class="material-icons small"></i>
-                                    </span>
-                                    <p>
-                                        Here is some more information about this 
-                                        product that is only revealed once clicked on.
-                                    </p>
-                                </div>
                             </div>
                         </c:forEach>
                         <ul class="collapsible" data-collapsible="accordion">
@@ -140,30 +192,7 @@
                         </c:forEach>
                         </ul>
                     </div>
-                    <div class="col s12 m4 l4">
-                        <h5 style="text-align:center; color:greenyellow;"><b>Transacciones</b></h5>
-                        <ul class="collapsible" data-collapsible="accordion">
-                            <%--<c:forEach items="${infoTransaccion}" var="it">
-                                <li>
-                                    <div class="collapsible-header"><i class="material-icons">account_circle</i>#Transacción ${it[0]}</div>
-                                    <div class="collapsible-body">
-                                        <span>
-                                            <b style="color: greenyellow;">Máximo Prestamo: </b>${it[1]}<br>
-                                            <b style="color: greenyellow;">Saldo: </b>${it[2]}<br>
-                                            <b style="color: greenyellow;">Cuenta: </b>${it[3]}<br>
-                                            <b style="color: greenyellow;">Monto: </b>${it[4]}<br>
-                                            <b style="color: greenyellow;">Fecha: </b>${it[5]}<br>
-                                            <b style="color: greenyellow;">STT: </b>${it[6]}<br>
-                                            <b style="color: greenyellow;">Tipo: </b>${it[7]}<br>
-                                            <b style="color: greenyellow;">Interes: </b>${it[8]}<br>
-                                            <b style="color: greenyellow;">Tipo: </b>${it[9]}<br>
-                                            <b style="color: greenyellow;">Nombre: </b>${it[10]}<br>
-                                        </span>
-                                    </div>
-                                </li>
-                            </c:forEach>--%>
-                        </ul>
-                    </div>
+                    
                 </div>
             </div>
         </section>
@@ -278,7 +307,7 @@
                     
                     
                     <footer class="page-footer" style="background-color: #ff5722; color:white;">
-                        <div class="container row" style="background-image:url(Images/General/pie.jpg); " >
+                        <div class="container row">
                             <div class="col l4 m6 s12" id="contorno" >
                                 <p>	
                                     <h5><b>Enlaces</b></h5>
@@ -308,9 +337,16 @@
                             <div class="col l4 m12 s12"  id="contorno">
                                 <p>
                                     <h5>CONTACTO</h5>
-                                    Mesa de ayuda: dudas e información <br><br>
-                                    <em>gobmx@funcionpublica.gob.mx</em><br><br>
-                                    <i>Denuncia contra servidores públicos</i> <br>
+                                    Dudas e información <br><br>
+                                    <c:forEach items="${infoEmpleado}" var="ie">
+                                        <b>${ie[1]} ${ie[2]} ${ie[3]} </b><br>
+                                        <i class="material-icons">call</i> ${ie[11]}<br>
+                                        <i class="material-icons">email</i> ${ie[12]}<br>
+                                        <i class="material-icons">my_location</i> ${ie[4]}<br>
+                                        
+                                    </c:forEach>
+                                    
+                                    
                                 </p>
                             </div>
                         </div>

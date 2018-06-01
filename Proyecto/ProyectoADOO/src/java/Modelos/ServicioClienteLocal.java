@@ -11,5 +11,6 @@ public interface ServicioClienteLocal {
                                         int noExterior, int noInterior, int cp, String tel, String email, String pass);
     public List<Clienterenta> getInfoCliente(int idCliente);
     public Clienterenta buscarCliente(int idCliente);
-
+    public List<Object> getInfoRentasCliente(int idCliente);
+    public List<Empleadorenta> getInfoEmpleado(int idEmpleado);
 }

@@ -30,6 +30,9 @@ public class ControlSesiones extends HttpServlet {
             case "visitarSucursal":
                 inicioSesionSucursal(request, response);
             break;
+            case "verClienteDesdeCrud":
+                inicioSesionCliente(request, response);
+            break;
             //
         }
     }

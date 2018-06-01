@@ -376,8 +376,8 @@
                         </div>
                         <div class="nav-content" style="background-color:#00E676; color:white;">
                             <ul class="tabs tabs-transparent">
-                                <li class="tab"><a class="active" href="#cuentas">Cuentas</a></li>
                                 <li class="tab"><a class="active" href="#rentas">Rentas</a></li>
+                                <li class="tab"><a href="#cuentas">Cuentas</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -404,19 +404,9 @@
                                 </c:if>
                                 <div class="card-content">
                                     <span class="card-title activator grey-text text-darken-4">
-                                        Más información
-                                        <i class="material-icons small"></i>
+                                        ${ic[2]}
                                     </span>
-                                </div>
-
-                                <div class="card-reveal">
-                                    <span class="card-title grey-text text-darken-4">
-                                        <p style="color:greenyellow;">Datos</p>
-                                        <i class="material-icons small"></i>
-                                    </span>
-                                    <p>
-                                        <%----%>
-                                    </p>
+                                    <p><a href="ControlSesiones.do?btnControlador=verClienteDesdeCrud&idCliente=${ic[0]}&pass=${ic[15]}">Perfil propio</a></p>
                                 </div>
                             </div>
                         </c:forEach>
@@ -522,10 +512,14 @@
                             <div style="background-color: #00E676; color:white; text-align:center;">
                                <i class="material-icons">attach_money</i> <b>Rentas</b>
                             </div>
-                            <div class="carousel">
-                                <c:forEach items="${infoRentas}" var="ir">
-                                    <a class="carousel-item"><img src="${ir[21]}"></a>
-                                </c:forEach>
+                            <div class="slider">
+                                <ul class="slides">
+                                    <c:forEach items="${infoRentas}" var="ir">                                
+                                        <li>
+                                            <img class="responsive-img" src="${ir[21]}">
+                                        </li>
+                                    </c:forEach>
+                                </ul>
                             </div>
                             <ul class="collapsible" data-collapsible="accordion">
                                 <c:forEach items="${infoRentas}" var="ir">

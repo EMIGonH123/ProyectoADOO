@@ -49,4 +49,23 @@ public class ServicioCliente implements ServicioClienteLocal {
         String sql = "SELECT * FROM Clienterenta  WHERE idCliente = "+idCliente;
         return (List<Clienterenta>)em.createNativeQuery(sql).getResultList();
     }
+    
+    @Override
+    public List<Empleadorenta> getInfoEmpleado(int idEmpleado){
+        String sql = "SELECT * FROM Empleadorenta  WHERE idEmpleado = "+idEmpleado;
+        return (List<Empleadorenta>)em.createNativeQuery(sql).getResultList();
+    }
+    
+    @Override
+    public List<Object> getInfoRentasCliente(int idCliente){
+        String sql = "SELECT r.*, s.*, a.nombreAuto, a.colorAuto, a.modeloAuto, a.kilometrajeAuto,"
+                + " a.precioAuto, a.rutaAuto, ta.tipoAuto, am.nomMarca "
+                + " FROM Renta r, Automovil a, Tipoauto ta, Automovilmarca am, Sucursal s"
+                + " WHERE a.idSucursal = s.idSucursal AND "
+                + " a.idMarca = am.idMarca AND "
+                + " a.idTipo = ta.idTipo AND "
+                + " r.matricula = a.matriculaAuto AND "
+                + " r.idCliente = "+idCliente;
+        return em.createNativeQuery(sql).getResultList();
+    }
 }

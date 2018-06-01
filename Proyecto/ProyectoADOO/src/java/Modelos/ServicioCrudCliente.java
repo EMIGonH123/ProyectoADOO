@@ -64,7 +64,7 @@ public class ServicioCrudCliente implements ServicioCrudClienteLocal {
         String sql = "SELECT a.* FROM Automovil a, Empleadorenta e, SucursalPersona sp,"
                 + " Sucursal s"
                 + " WHERE e.idEmpleado = sp.idEmpleado AND sp.idSucursal = s.idSucursal "
-                + " AND s.idSucursal = a.idSucursal AND e.idEmpleado = "+idEmpleado;
+                + " AND s.idSucursal = a.idSucursal AND a.idEstado = 2 AND e.idEmpleado = "+idEmpleado;
         return em.createNativeQuery(sql).getResultList();
     }
     

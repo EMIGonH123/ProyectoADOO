@@ -222,7 +222,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <!--Aqui empieza el pie de la pagina principal-->\n");
       out.write("        <section id=\"pie\">\n");
       out.write("            <footer class=\"page-footer\" style=\"background-color: #022f42; color:white;\">\n");
-      out.write("                <div class=\"container row\" style=\"background-image:url(Images/General/pie.jpg); \" >\n");
+      out.write("                <div class=\"container row\">\n");
       out.write("                    <div class=\"col l4 m6 s12\" id=\"contorno\" >\n");
       out.write("                        <p>\t\n");
       out.write("                            <h5><b>Enlaces</b></h5>\n");
