@@ -1,0 +1,43 @@
+package GUI;
+
+import java.awt.event.ActionListener;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import javax.swing.JFrame;
+
+public class Share extends JFrame implements ActionListener {
+
+	private static final long serialVersionUID = 1L;
+
+	public Share ( ) { 
+		
+	} // End constructor.
+	
+	public void init ( ) {
+		
+		initializeComponents ( );
+		setDefaultCloseOperation ( JFrame.DISPOSE_ON_CLOSE );
+		this.getContentPane ( ).setBackground ( Color.WHITE );
+		setLocationRelativeTo ( null );
+		setTitle ( "Upload File" );
+		setSize ( 500, 240 );
+		setLayout ( null );
+		setAlwaysOnTop ( true );
+		components ( );
+		
+	} // End method.
+	
+	private void initializeComponents (  ) {
+		
+	} // End method.
+	
+	private void components ( ) {
+		
+	} // End method.
+
+	@Override
+	public void actionPerformed ( ActionEvent e ) {
+		
+	} // End actionPerformed. 
+	
+} // End class.

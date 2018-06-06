@@ -1,0 +1,29 @@
+package Sockets;
+
+import java.net.*;
+
+public class DSocket {
+
+	private DatagramSocket ds;
+	private int port;
+	
+	public DSocket ( int port ) {
+		
+		this.port = port;
+		
+	} // End constructor.
+	
+	public void setSocket ( ) throws SocketException {
+		this.ds = new DatagramSocket ( this.port );
+		System.out.println ( "\n\tDatagram service initialized: " + this.ds.getInetAddress ( ).getHostAddress ( ) + ":" + this.ds.getLocalPort ( ) + "." );
+	} // End method.
+	
+	public DatagramSocket getSocket ( ) {
+		return this.ds;
+	} // End getter.
+	
+	public int getPort ( ) {
+		return this.port;
+	} // End getter.
+	
+} // End class.

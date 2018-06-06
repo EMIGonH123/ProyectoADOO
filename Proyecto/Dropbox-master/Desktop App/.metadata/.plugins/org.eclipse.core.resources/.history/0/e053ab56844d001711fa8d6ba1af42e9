@@ -1,0 +1,102 @@
+package GUI;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Image;
+
+public class StoreType extends JFrame implements ActionListener {
+
+	private static final long serialVersionUID = 1L;
+	private JLabel privateFileLabel;
+	private JLabel sharedFileLabel;
+	private ImageIcon privateIcon;
+	private ImageIcon sharedIcon;
+	private JButton privateFile;
+	private JButton sharedFile;
+	private Image privateImage;
+	private Image sharedImage;
+	private JLabel message;
+	
+	public StoreType ( ) { }
+	
+	public void init ( ) {
+		
+		initializeComponents ( );
+		setDefaultCloseOperation ( JFrame.DISPOSE_ON_CLOSE );
+		this.getContentPane ( ).setBackground ( Color.WHITE );
+		setLocationRelativeTo ( null );
+		setTitle ( "Upload File" );
+		setSize ( 500, 220 );
+		setLayout ( null );
+		setAlwaysOnTop ( true );
+		components ( );
+		
+	} // End method.
+	
+	private void initializeComponents ( ) {
+		
+		message = new JLabel ( "Upload your documents from your system and share \nthem with family and friends." );
+		privateIcon = new ImageIcon ( getClass ( ).getResource ( "/GUI/Icons/FileType/Private.png" ) );
+		sharedIcon = new ImageIcon ( getClass ( ).getResource ( "/GUI/Icons/FileType/Shared.png" ) );
+		privateFileLabel = new JLabel ( "Store in your personal Dropbox folder." );
+		sharedFileLabel = new JLabel ( "Share this file with friends." );
+		privateImage = privateIcon.getImage ( );
+		sharedImage = sharedIcon.getImage ( );
+		privateFile = new JButton ( "Private" );
+		sharedFile = new JButton ( "Share" );
+		
+	} // End method.
+	
+	private void components ( ) {
+		
+		// ImageIcons.
+		privateIcon = new ImageIcon ( privateImage.getScaledInstance ( 70, 80, Image.SCALE_SMOOTH ) );
+		sharedIcon = new ImageIcon ( sharedImage.getScaledInstance ( 70, 80, Image.SCALE_SMOOTH ) );
+		// Labels.
+		privateFileLabel.setFont ( new Font ( "Time New Roman", Font.ITALIC, 16 ) );
+		privateFileLabel.setBounds ( 140, 20, 400, 40 );
+		sharedFileLabel.setFont ( new Font ( "Time New Roman", Font.CENTER_BASELINE, 16 ) );
+		sharedFileLabel.setBounds ( 140, 110, 400, 40 );
+		// Buttons.
+		privateFile.setContentAreaFilled ( false );
+		privateFile.setBounds ( 20, 20, 80, 80 );
+		privateFile.setRolloverEnabled ( true );
+		privateFile.setBorderPainted ( false );
+		privateFile.setIcon ( privateIcon );
+		sharedFile.setContentAreaFilled ( false );
+		sharedFile.setBounds ( 20, 120, 80, 80 );
+		sharedFile.setRolloverEnabled ( true );
+		sharedFile.setBorderPainted ( false );
+		sharedFile.setIcon ( sharedIcon );
+		add ( privateFileLabel );
+		add ( sharedFileLabel );
+		add ( privateFile );
+		add ( sharedFile );
+		setVisible ( true );
+		
+		privateFile.addActionListener ( this );
+		sharedFile.addActionListener ( this );
+		
+	} // End method.
+	
+	@Override
+	public void actionPerformed ( ActionEvent e ) {
+		
+		if ( e.getSource ( ) == privateFile ) {
+			System.out.println ( "Private" );
+			dispose ( );
+		} // End if.
+		if ( e.getSource ( ) == sharedFile ) {
+			System.out.println ( "Shared" );
+			dispose ( );
+		} // End if.
+		
+	} // End actionPerformed.
+
+} // End class.

@@ -1,7 +1,8 @@
 package Control;
 
-import EntidadesADOO.Clienterenta;
-import Modelos.ServiciosLocal;
+import EntidadesADOO.*;
+import Modelos.ServicioCrudClienteLocal;
+import Modelos.ServicioEmpleadoLocal;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,7 +19,10 @@ import javax.servlet.http.HttpServletResponse;
 public class ControlEmpleado extends HttpServlet {
 
     @EJB
-    private ServiciosLocal servicio;
+    private ServicioEmpleadoLocal servicio;
+    
+    @EJB
+    private ServicioCrudClienteLocal servicioCrud;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException , EJBException{
@@ -29,7 +33,10 @@ public class ControlEmpleado extends HttpServlet {
             break;
             case "borrarEmpleadoPorEmpleado":
                 borrarEmpleadoPorEmpleado(request, response);
-            break;            
+            break; 
+            case "borraRenta":
+                borraRenta(request, response);
+            break; 
         }        
     }
     
@@ -76,7 +83,28 @@ public class ControlEmpleado extends HttpServlet {
     
     protected void nuevaRentaCliente(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException, EJBException{
-    
+        int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+        String fechaInicio = request.getParameter("fechaInicio");
+        String fechaFin = request.getParameter("fechaFin");
+        int unidades = Integer.parseInt(request.getParameter("unidades"));
+        String matricula = request.getParameter("matricula");
+        int idTipoPago = Integer.parseInt(request.getParameter("idTipoPago"));
+        String descripcionRenta = request.getParameter("descripcionRenta");
+        Automovil auto = servicioCrud.buscarAuto(matricula);
+        if(auto != null){
+            if(auto.getIdEstado() == 2){
+                double total = auto.getPrecioAuto();
+                servicioCrud.crearRenta(idCliente, matricula, descripcionRenta, fechaInicio, fechaFin, total, unidades, idTipoPago);
+                response.sendRedirect("crudCliente.jsp");
+            }else{
+                request.setAttribute("msgRespuesta","El auto esta rentado");
+                request.getRequestDispatcher("crudCliente.jsp").forward(request, response);
+            }
+        }else{
+            request.setAttribute("msgRespuesta","No existe el auto");
+            request.getRequestDispatcher("crudCliente.jsp").forward(request, response);
+        }
+        
     }
     
     protected void borrarEmpleadoPorEmpleado(HttpServletRequest request, HttpServletResponse response)
@@ -85,7 +113,14 @@ public class ControlEmpleado extends HttpServlet {
         List<Object> clientesAsociados = servicio.getIDSDeClientesAsociadosAlEmpleado(idEmpleado);
         servicio.borrarEmpleadoPorEmpleado(idEmpleado, clientesAsociados);
         response.sendRedirect("index.jsp");
-    }   
+    }
+    protected void borraRenta(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException, EJBException{
+        int idRenta = Integer.parseInt(request.getParameter("idRenta"));
+        servicioCrud.borrarRenta(idRenta);
+        response.sendRedirect("crudCliente.jsp");
+    } 
+    
     protected void editarEmpleadoPorEmpleado(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException, EJBException{
         String nombre = request.getParameter("nombreEmpleado");
@@ -126,9 +161,10 @@ public class ControlEmpleado extends HttpServlet {
         int noExterior = Integer.parseInt(request.getParameter("numExterior"));
         int noInterior = Integer.parseInt(request.getParameter("numInterior"));
         int idEmpleado = Integer.parseInt(request.getParameter("idEmpleado"));
+        int idCliente = Integer.parseInt(request.getParameter("idCliente"));
         String genero = request.getParameter("genero");
-        servicio.crearClienteRentaPorEmpleadoRenta(idEmpleado, nombre, apPaterno, apMaterno, email, municipio, colonia,
-                                                    calle, cp, rfc, tel, email, pass, noExterior, noInterior, genero);
+        servicio.editarClientePorEmpleado(idCliente, idEmpleado, nombre, apPaterno, apMaterno, rfc, entidad, municipio,
+                                                colonia, calle, noExterior, noInterior, cp, tel, email, pass, genero);
         response.sendRedirect("crudCliente.jsp");
      
     }

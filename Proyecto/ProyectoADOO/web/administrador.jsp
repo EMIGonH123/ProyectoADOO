@@ -14,6 +14,10 @@
     InitialContext contexto = new InitialContext();
     servicio = (ServicioAdministradorLocal)contexto.lookup("java:global/ProyectoADOO/ServicioAdministrador!Modelos.ServicioAdministradorLocal");
     Empleadorenta empleado = (Empleadorenta)session.getAttribute("empleado");
+    if(empleado == null){
+        request.setAttribute("msgRespuesta","No existe sesión de administrador");
+        request.getRequestDispatcher("index.jsp").forward(request, response);
+    }
     int id = empleado.getIdEmpleado();
     List<Empleadorenta> infoAdmin = servicio.getInfoAdministrador(id);
     List<Object> infoProveedores = servicio.getInfoProveedores();
@@ -131,7 +135,7 @@
                         <div class="row">
                             <div class="input-field col s4">
                               <i class="material-icons prefix">center_focus_weak</i>
-                              <input value="${ia[8]}" id="numExterior" name="numExterior" type="text" class="validate">
+                                  <input value="${ia[8]}" id="numExterior" name="numExterior" type="text" class="validate">
                               <label for="numExterior">Número Exterior</label>
                             </div>
                             <div class="input-field col s4">
@@ -477,7 +481,7 @@
             
             <div class="container row">
                 <div class="col s12 m12 l12">
-                    <nav>
+                    <nav class="nav-extended">
                         <div class="nav-wrapper" style="background-color:#a0f; color:white;">
                             <c:forEach items="${infoAdmin}" var="ia">
                             <a class="brand-logo" style="margin-left: 20px;"><b>Bienvenido ${ia[1]}</b></a>
@@ -486,6 +490,11 @@
                                 <li><a href="salir.jsp">Salir</a></li>
                             </ul>
                             
+                        </div>
+                        <div class="nav-content" style="background-color:#a0f; color:white;">
+                            <ul class="tabs tabs-transparent">
+                                <li class="tab"><a onclick="Materialize.toast('<%=request.getAttribute("msgRespuesta")%>', 4000,'rounded')">Respuesta</a></li>
+                            </ul>
                         </div>
                     </nav>
                 </div>

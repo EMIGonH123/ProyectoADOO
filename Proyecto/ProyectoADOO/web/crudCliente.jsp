@@ -14,6 +14,10 @@
     InitialContext contexto = new InitialContext();
     servicio = (ServicioCrudClienteLocal)contexto.lookup("java:global/ProyectoADOO/ServicioCrudCliente!Modelos.ServicioCrudClienteLocal");
     Clienterenta cliente = (Clienterenta)session.getAttribute("cliente");
+    if(cliente == null){
+        request.setAttribute("msgRespuesta","No existe sesión para CrudCliente");
+        request.getRequestDispatcher("index.jsp").forward(request, response);
+    }
     int idCliente = cliente.getIdCliente();
     int idEmpleado = (int)cliente.getIdEmpleado();
     List<Clienterenta> infoCliente = servicio.getInfoCliente(idCliente);
@@ -42,21 +46,7 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
         <script type="text/javascript" src="js/ScriptsMaterialize.js"></script> 
-        <script>
-            $(document).ready(function(){
-                $('#verTransacciones').click(function(){
-                    var nombre = $('.').val();
-                    $.ajax({
-                        type: 'POST',
-                        data:{nombre:nombre},
-                        url: "Controlador.do?btnControlador=ver",
-                        success: function (result) {
-                            $('#despliegaTransacciones').html(result);
-                        }
-                    });
-                });
-            });
-        </script>
+        
         
         <c:if test="${not empty cliente}">  
             
@@ -213,11 +203,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field col s4">
-                          <i class="material-icons prefix">my_location</i>
-                          <input id="unidades" name="unidades" type="text" class="validate">
-                          <label for="unidades">Cantidad</label>
-                        </div>
+                        
                         <div class="input-field col s4">
                             <i class="material-icons prefix">folder_shared</i>
                             <select name="matricula">
@@ -378,6 +364,7 @@
                             <ul class="tabs tabs-transparent">
                                 <li class="tab"><a class="active" href="#rentas">Rentas</a></li>
                                 <li class="tab"><a href="#cuentas">Cuentas</a></li>
+                                 <li class="tab"><a onclick="Materialize.toast('<%=request.getAttribute("msgRespuesta")%>', 4000,'rounded')">Respuesta</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -475,9 +462,10 @@
                             <div style="background-color: #00E676; color:white; text-align:center;">
                                <i class="material-icons">attach_money</i> <b>Cuentas</b>
                             </div>
-
+                            
+                            <c:forEach items="${infoCuentas}" var="ic">
                             <ul class="collapsible" data-collapsible="accordion">
-                                <c:forEach items="${infoCuentas}" var="ic">
+                                
                                 <li>
                                     <div class="collapsible-header">
                                         <i class="material-icons">
@@ -494,17 +482,12 @@
                                             <b style="color:#ff0;">Pago Mínimo: </b>${ic[6]}<br>
                                             <b style="color:#ff0;">Intereses: </b>${ic[7]}<br>
                                             <b style="color:#ff0;">Detalle: </b>${ic[3]}<br>
-                                            <a class="waves-effect modal-trigger" style="color:#1de9b6;" href="#modalCreaPrestamoDeCliente">
-                                                <b style=" text-align:center;">Nuevo Prestamo</b>
-                                            </a>
-                                            <a id="" class="waves-effect waves-light modal-trigger">
-                                                <b class="${ic[0]}" style=" text-align:center;">Ver Transacciones</b>
-                                            </a>
                                         </span>
                                     </div>
                                 </li>
-                                </c:forEach>
+                                
                             </ul>
+                            </c:forEach>
                         </div>
                     </div>
                     <div id="rentas">

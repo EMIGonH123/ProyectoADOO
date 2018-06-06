@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/metal/OneDrive/Desktop/ADOO/Proyecto/ProyectoADOO/web/index.jsp</file>
+            <file>file:/C:/Users/metal/OneDrive/Desktop/ADOO/Proyecto/ProyectoADOO/web/Images/Sucursal/Marcas/</file>
+            <file>file:/C:/Users/metal/OneDrive/Desktop/ADOO/Proyecto/ProyectoADOO/web/empleado.jsp</file>
             <file>file:/C:/Users/metal/OneDrive/Desktop/ADOO/Proyecto/ProyectoADOO/web/crudCliente.jsp</file>
-            <file>file:/C:/Users/metal/OneDrive/Desktop/ADOO/Proyecto/ProyectoADOO/src/java/Control/ControlSesiones.java</file>
-            <file>file:/C:/Users/metal/OneDrive/Desktop/ADOO/Proyecto/ProyectoADOO/src/java/Modelos/ServicioCliente.java</file>
-            <file>file:/C:/Users/metal/OneDrive/Desktop/ADOO/Proyecto/ProyectoADOO/web/cliente.jsp</file>
-            <file>file:/C:/Users/metal/OneDrive/Desktop/ADOO/Proyecto/ProyectoADOO/src/java/Modelos/ServicioClienteLocal.java</file>
+            <file>file:/C:/Users/metal/OneDrive/Desktop/ADOO/Proyecto/ProyectoADOO/src/java/Modelos/ServicioEmpleado.java</file>
+            <file>file:/C:/Users/metal/OneDrive/Desktop/ADOO/Proyecto/ProyectoADOO/src/java/Control/ControlEmpleado.java</file>
             <file>file:/C:/Users/metal/OneDrive/Desktop/ADOO/Proyecto/ProyectoADOO/web/sucursales.jsp</file>
         </group>
     </open-files>

@@ -2,6 +2,8 @@
 package Modelos;
 
 import EntidadesADOO.*;
+import java.util.Enumeration;
+import java.util.Hashtable;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -67,5 +69,45 @@ public class ServicioCliente implements ServicioClienteLocal {
                 + " r.matricula = a.matriculaAuto AND "
                 + " r.idCliente = "+idCliente;
         return em.createNativeQuery(sql).getResultList();
+    }
+    
+    @Override
+    public boolean validaCampos(Hashtable<String,Boolean> a) {
+        boolean bandera = true;
+        Enumeration<String> k = a.keys();
+        Enumeration<Boolean> v = a.elements();
+        while(k.hasMoreElements()){
+            String aux = k.nextElement();
+            if(aux.equals("")){
+                bandera = false;
+                a.put(aux, bandera);
+            }
+        }
+        
+        return bandera;
+    }
+
+    @Override
+    public boolean validarCadenas(String cadena) {
+        String expresion = "^[\\D]+";
+        if(cadena.matches(expresion))
+            return true;
+        return false;
+    }
+
+    @Override
+    public boolean validarDigitos(String digitos) {
+        String expresion = "^[\\d]+";
+        if(digitos.matches(expresion))
+            return true;
+        return false;
+    }
+
+    @Override
+    public boolean validarEmail(String email) {
+        String expresion = "^([a-zA-Z])(.)*@[a-zA-Z]+\\.com";
+        if(email.matches(expresion))
+            return true;
+        return false;
     }
 }

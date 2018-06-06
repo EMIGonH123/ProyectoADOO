@@ -12,6 +12,10 @@
     InitialContext contexto = new InitialContext();
     servicio = (ServicioEmpleadoLocal)contexto.lookup("java:global/ProyectoADOO/ServicioEmpleado!Modelos.ServicioEmpleadoLocal");
     Empleadorenta empleado = (Empleadorenta)session.getAttribute("empleado");
+    if(empleado == null){
+        request.setAttribute("msgRespuesta","No existe sesión de empleado");
+        request.getRequestDispatcher("index.jsp").forward(request, response);
+    }
     int id = empleado.getIdEmpleado();
     List<Object> infoSucursal = servicio.getInfoDeSucursalPorAdministrador(id);
     List<Empleadorenta> infoEmpleado = servicio.getInfoEmpleado(id);
@@ -22,6 +26,7 @@
 <c:set scope="page" var="infoEmpleado" value="<%=infoEmpleado%>"/>
 <c:set scope="page" var="idsAdmin" value="<%=idsAdmin%>"/>
 <c:set scope="page" var="clientes" value="<%=clientes%>"/>
+<c:set scope="page" var="empleado" value="<%=empleado%>"/>
     
 <html>
     <head>
@@ -310,13 +315,18 @@
             
             <div class="container row">
                 <div class="col s12 m12 l12" style="background-color: #022f42;">
-                    <nav>
+                    <nav class="nav-extended">
                         <div class="nav-wrapper" style="background-color: #022f42; color:white;">
                             <c:forEach items="${infoEmpleado}" var="ia">
                             <a class="brand-logo" style="margin-left: 20px;"><b>Bienvenido ${ia[1]}</b></a>
                             </c:forEach>
                             <ul class="right hide-on-med-and-down">
                                 <li><a href="salir.jsp">Salir</a></li>
+                            </ul>
+                        </div>
+                        <div class="nav-content" style="background-color:#022f42; color:white;">
+                            <ul class="tabs tabs-transparent">
+                                <li class="tab"><a onclick="Materialize.toast('<%=request.getAttribute("msgRespuesta")%>', 4000,'rounded')">Respuesta</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -520,7 +530,7 @@
         </c:if>
         <c:if test="${empty empleado}">
             Error, No existe Sesion
-            <meta http-equiv ="refresh" content="3;URL=index.jsp">
+            <meta http-equiv ="refresh" content="URL=index.jsp">
         </c:if>
     </body>
 </html>

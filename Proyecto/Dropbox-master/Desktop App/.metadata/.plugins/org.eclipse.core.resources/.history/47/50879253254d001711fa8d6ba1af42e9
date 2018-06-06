@@ -1,0 +1,40 @@
+package Operations;
+
+import java.nio.ByteBuffer;
+import java.nio.channels.*;
+import Main.*;
+
+public class Readable {
+	
+	private static SocketChannel ch;
+	private static String [ ] split;
+	private static ByteBuffer b;
+	private static String recv;
+	private static int n;
+
+	public static void read ( ) throws Exception {
+		
+		ch = ( SocketChannel ) Main.k.channel ( );
+		b = ByteBuffer.allocate ( 1000 );
+		b.clear ( );
+		n = ch.read ( b );
+		b.flip ( );
+		recv = new String ( b.array ( ), 0, n );
+		split = recv.split ( ":" );
+		
+		if ( split [ 0 ].equalsIgnoreCase ( "<login>" ) ) {
+			User u = new User ( split [ 1 ], split [ 2 ], split [ 3 ], split [ 4 ], split [ 5 ] );
+		} // End if.
+		if ( split [ 0 ].equalsIgnoreCase ( "<signin>" ) ) {
+			
+		} // End if.
+		if ( split [ 0 ].equalsIgnoreCase ( "<download>" ) ) {
+			
+		} // End if.
+		if ( split [ 0 ].equalsIgnoreCase ( "<store>" ) ) {
+			
+		} // End if.
+		
+	} // End method. 
+	
+} // End class.

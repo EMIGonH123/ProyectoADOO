@@ -5,6 +5,9 @@ import EntidadesADOO.Empleadorenta;
 import Modelos.ServicioAdministradorLocal;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
@@ -125,48 +128,96 @@ public class ControlAdministrador extends HttpServlet {
 
     protected void crearEmpleadoPorAdministrador(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException, EJBException{
-        String nombre = request.getParameter("nombre");
-        String apPaterno = request.getParameter("apPaterno");
-        String apMaterno = request.getParameter("apMaterno");
-        String entidad = request.getParameter("estado");
-        String municipio = request.getParameter("municipio");
-        String colonia = request.getParameter("colonia");
-        String calle = request.getParameter("calle");
-        int cp = Integer.parseInt(request.getParameter("cp"));
-        String tel = request.getParameter("tel");
-        String email = request.getParameter("email");
-        String pass = request.getParameter("pass");
-        int noExterior = Integer.parseInt(request.getParameter("numExterior"));
-        int noInterior = Integer.parseInt(request.getParameter("numInterior"));
-        int tipo = Integer.parseInt(request.getParameter("tipo"));
-        int idSucursal = Integer.parseInt(request.getParameter("idSucursal"));
-        String genero = request.getParameter("genero");
-        servicio.crearEmpleadoPorAdministrador(nombre, apPaterno, apMaterno, entidad, municipio, colonia, calle,
-                                        tipo, noExterior, noInterior, cp, tel, email, pass, idSucursal, genero);
-        response.sendRedirect("administrador.jsp");
+        Hashtable<String,Boolean> arreglo = new Hashtable<String,Boolean>();
         
+        arreglo.put(request.getParameter("nombre"),true);
+        arreglo.put(request.getParameter("apPaterno"),true);
+        arreglo.put(request.getParameter("apMaterno"),true);
+        arreglo.put(request.getParameter("estado"),true);
+        arreglo.put(request.getParameter("municipio"),true);
+        arreglo.put(request.getParameter("colonia"),true);
+        arreglo.put(request.getParameter("calle"),true);
+        arreglo.put(request.getParameter("cp"),true);
+        arreglo.put(request.getParameter("tel"),true);
+        arreglo.put(request.getParameter("email"),true);
+        arreglo.put(request.getParameter("pass"),true);
+        arreglo.put(request.getParameter("numExterior"),true);
+        arreglo.put(request.getParameter("numInterior"),true);
+        arreglo.put(request.getParameter("tipo"),true);
+        arreglo.put(request.getParameter("idSucursal"),true);
+        arreglo.put(request.getParameter("genero"),true);
+        if(servicio.validaCampos(arreglo)){
+            String nombre = request.getParameter("nombre");
+            String apPaterno = request.getParameter("apPaterno");
+            String apMaterno = request.getParameter("apMaterno");
+            String entidad = request.getParameter("estado");
+            String municipio = request.getParameter("municipio");
+            String colonia = request.getParameter("colonia");
+            String calle = request.getParameter("calle");
+            int cp = Integer.parseInt(request.getParameter("cp"));
+            String tel = request.getParameter("tel");
+            String email = request.getParameter("email");
+            String pass = request.getParameter("pass");
+            int noExterior = Integer.parseInt(request.getParameter("numExterior"));
+            int noInterior = Integer.parseInt(request.getParameter("numInterior"));
+            int tipo = Integer.parseInt(request.getParameter("tipo"));
+            int idSucursal = Integer.parseInt(request.getParameter("idSucursal"));
+            String genero = request.getParameter("genero");
+            servicio.crearEmpleadoPorAdministrador(nombre, apPaterno, apMaterno, entidad, municipio, colonia, calle,
+                                            tipo, noExterior, noInterior, cp, tel, email, pass, idSucursal, genero);
+            request.setAttribute("msgRespuesta","Registro exitoso");
+            request.getRequestDispatcher("administrador.jsp").forward(request, response);
+        }else{
+            String respuesta = "Campos incompletos para el registro";
+            request.setAttribute("msgRespuesta",respuesta);
+            request.getRequestDispatcher("administrador.jsp").forward(request, response);
+        }
     }   
 
     protected void editarAdministradorPorAdministrador(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException, EJBException{
-        int idEmpleado = Integer.parseInt(request.getParameter("idEmpleado"));
-        String nombre = request.getParameter("nombreEmpleado");
-        String apPaterno = request.getParameter("apPaterno");
-        String apMaterno = request.getParameter("apMaterno");
-        String entidad = request.getParameter("estado");
-        String municipio = request.getParameter("municipio");
-        String colonia = request.getParameter("colonia");
-        String calle = request.getParameter("calle");
-        int cp = Integer.parseInt(request.getParameter("cp"));
-        String tel = request.getParameter("tel");
-        String email = request.getParameter("email");
-        String pass = request.getParameter("pass");
-        int noExterior = Integer.parseInt(request.getParameter("numExterior"));
-        int noInterior = Integer.parseInt(request.getParameter("numInterior"));
-        String genero = request.getParameter("genero");
-        servicio.editarAdministradorPorAdministrador(idEmpleado, nombre, apPaterno, apMaterno, entidad, municipio,
-                colonia, calle, noExterior, noInterior, cp, tel, email, pass, genero);
-        response.sendRedirect("administrador.jsp");
+        Hashtable<String,Boolean> arreglo = new Hashtable<String,Boolean>();
+        
+        arreglo.put(request.getParameter("idEmpleado"),true);
+        arreglo.put(request.getParameter("nombreEmpleado"),true);
+        arreglo.put(request.getParameter("apPaterno"),true);
+        arreglo.put(request.getParameter("apMaterno"),true);
+        arreglo.put(request.getParameter("estado"),true);
+        arreglo.put(request.getParameter("municipio"),true);
+        arreglo.put(request.getParameter("colonia"),true);
+        arreglo.put(request.getParameter("calle"),true);
+        arreglo.put(request.getParameter("cp"),true);
+        arreglo.put(request.getParameter("tel"),true);
+        arreglo.put(request.getParameter("email"),true);
+        arreglo.put(request.getParameter("pass"),true);
+        arreglo.put(request.getParameter("numExterior"),true);
+        arreglo.put(request.getParameter("numInterior"),true);
+        arreglo.put(request.getParameter("genero"),true);
+        if(servicio.validaCampos(arreglo)){
+            int idEmpleado = Integer.parseInt(request.getParameter("idEmpleado"));
+            String nombre = request.getParameter("nombreEmpleado");
+            String apPaterno = request.getParameter("apPaterno");
+            String apMaterno = request.getParameter("apMaterno");
+            String entidad = request.getParameter("estado");
+            String municipio = request.getParameter("municipio");
+            String colonia = request.getParameter("colonia");
+            String calle = request.getParameter("calle");
+            int cp = Integer.parseInt(request.getParameter("cp"));
+            String tel = request.getParameter("tel");
+            String email = request.getParameter("email");
+            String pass = request.getParameter("pass");
+            int noExterior = Integer.parseInt(request.getParameter("numExterior"));
+            int noInterior = Integer.parseInt(request.getParameter("numInterior"));
+            String genero = request.getParameter("genero");
+            servicio.editarAdministradorPorAdministrador(idEmpleado, nombre, apPaterno, apMaterno, entidad, municipio,
+                    colonia, calle, noExterior, noInterior, cp, tel, email, pass, genero);
+            request.setAttribute("msgRespuesta","Actualización del administrador exitosa");
+            request.getRequestDispatcher("administrador.jsp").forward(request, response);
+        }else{
+            String respuesta = "Campos incompletos para la actualización del administrador";
+            request.setAttribute("msgRespuesta",respuesta);
+            request.getRequestDispatcher("administrador.jsp").forward(request, response);
+        }
         
     }
     

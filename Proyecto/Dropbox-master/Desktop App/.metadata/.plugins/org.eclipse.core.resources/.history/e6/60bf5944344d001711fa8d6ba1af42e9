@@ -1,0 +1,19 @@
+package Operations;
+
+import Main.*;
+
+public class Writable {
+	
+	public static boolean logInFlag;
+	public static User u;
+
+	public static void write ( ) {
+		
+		if ( logInFlag ) {
+			
+			logInFlag = false;
+		} // End if.
+		
+	} // End method.
+	
+} // End class.

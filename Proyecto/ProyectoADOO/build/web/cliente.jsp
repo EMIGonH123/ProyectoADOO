@@ -11,6 +11,10 @@
     InitialContext contexto = new InitialContext();
     servicio = (ServicioClienteLocal)contexto.lookup("java:global/ProyectoADOO/ServicioCliente!Modelos.ServicioClienteLocal");
     Clienterenta cliente = (Clienterenta)session.getAttribute("cliente");
+    if(cliente == null){
+        request.setAttribute("msgRespuesta","No existe sesión de cliente");
+        request.getRequestDispatcher("index.jsp").forward(request, response);
+    }
     int idCliente = cliente.getIdCliente();
     List<Clienterenta> infoCliente = servicio.getInfoCliente(idCliente);
     List<Object> infoRentas = servicio.getInfoRentasCliente(idCliente);
@@ -53,6 +57,7 @@
                             <ul class="tabs tabs-transparent">
                                 <li class="tab"><a class="active" href="#rentas">Rentas</a></li>
                                 <li class="tab"><a href="#transacciones">Transacciones</a></li>
+                                <li class="tab"><a onclick="Materialize.toast('<%=request.getAttribute("msgRespuesta")%>', 3000,'rounded')">Respuesta</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -64,66 +69,6 @@
         <section id="contenidos">
             <div class="container" >
                 <div class="row">
-                    <div id="rentas">
-                        <div class="col s12 m8 l8">
-                            <div style="background-color: #ff5722; color:white; text-align:center;">
-                                   <i class="material-icons">drive_eta</i> <b>Autos Rentados</b>
-                            </div>
-
-                            <div class="slider">
-                                <ul class="slides">
-                                    <c:forEach items="${infoRentas}" var="ir">                                
-                                        <li>
-                                            <img class="responsive-img" src="${ir[21]}">
-                                        </li>
-                                    </c:forEach>
-                                </ul>
-                            </div>
-                            <ul class="collapsible" data-collapsible="accordion">
-                                <c:forEach items="${infoRentas}" var="ir">
-                                     
-                                    <li>
-                                        <div class="collapsible-header">
-                                            <i class="material-icons">
-                                                add_shopping_cart
-                                            </i>
-                                            ${ir[16]} 
-
-                                        </div>
-                                        <div class="collapsible-body">
-                                            <span>
-                                                <b style="color:#ff5722;">Descripción: </b>${ir[3]}<br>
-                                                <b style="color:#ff5722;">Fecha Inicio: </b>${ir[4]}<br>
-                                                <b style="color:#ff5722;">Fecha Fin: </b>${ir[5]}<br>
-                                                <b style="color:#ff5722;">Unidades: </b>${ir[7]}<br>
-                                                <c:if test="${ir[8] eq 1}">
-                                                    <b style="color:#ff5722;">Pago: </b>Efectivo<br>
-                                                </c:if>
-                                                <c:if test="${ir[8] eq 2}">
-                                                    <b style="color:#ff5722;">Pago: </b>Tarjeta<br>
-                                                </c:if>
-                                                <b style="color:#ff5722;">Sucursal: </b>${ir[10]}<br>
-                                                <b style="color:#ff5722;">Automovil: </b>${ir[16]}<br>
-                                                <b style="color:#ff5722;">Color: </b>${ir[17]}<br>
-                                                <b style="color:#ff5722;">Modelo: </b>${ir[18]}<br>
-                                                <b style="color:#ff5722;">Tipo: </b>${ir[22]}<br>
-                                                <b style="color:#ff5722;">Marca: </b>${ir[23]}<br>
-                                                <b style="color:#ff5722;">Precio: </b>${ir[20]}<br>
-                                                <b style="color:#ff5722;">Kilometraje: </b>${ir[19]}<br><br>
-                                            </span>
-                                        </div>
-                                    </li>
-                                </c:forEach>
-                            </ul>
-                        </div>
-                    </div>
-                    <div id="transacciones">
-                        <div class="col s12 m8 l8">
-                            <div style="background-color: #ff5722; color:white; text-align:center;">
-                                   <i class="material-icons">featured_play_list</i> <b>Transacciones</b>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col s12 m4 l4">
                         <h5 style="text-align:center; color:#ff5722;"><b>Información</b></h5>
                         <c:forEach items="${infoCliente}" var="ic">
@@ -192,6 +137,92 @@
                         </c:forEach>
                         </ul>
                     </div>
+                    <div id="rentas">
+                        <div class="col s12 m8 l8">
+                            <div style="background-color: #ff5722; color:white; text-align:center;">
+                                   <i class="material-icons">drive_eta</i> <b>Autos Rentados</b>
+                            </div>
+
+                            <div class="slider">
+                                <ul class="slides">
+                                    <c:forEach items="${infoRentas}" var="ir">                                
+                                        <li>
+                                            <img class="responsive-img" src="${ir[21]}">
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+                            </div>
+                            <ul class="collapsible" data-collapsible="accordion">
+                                <c:forEach items="${infoRentas}" var="ir">
+                                     
+                                    <li>
+                                        <div class="collapsible-header">
+                                            <i class="material-icons">
+                                                add_shopping_cart
+                                            </i>
+                                            ${ir[16]} 
+
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <span>
+                                                <b style="color:#ff5722;">Descripción: </b>${ir[3]}<br>
+                                                <b style="color:#ff5722;">Fecha Inicio: </b>${ir[4]}<br>
+                                                <b style="color:#ff5722;">Fecha Fin: </b>${ir[5]}<br>
+                                                <b style="color:#ff5722;">Unidades: </b>${ir[7]}<br>
+                                                <c:if test="${ir[8] eq 1}">
+                                                    <b style="color:#ff5722;">Pago: </b>Efectivo<br>
+                                                </c:if>
+                                                <c:if test="${ir[8] eq 2}">
+                                                    <b style="color:#ff5722;">Pago: </b>Tarjeta<br>
+                                                </c:if>
+                                                <b style="color:#ff5722;">Sucursal: </b>${ir[10]}<br>
+                                                <b style="color:#ff5722;">Automovil: </b>${ir[16]}<br>
+                                                <b style="color:#ff5722;">Color: </b>${ir[17]}<br>
+                                                <b style="color:#ff5722;">Modelo: </b>${ir[18]}<br>
+                                                <b style="color:#ff5722;">Tipo: </b>${ir[22]}<br>
+                                                <b style="color:#ff5722;">Marca: </b>${ir[23]}<br>
+                                                <b style="color:#ff5722;">Precio: </b>${ir[20]}<br>
+                                                <b style="color:#ff5722;">Kilometraje: </b>${ir[19]}<br><br>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="transacciones">
+                        <div class="col s12 m8 l8">
+                            <div style="background-color: #ff5722; color:white; text-align:center;">
+                                   <i class="material-icons">featured_play_list</i> <b>Transacciones</b>
+                            </div>
+                            <c:forEach items="${infoCuentas}" var="ic">
+                            <ul class="collapsible" data-collapsible="accordion">
+                                
+                                <li>
+                                    <div class="collapsible-header">
+                                        <i class="material-icons">
+                                            art_track
+                                        </i>
+                                        ${ic[0]} 
+
+                                    </div>
+                                    <div class="collapsible-body">
+                                        <span>
+                                            <b style="color:#ff0;">Saldo: </b>${ic[1]}<br>
+                                            <b style="color:#ff0;">Adquisición: </b>${ic[4]}<br>
+                                            <b style="color:#ff0;">Fecha Límite: </b>${ic[5]}<br>
+                                            <b style="color:#ff0;">Pago Mínimo: </b>${ic[6]}<br>
+                                            <b style="color:#ff0;">Intereses: </b>${ic[7]}<br>
+                                            <b style="color:#ff0;">Detalle: </b>${ic[3]}<br>
+                                        </span>
+                                    </div>
+                                </li>
+                                
+                            </ul>
+                            </c:forEach>
+                        </div>
+                    </div>
+                    
                     
                 </div>
             </div>

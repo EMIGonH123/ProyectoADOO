@@ -1,0 +1,21 @@
+package Sockets;
+
+import java.net.*;
+
+public class DatagramRecv {
+	
+	public String [ ] updatedList;
+	private String recv;
+	
+	public static void recvDatagram ( ) {
+	
+		for ( ; ; ) {
+			try {
+				DatagramPacket = new DatagramPacket ( new byte [ 2000 ], 2000 );
+			} catch ( Exception e ) {
+				e.printStackTrace ( );
+			} // End try - catch.
+		} // End forever.
+	} // End method.
+	
+} // End class

@@ -1,0 +1,58 @@
+package GUI;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.JFrame;
+import java.awt.Color;
+
+public class Share extends JFrame implements ActionListener {
+
+	private static final long serialVersionUID = 1L;
+	private JTextField friend;
+	private String nickname;
+
+	public Share ( String nickname ) { 
+		
+		this.nickname = nickname;
+		
+	} // End constructor.
+	
+	public void init ( ) {
+		
+		initializeComponents ( );
+		setDefaultCloseOperation ( JFrame.DISPOSE_ON_CLOSE );
+		this.getContentPane ( ).setBackground ( Color.WHITE );
+		setLocationRelativeTo ( null );
+		setTitle ( "Upload File" );
+		setSize ( 100, 40 );
+		setLayout ( null );
+		setAlwaysOnTop ( true );
+		components ( );
+		
+	} // End method.
+	
+	private void initializeComponents (  ) {
+		
+		friend = new JTextField ( );
+		
+	} // End method.
+	
+	private void components ( ) {
+		
+		friend.setBounds ( 10, 10, 80, 20 );
+		add ( friend );
+		
+		friend.addActionListener ( this );
+	} // End method.
+
+	@Override
+	public void actionPerformed ( ActionEvent e ) {
+		
+		if ( e.getSource ( ) == friend ) {
+			String str = "<sharedocuments>:" + nickname + ":" + friend.getText ( ) + ":" + "Share " + nickname;
+		}
+		
+	} // End actionPerformed. 
+	
+} // End class.

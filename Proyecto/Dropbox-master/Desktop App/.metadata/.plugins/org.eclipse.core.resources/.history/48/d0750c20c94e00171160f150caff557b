@@ -1,0 +1,34 @@
+package Sockets;
+
+import java.net.*;
+
+public class DClient {
+
+	private DatagramSocket ds;
+	private String host;
+	private int port;
+	
+	public DClient ( int port, String host ) {
+	
+		this.port = port;
+		this.host = host;
+		
+	} // End constructor.
+	
+	public void setDSocket ( ) throws SocketException {
+		ds = new DatagramSocket ( );
+	} // End setter.
+	
+	public DatagramSocket getDSocket ( ) {
+		return this.ds;
+	} // End getter.
+	
+	public String getHost ( ) {
+		return this.host;
+	} // End getter.
+	
+	public int getPort ( ) {
+		return this.port;
+	} // End getter.
+	
+} // End method.

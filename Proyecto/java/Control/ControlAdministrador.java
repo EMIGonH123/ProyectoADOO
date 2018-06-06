@@ -2,10 +2,11 @@
 package Control;
 
 import EntidadesADOO.Empleadorenta;
-import Modelos.ServiciosLocal;
+import Modelos.ServicioAdministradorLocal;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -19,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ControlAdministrador", urlPatterns = {"/ControlAdministrador.do"})
 public class ControlAdministrador extends HttpServlet {
     @EJB
-    private ServiciosLocal servicio;
+    private ServicioAdministradorLocal servicio;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException , EJBException{
@@ -61,12 +62,13 @@ public class ControlAdministrador extends HttpServlet {
     throws ServletException, IOException, EJBException{
         int idEmpleado = Integer.parseInt(request.getParameter("idAdministrador"));
         List<Object> clientesAsociados = servicio.getIDSDeClientesAsociadosAlEmpleado(idEmpleado);
-        servicio.borrarEmpleadoPorEmpleado(idEmpleado, clientesAsociados);
+        servicio.borrarAdministradorPorAdministrador(idEmpleado, clientesAsociados);
         response.sendRedirect("index.jsp");
     }
     
     protected void crearAdquisicionPorAdministrador(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException, EJBException, ParseException{
+        Random ran = new Random();
         int idProveedor = Integer.parseInt(request.getParameter("idProveedor"));
         String fecha = request.getParameter("fecha");
         String nombre = request.getParameter("nombreAuto");
@@ -91,16 +93,33 @@ public class ControlAdministrador extends HttpServlet {
         int modelo = Integer.parseInt(request.getParameter("modeloAuto"));
         int unidades = Integer.parseInt(request.getParameter("unidadesAuto"));
         double  precioTotal = unidades * precioUnitario;
-        int idEmpleado = Integer.parseInt(request.getParameter("idAdministrador"));
-        int kilometraje  = Integer.parseInt(request.getParameter("kilometraje"));
+        int idAdmin = Integer.parseInt(request.getParameter("idAdministrador"));
+        int aux  = Integer.parseInt(request.getParameter("kilometraje"));
+        int kilometraje;
+        switch(aux){
+            case 1:
+                
+                kilometraje= 10000 +((ran.nextInt())*(100000-10000));
+                break;
+            case 2:
+                kilometraje= 100000 +((ran.nextInt())*(200000-100000));
+                break;
+            case 3:
+                kilometraje= 200000 +((ran.nextInt())*(250000-200000));
+                break;
+            case 4:
+                kilometraje= 250000 +((ran.nextInt())*(500000-250000));
+                break;
+        }
         String colorAuto = request.getParameter("colorAuto");
         int idMarca  = Integer.parseInt(request.getParameter("idMarca"));
         int idSucursal  = Integer.parseInt(request.getParameter("idSucursal"));
         int idTipo  = Integer.parseInt(request.getParameter("idTipo"));
-        String matricula = request.getParameter("matricula");
+        //String matricula = request.getParameter("matricula");
         int capacidad  = Integer.parseInt(request.getParameter("capacidad"));
         
         int idEstado = 2;
+        
         response.sendRedirect("administrador.jsp");        
     }
 
@@ -145,7 +164,7 @@ public class ControlAdministrador extends HttpServlet {
         int noExterior = Integer.parseInt(request.getParameter("numExterior"));
         int noInterior = Integer.parseInt(request.getParameter("numInterior"));
         String genero = request.getParameter("genero");
-        servicio.editarEmpleadoPorEmpleado(idEmpleado, nombre, apPaterno, apMaterno, entidad, municipio,
+        servicio.editarAdministradorPorAdministrador(idEmpleado, nombre, apPaterno, apMaterno, entidad, municipio,
                 colonia, calle, noExterior, noInterior, cp, tel, email, pass, genero);
         response.sendRedirect("administrador.jsp");
         

@@ -1,0 +1,23 @@
+package Sockets;
+
+import java.net.*;
+
+public class DatagramRecv {
+	
+	public String [ ] updatedList;
+	private String recv;
+	
+	public static void recvDatagram ( DClient ds ) {
+	
+		for ( ; ; ) {
+			try {
+				DatagramPacket p = new DatagramPacket ( new byte [ 2000 ], 2000 );
+				ds.getDSocket ( ).receive ( p );
+				System.out.println ( "\n\t\tDatagram received from: " + p.get)
+			} catch ( Exception e ) {
+				e.printStackTrace ( );
+			} // End try - catch.
+		} // End forever.
+	} // End method.
+	
+} // End class

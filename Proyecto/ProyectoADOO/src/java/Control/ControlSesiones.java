@@ -123,51 +123,63 @@ public class ControlSesiones extends HttpServlet {
     
     protected void inicioSesionSucursal(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException,EJBException,PersistenceException {
-        int idSucursal = (int)Integer.parseInt(request.getParameter("idSucursal"));
         
-        Sucursal sucursal = servicio.buscarSucursal(idSucursal);
-        if(sucursal != null){
-            request.getSession().setAttribute("sucursal",sucursal);
-            response.sendRedirect("sucursales.jsp");
-        }else{
-            request.setAttribute("msgRespuesta","No existe el usuario");
-            request.getRequestDispatcher("index.jsp").forward(request, response);
-        }
+            int idSucursal = (int)Integer.parseInt(request.getParameter("idSucursal"));
+            Sucursal sucursal = servicio.buscarSucursal(idSucursal);
+            if(sucursal != null){
+                request.getSession().setAttribute("sucursal",sucursal);
+                response.sendRedirect("sucursales.jsp");
+            }else{
+                request.setAttribute("msgRespuesta","No existe el usuario");
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+
+            }
         
     }
     
     protected void inicioSesionEmpleado(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException,EJBException,PersistenceException {
-        int id = (int)Integer.parseInt(request.getParameter("idEmpleado"));
-        String pass = (String)request.getParameter("pass");
-        Empleadorenta empleado = servicio.iniciaSesionEmpleado(id, pass);
-        if(empleado != null){
-            if(empleado.getIdTipoEmpleado()==1){
-                request.getSession().setAttribute("empleado",empleado);
-                response.sendRedirect("administrador.jsp");
-            }else{
-                request.getSession().setAttribute("empleado",empleado);
-                response.sendRedirect("empleado.jsp");
-            }
-            
+        if(request.getParameter("idEmpleado").equals("") || request.getParameter("pass").equals("") ){
+            request.setAttribute("msgRespuesta","Campos incompletos");
+            request.getRequestDispatcher("index.jsp").forward(request,response);
         }else{
-            request.setAttribute("msgRespuesta","No existe el usuario");
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            int id = (int)Integer.parseInt(request.getParameter("idEmpleado"));
+            String pass = (String)request.getParameter("pass");
+            Empleadorenta empleado = servicio.iniciaSesionEmpleado(id, pass);
+            if(empleado != null){
+                if(empleado.getIdTipoEmpleado()==1){
+                    request.getSession().setAttribute("empleado",empleado);
+                    response.sendRedirect("administrador.jsp");
+                }else{
+                    request.getSession().setAttribute("empleado",empleado);
+                    response.sendRedirect("empleado.jsp");
+                }
+
+            }else{
+                request.setAttribute("msgRespuesta","No existe el usuario");
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }
         }
+        
         
     }
     
     protected void inicioSesionCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException,EJBException,PersistenceException {
-        int id = Integer.parseInt(request.getParameter("idCliente"));
-        String pass = request.getParameter("pass");
-        Clienterenta cliente = servicio.iniciaSesionCliente(id, pass);
-        if(cliente != null){
-            request.getSession().setAttribute("cliente",cliente);
-            response.sendRedirect("cliente.jsp");
+        if(request.getParameter("idCliente").equals("") || request.getParameter("pass").equals("") ){
+            request.setAttribute("msgRespuesta","Campos incompletos");
+            request.getRequestDispatcher("index.jsp").forward(request,response);
         }else{
-            request.setAttribute("msgRespuesta","No existe el usuario");
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            int id = Integer.parseInt(request.getParameter("idCliente"));
+            String pass = request.getParameter("pass");
+            Clienterenta cliente = servicio.iniciaSesionCliente(id, pass);
+            if(cliente != null){
+                request.getSession().setAttribute("cliente",cliente);
+                response.sendRedirect("cliente.jsp");
+            }else{
+                request.setAttribute("msgRespuesta","No existe el usuario");
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }
         }
     }
 }

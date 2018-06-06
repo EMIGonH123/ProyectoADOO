@@ -3,6 +3,8 @@ package Modelos;
 import EntidadesADOO.*;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Enumeration;
+import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 import javax.ejb.EJBException;
@@ -97,7 +99,6 @@ public class ServicioEmpleado implements ServicioEmpleadoLocal {
             int noExterior, int noInterior, int cp, String tel, String email, String pass,String genero) {
         
         Empleadorenta empleado = buscarEmpleado(idEmpleado);
-        empleado.setIdEmpleado(idEmpleado);
         empleado.setNombreEmpleado(nombre);
         empleado.setApPaternoEmpleado(apPaterno);
         empleado.setApMaternoEmpleado(apMaterno);
@@ -242,6 +243,45 @@ public class ServicioEmpleado implements ServicioEmpleadoLocal {
     @Override
     public Cuenta buscarCuenta(String numCuenta){
         return em.find(Cuenta.class, numCuenta);
+    }
+    
+    @Override
+    public boolean validaCampos(Hashtable<String,Boolean> a) {
+        boolean bandera = true;
+        Enumeration<String> k = a.keys();
+        Enumeration<Boolean> v = a.elements();
+        while(k.hasMoreElements()){
+            String aux = k.nextElement();
+            if(aux.equals("")){
+                bandera = false;
+                a.put(aux, bandera);
+            }
+        }
+        return bandera;
+    }
+    
+    @Override
+    public boolean validarCadenas(String cadena) {
+        String expresion = "^[\\D]+";
+        if(cadena.matches(expresion))
+            return true;
+        return false;
+    }
+
+    @Override
+    public boolean validarDigitos(String digitos) {
+        String expresion = "^[\\d]+";
+        if(digitos.matches(expresion))
+            return true;
+        return false;
+    }
+
+    @Override
+    public boolean validarEmail(String email) {
+        String expresion = "^([a-zA-Z])(.)*@[a-zA-Z]+\\.com";
+        if(email.matches(expresion))
+            return true;
+        return false;
     }
   
 }

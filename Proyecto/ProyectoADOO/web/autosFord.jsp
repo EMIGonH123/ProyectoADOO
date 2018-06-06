@@ -84,6 +84,13 @@
                 <%--------------------------------%>
                 <%-- IMAGENES DE LISTA DE AUTOS --%>
                 <%--------------------------------%>
+                <div class="row">
+                    <div class="col l12 m12 s12">
+                        <div style="background-color: #5c6bc0; color:white; text-align:center;">
+                            <i class="material-icons">info_outline</i> <b>Información general del automovil</b>
+                        </div>
+                    </div>
+                </div>
                 <c:forEach items="${infoAutos}" var="ia">
                     <div id="${ia[1]}">    
                         <div class="row">
@@ -135,12 +142,19 @@
                                         <i class="material-icons">event_available</i> <b>Estado Del Auto</b>
                                     </c:if>
                                     <c:if test="${ia[15] eq 'OCUPADO'}">
-                                        <i class="material-icons">event_busy</i> <b>Estado Del Auto</b>
+                                        <i class="material-icons">event_available</i> <b>Estado Del Auto</b>
                                     </c:if>
                                 </div>
-                                <div style=" color:#5c6bc0; text-align:center;">
-                                   ${ia[15]}
-                                </div>
+                                <c:if test="${ia[15] eq 'OCUPADO'}">
+                                    <div style=" color:red; text-align:center;">
+                                        <b>${ia[15]}</b>
+                                    </div>
+                                </c:if>
+                                <c:if test="${ia[15] eq 'DISPONIBLE'}">
+                                    <div style=" color:green; text-align:center;">
+                                        <b>${ia[15]}</b>
+                                    </div>
+                                </c:if>
                             </div>
                             <div class="col l3 m3 s6">
                                 <div style="background-color: #5c6bc0; color:white; text-align:center;">

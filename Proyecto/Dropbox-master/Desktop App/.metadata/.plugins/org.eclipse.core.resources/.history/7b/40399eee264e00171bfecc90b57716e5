@@ -1,0 +1,92 @@
+package Sockets;
+
+import java.sql.SQLException;
+import java.nio.ByteBuffer;
+import java.sql.ResultSet;
+import java.net.*;
+import java.io.*;
+import Main.*;
+
+public class sendFile {
+	
+	private static DataOutputStream dos;
+	private static DataInputStream dis;
+	private static String directories;
+	private static String path;
+	private static Socket cl;
+	private static long sent;
+	private static long size;
+	private static File f;
+	
+	public static void download ( Server s, String name ) {
+		
+		try {
+			cl = s.getClient ( );
+			try {
+				ResultSet rs = ( ResultSet ) Main.da.getQuery ( "SELECT path FROM Files WHERE name LIKE '" + name + "%';" );
+				ResultSet rs1 = ( ResultSet ) Main.da.getQuery ( "SELECT path FROM SharedFiles WHERE name LIKE '" + name + "%';" );
+				while ( rs.next ( ) ) {
+					path = rs.getString ( "path" );
+				} // End while.
+				while ( rs1.next ( ) ) {
+					path = rs1.getString ( "path" );
+				} // End if.
+			} catch ( SQLException e ) {
+				e.printStackTrace ( );
+			} // End try - catch.
+			f = new File ( path );
+			size = f.length ( );
+			dos = new DataOutputStream ( cl.getOutputStream ( ) );
+			dos.writeUTF ( name );
+			dos.flush ( );
+			dos.writeLong ( size );
+			dos.flush ( );
+			dis = new DataInputStream ( new FileInputStream ( path ) );
+			sent = 0;
+			while ( sent < size ) {
+				byte [ ] b = new byte [ 2000 ];
+				int n = dis.read ( b );
+				sent = sent + n;
+				dos.write ( b, 0, n );
+				dos.flush ( );
+			} // End while.
+			System.out.println ( "\n\t\tFile: " + name + " sended." );
+		} catch ( Exception e ) {
+			e.printStackTrace ( );
+		} // End try - catch.
+		
+	} // End method.
+	
+	public static void updateDirectoryList ( User u ) {
+		
+		try {
+			String directorys = "";
+			ResultSet rs;
+			try {
+				rs = ( ResultSet ) Main.da.getQuery ( "SELECT d.name FROM Directory d, User u WHERE u.idUser = d.idUser AND u.nickname LIKE '" + u.getNickname ( ) + "%' ;" );
+				while ( rs.next ( ) ) {
+					directorys += rs.getString ( "d.name" );
+				} // End while.
+				directorys += "&";
+				rs = ( ResultSet ) Main.da.getQuery ( "SELECT sd.name FROM SharedDirectory sd, User u, UserSD x WHERE u.idUser = x.idUser AND x.idSD = sd.idSD AND u.nickname LIKE '" + u.getNickname ( ) + "%' ;" );
+				while ( rs.next ( ) ) {
+					directorys += rs.getString ( "sd.name" ) + ":" ;
+				} // End while.
+			} catch (SQLException sqle ) {
+				sqle.printStackTrace ( );
+			} // End try - catch.
+			sendStr = "<continue>&" + u.getNickname ( ) + "&" + directorys + "&" + u.getServer ( ).getPort ( ).toString ( );
+			b = ByteBuffer.wrap ( sendStr.getBytes ( ) );
+			try {
+				ch.write ( b );
+				u.getServer ( ).accept ( );
+			} catch ( Exception e ) {
+				e.printStackTrace ( );
+			} // End try - catch.
+		} catch ( Exception e ) {
+			
+		} // End try - catch. 
+		
+	} // End method.
+	
+} // End download.

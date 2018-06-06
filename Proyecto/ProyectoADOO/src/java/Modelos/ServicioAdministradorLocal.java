@@ -2,6 +2,8 @@
 package Modelos;
 
 import EntidadesADOO.*;
+import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -26,6 +28,9 @@ public interface ServicioAdministradorLocal {
     public List<Object> getInfoProveedores();
     public List<Automovilmarca> getMarcaDeAutos();
     public List<Tipoauto> getTipoDeAutos();
-
+    public boolean validaCampos(Hashtable<String,Boolean> a);
+    public boolean validarCadenas(String cadena);
+    public boolean validarDigitos(String digitos);
+    public boolean validarEmail(String email);
 
 }

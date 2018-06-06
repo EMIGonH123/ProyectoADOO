@@ -1,0 +1,11 @@
+package Operations;
+
+public class Writable {
+	
+	public static boolean logInFlag;
+
+	public static void write ( ) {
+		
+	} // End method.
+	
+} // End class.

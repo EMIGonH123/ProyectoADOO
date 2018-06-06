@@ -9,4 +9,5 @@ $(document).ready(function() {
     $('select').material_select();
     $('.parallax').parallax();
     $('.datepicker').pickadate();
+    $('.tooltipped').tooltip({delay: 50});
 });

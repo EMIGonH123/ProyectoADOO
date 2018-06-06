@@ -3,6 +3,7 @@ package Modelos;
 
 import EntidadesADOO.*;
 import java.util.Date;
+import java.util.Hashtable;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -36,4 +37,8 @@ public interface ServicioEmpleadoLocal {
     public Date getFechaActual();
     public Date sumarFechasDias(Date fecha, int dias);
     public List<Object> getInfoDeSucursalPorAdministrador(int idAdmistrador);
+    public boolean validaCampos(Hashtable<String,Boolean> a);
+    public boolean validarCadenas(String cadena);
+    public boolean validarDigitos(String digitos);
+    public boolean validarEmail(String email);
 }

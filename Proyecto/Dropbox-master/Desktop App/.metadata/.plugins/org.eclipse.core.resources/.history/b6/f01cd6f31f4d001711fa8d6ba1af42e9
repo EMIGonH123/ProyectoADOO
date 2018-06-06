@@ -1,0 +1,17 @@
+package Operations;
+
+import java.nio.ByteBuffer;
+import java.nio.channels.*;
+
+public class Readable {
+	
+	private static SocketChannel ch;
+	private ByteBuffer b;
+
+	public static void read ( ) {
+		
+		ch = ( SocketChannel ) Main.k.channel ( );
+		
+	} // End method. 
+	
+} // End class.
